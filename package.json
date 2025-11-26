@@ -1,0 +1,20 @@
+{
+  "name": "cursovweb",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/binmite/cursovweb.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/binmite/cursovweb/issues"
+  },
+  "homepage": "https://github.com/binmite/cursovweb#readme"
+}
