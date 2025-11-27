@@ -262,3 +262,345 @@
     gap: 2rem;
     position: relative;
 }
+
+
+
+
+
+
+
+.news-section {
+    background: #fff;
+    padding: 4rem 1rem;
+    width: 100%;
+    font-family: 'Arial', sans-serif;
+}
+
+.news-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+}
+
+.news-left {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.news-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #00868A;
+    margin: 0;
+    line-height: 1.2;
+    padding-bottom: 1rem;
+    border-bottom: 3px solid #00868A;
+}
+
+.news-item {
+    border-bottom: 2px solid #00868A;
+    padding: 1.5rem 1rem;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    background: #fff;
+    border-radius: 8px;
+    margin: 0 -0.5rem;
+}
+
+.news-item:hover:not(.active) {
+    background: rgba(0, 134, 138, 0.08);
+    transform: translateX(8px);
+    box-shadow: 0 4px 15px rgba(0, 134, 138, 0.15);
+    padding-left: 1.5rem;
+    margin: 0 -1rem;
+}
+
+.news-item.active {
+    background: linear-gradient(135deg, #00868A 0%, #4FBFA5 100%);
+    padding: 1.5rem;
+    margin: 0 -1rem;
+    border-bottom: 2px solid #00868A;
+    transform: translateX(0);
+    box-shadow: 0 8px 25px rgba(0, 134, 138, 0.3);
+    position: relative;
+    z-index: 2;
+}
+
+.news-item.active::before {
+    content: '';
+    position: absolute;
+    left: -10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 10px 0 10px 10px;
+    border-color: transparent transparent transparent #00868A;
+}
+
+.news-item-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #333;
+    margin: 0;
+    line-height: 1.4;
+    transition: all 0.3s ease;
+}
+
+.news-item.active .news-item-title {
+    color: white;
+    font-weight: 700;
+}
+
+.news-item:hover:not(.active) .news-item-title {
+    color: #00868A;
+}
+
+.news-right {
+    background: linear-gradient(135deg, #4FBFA5 0%, #00868A 100%);
+    padding: 3rem;
+    border-radius: 12px;
+    color: white;
+    box-shadow: 0 10px 30px rgba(0, 134, 138, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.news-right::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100px;
+    height: 100px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    transform: translate(30px, -30px);
+}
+
+.news-right::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 80px;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+    transform: translate(-20px, 20px);
+}
+
+.news-featured {
+    display: none;
+    animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    z-index: 1;
+}
+
+.news-featured.active {
+    display: block;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.news-featured-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin: 0 0 2.5rem 0;
+    line-height: 1.3;
+    color: white;
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+.news-featured-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 2px;
+}
+
+.news-featured-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+}
+
+.news-featured-item {
+    display: flex;
+    gap: 1.2rem;
+    align-items: flex-start;
+    line-height: 1.6;
+    font-size: 1.05rem;
+    padding: 0.5rem 0;
+    transition: transform 0.2s ease;
+}
+
+.news-featured-item:hover {
+    transform: translateX(5px);
+}
+
+.news-featured-bullet {
+    flex-shrink: 0;
+    width: 12px;
+    height: 12px;
+    background: white;
+    border-radius: 50%;
+    margin-top: 0.5rem;
+    position: relative;
+    box-shadow: 0 2px 8px rgba(255, 255, 255, 0.3);
+}
+
+.news-featured-bullet::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 6px;
+    height: 6px;
+    background: #00868A;
+    border-radius: 50%;
+}
+
+.news-loading {
+    display: none;
+    text-align: center;
+    padding: 2rem;
+    color: white;
+    font-style: italic;
+}
+
+.news-loading.active {
+    display: block;
+}
+
+.news-featured.fade-out {
+    animation: fadeOut 0.3s ease forwards;
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+}
+
+.news-item:focus {
+    outline: 2px solid #00868A;
+    outline-offset: 2px;
+}
+
+.news-item:focus:not(.active) {
+    background: rgba(0, 134, 138, 0.1);
+}
+
+.news-item,
+.news-featured-item,
+.news-featured-bullet {
+    transition: all 0.3s ease;
+}
+
+.news-item.active {
+    position: relative;
+}
+
+.news-item.active::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+    border-radius: inherit;
+    pointer-events: none;
+}
+
+
+
+
+
+
+.mod-section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    max-width: 1300px;
+    gap: 3rem;
+    padding-bottom: 3rem;
+}
+
+.mod-section h2{
+    color: #00868A;
+    font-size: 2rem;
+}
+
+.mod-section-blocks{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+.mod-section-blocks-block{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.mod-section-blocks-block-top{
+    position: relative;
+}
+
+.mod-section-blocks-block-top p{
+    position: absolute;
+    top: 5%;
+    left: 5%;
+}
+
+.mod-section-blocks-block-bottom{
+    background: #00868A;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem;
+    color: white;
+}
+
+.mod-section-blocks-block-bottom button{
+    background: transparent;
+    padding: 0.5rem;
+    border: 1px solid white;
+}
