@@ -3,6 +3,7 @@
     color: white;
     padding: 4rem 1rem;
     text-align: center;
+    width: 100%;
 }
 
 .services-container {
@@ -22,6 +23,7 @@
 
 .services-categories {
     padding: 4rem 1rem;
+    width: 100%;
 }
 
 .category-tabs {
@@ -136,6 +138,7 @@
     background: linear-gradient(135deg, #4FBFA5, #00868A);
     color: white;
     text-align: center;
+    width: 100%;
 }
 
 .consultation-content h2 {

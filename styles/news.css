@@ -3,11 +3,13 @@
     color: white;
     padding: 4rem 1rem;
     text-align: center;
+    width: 100%;
 }
 
 .news-container {
     max-width: 1200px;
     margin: 0 auto;
+    width: 100%;
 }
 
 .news-hero h1 {
@@ -176,6 +178,7 @@
 .news-subscribe {
     padding: 4rem 1rem;
     background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    width: 100%;
 }
 
 .subscribe-content {

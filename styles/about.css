@@ -3,6 +3,7 @@
     color: white;
     padding: 4rem 1rem;
     text-align: center;
+    width: 100%;
 }
 
 .about-container {
@@ -22,6 +23,7 @@
 
 .about-story {
     padding: 4rem 1rem;
+    width: 100%;
 }
 
 .story-grid {
@@ -63,6 +65,7 @@
 .about-values {
     padding: 4rem 1rem;
     background: #f8f9fa;
+    width: 100%;
 }
 
 .about-values h2 {
@@ -104,6 +107,7 @@
 
 .about-team {
     padding: 4rem 1rem;
+    width: 100%;
 }
 
 .about-team h2 {
