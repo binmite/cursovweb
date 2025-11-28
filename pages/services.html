@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Услуги - Медицинский центр</title>
+    <link rel="stylesheet" href="../styles/global.css">
+    <link rel="stylesheet" href="../styles/header.css">
+    <link rel="stylesheet" href="../styles/footer.css">
+    <link rel="stylesheet" href="../styles/services.css">
+</head>
+<body>
+    <header>
+        <div class="header-top">
+            <div class="header-top-block">
+                <img src="../images/logo.png" alt="logo">
+            </div>
+            <div class="header-top-block">
+                <p>+7 (123) 456 78 90</p>
+            </div>
+            <div class="header-top-block">
+                <p>Наши салоны</p>
+                <img src="../images/Group1.png" alt="group">
+            </div>
+            <div class="header-top-block">
+                <button><img src="../images/simple-line-icon.png" alt="simple-eye"> ВЕРСИЯ ДЛЯ СЛАБОВИДЯЩИХ</button>
+            </div>
+            <div class="header-top-block">
+                <img src="../images/vk.png" alt="vk">
+            </div>
+            <div class="header-top-block">
+                <img src="../images/youtube.png" alt="youtube">
+            </div>
+            <div class="header-top-block">
+                <img src="../images/facebook.png" alt="facebook">
+            </div>
+            <div class="header-top-block">
+                <img src="../images/instagram.png" alt="instagram">
+            </div>
+        </div>
+
+        <div class="header-top--mobile">
+            <div class="header-top-block--mobile">
+                <img src="../images/logo.png" alt="logo" style="height: 24px;">
+            </div>
+            <div class="header-top-block--mobile">
+                <p style="font-size: 0.8rem; margin: 0;">+7 (123) 456 78 90</p>
+            </div>
+            <div class="header-top-block--mobile">
+                <button style="font-size: 0.7rem; padding: 0.2rem 0.4rem;">
+                    <img src="../images/simple-line-icon.png" alt="simple-eye" style="height: 12px;"> Версия
+                </button>
+            </div>
+        </div>
+
+        <div class="header-bottom">
+            <nav class="nav">
+                <div class="nav__container">
+                    <div class="nav__menu">
+                        <a href="../index.html" class="nav__link">Главная</a>
+                        <a href="services.html" class="nav__link">Услуги</a>
+                        <a href="about.html" class="nav__link">О нас</a>
+                        <a href="news.html" class="nav__link">Новости</a>
+                        <a href="contacts.html" class="nav__link">Контакты</a>
+                        <button class="nav__button">Запись на прием</button>
+                    </div>
+
+                    <button class="nav__burger" aria-label="Открыть меню">
+                        <span class="nav__burger-line"></span>
+                        <span class="nav__burger-line"></span>
+                        <span class="nav__burger-line"></span>
+                    </button>
+                </div>
+            </nav>
+        </div>
+        <div class="nav__overlay"></div>
+    </header>
+    
+    <main>
+        <section class="services-hero">
+            <div class="services-container">
+                <h1>Наши услуги</h1>
+                <p>Комплексный подход к здоровью и красоте</p>
+            </div>
+        </section>
+
+        <section class="services-categories">
+            <div class="services-container">
+                <div class="category-tabs">
+                    <button class="tab-btn active" data-category="cosmetology">Косметология</button>
+                    <button class="tab-btn" data-category="surgery">Пластическая хирургия</button>
+                    <button class="tab-btn" data-category="dentistry">Стоматология</button>
+                    <button class="tab-btn" data-category="laser">Лазерная медицина</button>
+                </div>
+
+                <div class="category-content active" id="cosmetology">
+                    <h2>Косметологические услуги</h2>
+                    <div class="services-grid">
+                        <div class="service-card">
+                            <h3>Инъекционная косметология</h3>
+                            <ul>
+                                <li>Ботокс</li>
+                                <li>Биоревитализация</li>
+                                <li>Контурная пластика</li>
+                                <li>Мезотерапия</li>
+                            </ul>
+                            <div class="price">от 5 000 ₽</div>
+                        </div>
+                        <div class="service-card">
+                            <h3>Аппаратная косметология</h3>
+                            <ul>
+                                <li>Лазерное омоложение</li>
+                                <li>RF-лифтинг</li>
+                                <li>Ультразвуковая кавитация</li>
+                                <li>Фотоомоложение</li>
+                            </ul>
+                            <div class="price">от 8 000 ₽</div>
+                        </div>
+                        <div class="service-card">
+                            <h3>Эстетический уход</h3>
+                            <ul>
+                                <li>Чистка лица</li>
+                                <li>Пилинги</li>
+                                <li>Уходовые программы</li>
+                                <li>Массаж лица</li>
+                            </ul>
+                            <div class="price">от 3 000 ₽</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="category-content" id="surgery">
+                    <h2>Пластическая хирургия</h2>
+                    <div class="services-grid">
+                        <div class="service-card">
+                            <h3>Пластика лица</h3>
+                            <ul>
+                                <li>Блефаропластика</li>
+                                <li>Ринопластика</li>
+                                <li>Фейслифтинг</li>
+                                <li>Отопластика</li>
+                            </ul>
+                            <div class="price">от 50 000 ₽</div>
+                        </div>
+                        <div class="service-card">
+                            <h3>Коррекция фигуры</h3>
+                            <ul>
+                                <li>Липосакция</li>
+                                <li>Абдоминопластика</li>
+                                <li>Брахиопластика</li>
+                                <li>Маммопластика</li>
+                            </ul>
+                            <div class="price">от 80 000 ₽</div>
+                        </div>
+                        <div class="service-card">
+                            <h3>Реконструктивная хирургия</h3>
+                            <ul>
+                                <li>Восстановление после травм</li>
+                                <li>Коррекция рубцов</li>
+                                <li>Реконструкция молочных желез</li>
+                                <li>Восстановительные операции</li>
+                            </ul>
+                            <div class="price">от 100 000 ₽</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="category-content" id="dentistry">
+                    <h2>Стоматологические услуги</h2>
+                    <div class="services-grid">
+                        <div class="service-card">
+                            <h3>Терапевтическая стоматология</h3>
+                            <ul>
+                                <li>Лечение кариеса</li>
+                                <li>Эндодонтическое лечение</li>
+                                <li>Реставрация зубов</li>
+                                <li>Профессиональная гигиена</li>
+                            </ul>
+                            <div class="price">от 2 000 ₽</div>
+                        </div>
+                        <div class="service-card">
+                            <h3>Ортопедическая стоматология</h3>
+                            <ul>
+                                <li>Коронки и мосты</li>
+                                <li>Виниры и люминиры</li>
+                                <li>Протезирование</li>
+                                <li>Имплантация</li>
+                            </ul>
+                            <div class="price">от 15 000 ₽</div>
+                        </div>
+                        <div class="service-card">
+                            <h3>Эстетическая стоматология</h3>
+                            <ul>
+                                <li>Отбеливание зубов</li>
+                                <li>Художественная реставрация</li>
+                                <li>Исправление прикуса</li>
+                                <li>Голливудская улыбка</li>
+                            </ul>
+                            <div class="price">от 8 000 ₽</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="category-content" id="laser">
+                    <h2>Лазерная медицина</h2>
+                    <div class="services-grid">
+                        <div class="service-card">
+                            <h3>Лазерная эпиляция</h3>
+                            <ul>
+                                <li>Бикини и подмышки</li>
+                                <li>Ноги и руки</li>
+                                <li>Лицо и шея</li>
+                                <li>Спина и грудь</li>
+                            </ul>
+                            <div class="price">от 3 000 ₽</div>
+                        </div>
+                        <div class="service-card">
+                            <h3>Лазерное омоложение</h3>
+                            <ul>
+                                <li>Фракционное омоложение</li>
+                                <li>Лазерный пилинг</li>
+                                <li>Лечение акне и рубцов</li>
+                                <li>Удаление пигментации</li>
+                            </ul>
+                            <div class="price">от 6 000 ₽</div>
+                        </div>
+                        <div class="service-card">
+                            <h3>Лазерная хирургия</h3>
+                            <ul>
+                                <li>Удаление новообразований</li>
+                                <li>Лечение сосудистых патологий</li>
+                                <li>Коррекция рубцов</li>
+                                <li>Лазерная дермабразия</li>
+                            </ul>
+                            <div class="price">от 4 000 ₽</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="services-consultation">
+            <div class="services-container">
+                <div class="consultation-content">
+                    <h2>Нужна консультация?</h2>
+                    <p>Наши специалисты помогут подобрать оптимальную процедуру именно для вас</p>
+                    <a href="appointment.html" class="consult-btn">Получить консультацию</a>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="footer">
+            <div class="footer__top">
+                <div class="footer__column">
+                    <h3>Косметология</h3>
+                    <ul class="footer__links">
+                        <li><a href="#">Уход за лицом</a></li>
+                        <li><a href="#">Коррекция тела</a></li>
+                        <li><a href="#">Омоложение</a></li>
+                        <li><a href="#">Аппаратная косметология</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer__column">
+                    <h3>Пластическая хирургия</h3>
+                    <ul class="footer__links">
+                        <li><a href="#">Пластика лица</a></li>
+                        <li><a href="#">Коррекция фигуры</a></li>
+                        <li><a href="#">Маммопластика</a></li>
+                        <li><a href="#">Реконструктивная хирургия</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer__column">
+                    <h3>Стоматология</h3>
+                    <ul class="footer__links">
+                        <li><a href="#">Имплантация зубов</a></li>
+                        <li><a href="#">Эстетическая стоматология</a></li>
+                        <li><a href="#">Исправление прикуса</a></li>
+                        <li><a href="#">Профессиональная гигиена</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer__column">
+                    <h3>Контакты</h3>
+                    <div class="footer__contact">
+                        <p>+7 (123) 456 78 90</p>
+                        <p>Москва, ул. Примерная, 123</p>
+                        <p>info@clinic.ru</p>
+                        <div class="footer__social">
+                            <a href="#"><img src="../images/vk.png" alt="VK"></a>
+                            <a href="#"><img src="../images/youtube.png" alt="YouTube"></a>
+                            <a href="#"><img src="../images/facebook.png" alt="Facebook"></a>
+                            <a href="#"><img src="../images/instagram.png" alt="Instagram"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer__bottom">
+                <div class="footer__copyright">
+                    © 2025 Медицинский центр. Все права защищены.
+                </div>
+                <div class="footer__legal">
+                    <a href="#">Политика конфиденциальности</a>
+                    <a href="#">Пользовательское соглашение</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="../js/burger-menu/index.js"></script>
+    <script src="../js/tabs-services/index.js"></script>
+</body>
+</html>

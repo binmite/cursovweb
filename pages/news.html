@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Новости - Медицинский центр</title>
+    <link rel="stylesheet" href="../styles/global.css">
+    <link rel="stylesheet" href="../styles/header.css">
+    <link rel="stylesheet" href="../styles/footer.css">
+    <link rel="stylesheet" href="../styles/news.css">
+</head>
+<body>
+    <header>
+        <div class="header-top">
+            <div class="header-top-block">
+                <img src="../images/logo.png" alt="logo">
+            </div>
+            <div class="header-top-block">
+                <p>+7 (123) 456 78 90</p>
+            </div>
+            <div class="header-top-block">
+                <p>Наши салоны</p>
+                <img src="../images/Group1.png" alt="group">
+            </div>
+            <div class="header-top-block">
+                <button><img src="../images/simple-line-icon.png" alt="simple-eye"> ВЕРСИЯ ДЛЯ СЛАБОВИДЯЩИХ</button>
+            </div>
+            <div class="header-top-block">
+                <img src="../images/vk.png" alt="vk">
+            </div>
+            <div class="header-top-block">
+                <img src="../images/youtube.png" alt="youtube">
+            </div>
+            <div class="header-top-block">
+                <img src="../images/facebook.png" alt="facebook">
+            </div>
+            <div class="header-top-block">
+                <img src="../images/instagram.png" alt="instagram">
+            </div>
+        </div>
+
+        <div class="header-top--mobile">
+            <div class="header-top-block--mobile">
+                <img src="../images/logo.png" alt="logo" style="height: 24px;">
+            </div>
+            <div class="header-top-block--mobile">
+                <p style="font-size: 0.8rem; margin: 0;">+7 (123) 456 78 90</p>
+            </div>
+            <div class="header-top-block--mobile">
+                <button style="font-size: 0.7rem; padding: 0.2rem 0.4rem;">
+                    <img src="../images/simple-line-icon.png" alt="simple-eye" style="height: 12px;"> Версия
+                </button>
+            </div>
+        </div>
+
+        <div class="header-bottom">
+            <nav class="nav">
+                <div class="nav__container">
+                    <div class="nav__menu">
+                        <a href="../index.html" class="nav__link">Главная</a>
+                        <a href="services.html" class="nav__link">Услуги</a>
+                        <a href="about.html" class="nav__link">О нас</a>
+                        <a href="news.html" class="nav__link">Новости</a>
+                        <a href="contacts.html" class="nav__link">Контакты</a>
+                        <button class="nav__button">Запись на прием</button>
+                    </div>
+
+                    <button class="nav__burger" aria-label="Открыть меню">
+                        <span class="nav__burger-line"></span>
+                        <span class="nav__burger-line"></span>
+                        <span class="nav__burger-line"></span>
+                    </button>
+                </div>
+            </nav>
+        </div>
+        <div class="nav__overlay"></div>
+    </header>
+    
+    <main>
+        <section class="news-hero">
+            <div class="news-container">
+                <h1>Новости и статьи</h1>
+                <p>Актуальная информация из мира медицины и косметологии</p>
+            </div>
+        </section>
+
+        <section class="news-filters">
+            <div class="news-container">
+                <div class="filter-buttons">
+                    <button class="filter-btn active">Все новости</button>
+                    <button class="filter-btn">Косметология</button>
+                    <button class="filter-btn">Стоматология</button>
+                    <button class="filter-btn">Хирургия</button>
+                    <button class="filter-btn">Акции</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="news-grid-section">
+            <div class="news-container">
+                <div class="news-grid">
+                    <article class="news-card">
+                        <div class="news-image">Изображение новости</div>
+                        <div class="news-content">
+                            <span class="news-category">Косметология</span>
+                            <h3>Новая методика лазерного омоложения</h3>
+                            <p>В нашем центре появилась инновационная система лазерного омоложения, которая позволяет добиваться впечатляющих результатов без длительного восстановительного периода...</p>
+                            <div class="news-meta">
+                                <span class="date">15 января 2024</span>
+                                <a href="#" class="read-more">Читать далее</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="news-card">
+                        <div class="news-image">Изображение новости</div>
+                        <div class="news-content">
+                            <span class="news-category">Акция</span>
+                            <h3>Специальное предложение на отбеливание зубов</h3>
+                            <p>Только в этом месяце скидка 30% на профессиональное отбеливание зубов системой Zoom 4. Подарите себе ослепительную улыбку по специальной цене...</p>
+                            <div class="news-meta">
+                                <span class="date">10 января 2024</span>
+                                <a href="#" class="read-more">Читать далее</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="news-card">
+                        <div class="news-image">Изображение новости</div>
+                        <div class="news-content">
+                            <span class="news-category">Стоматология</span>
+                            <h3>Имплантация зубов по новой технологии</h3>
+                            <p>Внедрена методика одномоментной имплантации, которая сокращает время лечения и делает процесс установки имплантов более комфортным для пациентов...</p>
+                            <div class="news-meta">
+                                <span class="date">5 января 2024</span>
+                                <a href="#" class="read-more">Читать далее</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="news-card">
+                        <div class="news-image">Изображение новости</div>
+                        <div class="news-content">
+                            <span class="news-category">Хирургия</span>
+                            <h3>Минимально инвазивная пластическая хирургия</h3>
+                            <p>Наши хирурги освоили новые техники минимально инвазивных операций, которые позволяют достигать отличных результатов с минимальным вмешательством...</p>
+                            <div class="news-meta">
+                                <span class="date">28 декабря 2023</span>
+                                <a href="#" class="read-more">Читать далее</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="news-card">
+                        <div class="news-image">Изображение новости</div>
+                        <div class="news-content">
+                            <span class="news-category">Косметология</span>
+                            <h3>Безинъекционная биоревитализация</h3>
+                            <p>Теперь доступна процедура безинъекционной биоревитализации с использованием новейшего оборудования для доставки активных веществ в глубокие слои кожи...</p>
+                            <div class="news-meta">
+                                <span class="date">20 декабря 2023</span>
+                                <a href="#" class="read-more">Читать далее</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="news-card">
+                        <div class="news-image">Изображение новости</div>
+                        <div class="news-content">
+                            <span class="news-category">Акция</span>
+                            <h3>Новогодние скидки на комплексные программы</h3>
+                            <p>В преддверии Нового года мы подготовили специальные предложения на комплексные программы омоложения и коррекции фигуры. Успейте записаться!</p>
+                            <div class="news-meta">
+                                <span class="date">15 декабря 2023</span>
+                                <a href="#" class="read-more">Читать далее</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="pagination">
+                    <button class="page-btn active">1</button>
+                    <button class="page-btn">2</button>
+                    <button class="page-btn">3</button>
+                    <button class="page-btn next">→</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="news-subscribe">
+            <div class="news-container">
+                <div class="subscribe-content">
+                    <h2>Будьте в курсе новостей</h2>
+                    <p>Подпишитесь на нашу рассылку и получайте самые актуальные новости из мира медицины</p>
+                    <form class="subscribe-form">
+                        <input type="email" placeholder="Ваш email" required>
+                        <button type="submit">Подписаться</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="footer">
+            <div class="footer__top">
+                <div class="footer__column">
+                    <h3>Косметология</h3>
+                    <ul class="footer__links">
+                        <li><a href="#">Уход за лицом</a></li>
+                        <li><a href="#">Коррекция тела</a></li>
+                        <li><a href="#">Омоложение</a></li>
+                        <li><a href="#">Аппаратная косметология</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer__column">
+                    <h3>Пластическая хирургия</h3>
+                    <ul class="footer__links">
+                        <li><a href="#">Пластика лица</a></li>
+                        <li><a href="#">Коррекция фигуры</a></li>
+                        <li><a href="#">Маммопластика</a></li>
+                        <li><a href="#">Реконструктивная хирургия</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer__column">
+                    <h3>Стоматология</h3>
+                    <ul class="footer__links">
+                        <li><a href="#">Имплантация зубов</a></li>
+                        <li><a href="#">Эстетическая стоматология</a></li>
+                        <li><a href="#">Исправление прикуса</a></li>
+                        <li><a href="#">Профессиональная гигиена</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer__column">
+                    <h3>Контакты</h3>
+                    <div class="footer__contact">
+                        <p>+7 (123) 456 78 90</p>
+                        <p>Москва, ул. Примерная, 123</p>
+                        <p>info@clinic.ru</p>
+                        <div class="footer__social">
+                            <a href="#"><img src="../images/vk.png" alt="VK"></a>
+                            <a href="#"><img src="../images/youtube.png" alt="YouTube"></a>
+                            <a href="#"><img src="../images/facebook.png" alt="Facebook"></a>
+                            <a href="#"><img src="../images/instagram.png" alt="Instagram"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer__bottom">
+                <div class="footer__copyright">
+                    © 2025 Медицинский центр. Все права защищены.
+                </div>
+                <div class="footer__legal">
+                    <a href="#">Политика конфиденциальности</a>
+                    <a href="#">Пользовательское соглашение</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="../js/burger-menu/index.js"></script>
+    <script src="../js/filter-news/index.js"></script>
+    <script src="../js/pagination/index.js"></script>
+</body>
+</html>
