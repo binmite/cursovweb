@@ -1,0 +1,41 @@
+{
+  "slider": {
+    "cosmetology": "Cosmetology",
+    "cosmetology_desc": "The modern world sets new standards: well-groomed face and body, slim and toned figure are essential attributes of attractive appearance that characterize successful people.",
+    "plastic_surgery": "Plastic Surgery",
+    "plastic_surgery_desc": "Modern technologies in plastic surgery achieve impressive results with minimal intervention.",
+    "dentistry": "Dentistry",
+    "dentistry_desc": "Professional dental care and modern treatment methods will keep your smile healthy and beautiful.",
+    "details": "DETAILS"
+  },
+  "procedures": {
+    "complex": "Complex Procedures",
+    "education": "Education Center",
+    "vip": "VIP Clients"
+  },
+  "innovations": {
+    "title": "Innovations",
+    "heading": "We practice new course of hardware cosmetology procedures",
+    "details": "DETAILS"
+  },
+  "aesthetics": {
+    "title": "Beauty Aesthetics",
+    "centers": "Modern centers in CIS countries",
+    "doctors": "Qualified doctors",
+    "patents": "Unique patents in cosmetology",
+    "procedures": "Modern procedures available"
+  },
+  "news": {
+    "title": "News",
+    "why_cosmetologist": "Why visit a professional cosmetologist. Experts opinion",
+    "standardization": "Clinic standardization according to ISO 9001:2015",
+    "individual_approach": "Individual approach and optimal cosmetology methods selection"
+  },
+  "special_offers": {
+    "title": "Current Special Offers",
+    "laser_epilation": "Laser Epilation",
+    "biorevitalization": "Biorevitalization",
+    "teeth_whitening": "Teeth Whitening",
+    "rhinoplasty": "Rhinoplasty"
+  }
+}

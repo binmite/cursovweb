@@ -1,0 +1,58 @@
+{
+  "header": {
+    "phone": "+7 (123) 456 78 90",
+    "salons": "Our Salons",
+    "accessibility": "ACCESSIBLE VERSION",
+    "appointment": "Book Appointment"
+  },
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "about": "About Us",
+    "news": "News",
+    "contacts": "Contacts"
+  },
+  "footer": {
+    "cosmetology": "Cosmetology",
+    "plastic_surgery": "Plastic Surgery",
+    "dentistry": "Dentistry",
+    "contacts": "Contacts",
+    "facial_care": "Facial Care",
+    "body_correction": "Body Correction",
+    "rejuvenation": "Rejuvenation",
+    "hardware_cosmetology": "Hardware Cosmetology",
+    "facial_plastic": "Facial Plastic",
+    "figure_correction": "Figure Correction",
+    "mammoplasty": "Mammoplasty",
+    "reconstructive_surgery": "Reconstructive Surgery",
+    "dental_implantation": "Dental Implantation",
+    "aesthetic_dentistry": "Aesthetic Dentistry",
+    "bite_correction": "Bite Correction",
+    "professional_hygiene": "Professional Hygiene",
+    "copyright": "© 2025 Medical Center. All rights reserved.",
+    "privacy_policy": "Privacy Policy",
+    "user_agreement": "User Agreement"
+  },
+  "accessibility": {
+    "title": "Accessible Version",
+    "font_size": "Font Size",
+    "small": "Small",
+    "medium": "Medium",
+    "large": "Large",
+    "color_scheme": "Color Scheme",
+    "black_white": "Black/White",
+    "black_green": "Black/Green",
+    "default": "Default",
+    "beige_brown": "Beige/Brown",
+    "blue_darkblue": "Blue/Dark Blue",
+    "images": "Images",
+    "show_images": "Show Images",
+    "theme": "Theme",
+    "dark_theme": "Dark Theme",
+    "reset": "Reset Settings",
+    "apply": "Apply",
+    "accessibility": "Accessibility",
+    "contrast": "Contrast",
+    "images_short": "Images"
+  }
+}

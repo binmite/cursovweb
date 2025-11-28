@@ -1,0 +1,58 @@
+{
+  "header": {
+    "phone": "+7 (123) 456 78 90",
+    "salons": "Наши салоны",
+    "accessibility": "ВЕРСИЯ ДЛЯ СЛАБОВИДЯЩИХ",
+    "appointment": "Запись на прием"
+  },
+  "nav": {
+    "home": "Главная",
+    "services": "Услуги",
+    "about": "О нас",
+    "news": "Новости",
+    "contacts": "Контакты"
+  },
+  "footer": {
+    "cosmetology": "Косметология",
+    "plastic_surgery": "Пластическая хирургия",
+    "dentistry": "Стоматология",
+    "contacts": "Контакты",
+    "facial_care": "Уход за лицом",
+    "body_correction": "Коррекция тела",
+    "rejuvenation": "Омоложение",
+    "hardware_cosmetology": "Аппаратная косметология",
+    "facial_plastic": "Пластика лица",
+    "figure_correction": "Коррекция фигуры",
+    "mammoplasty": "Маммопластика",
+    "reconstructive_surgery": "Реконструктивная хирургия",
+    "dental_implantation": "Имплантация зубов",
+    "aesthetic_dentistry": "Эстетическая стоматология",
+    "bite_correction": "Исправление прикуса",
+    "professional_hygiene": "Профессиональная гигиена",
+    "copyright": "© 2025 Медицинский центр. Все права защищены.",
+    "privacy_policy": "Политика конфиденциальности",
+    "user_agreement": "Пользовательское соглашение"
+  },
+  "accessibility": {
+    "title": "Версия для слабовидящих",
+    "font_size": "Размер шрифта",
+    "small": "Маленький",
+    "medium": "Средний",
+    "large": "Большой",
+    "color_scheme": "Цветовая схема",
+    "black_white": "Черный/Белый",
+    "black_green": "Черный/Зеленый",
+    "default": "Стандартная",
+    "beige_brown": "Бежевый/Коричневый",
+    "blue_darkblue": "Голубой/Темно-синий",
+    "images": "Изображения",
+    "show_images": "Показывать изображения",
+    "theme": "Тема",
+    "dark_theme": "Темная тема",
+    "reset": "Сбросить настройки",
+    "apply": "Применить",
+    "accessibility": "Доступность",
+    "contrast": "Контраст",
+    "images_short": "Изобр."
+  }
+}
