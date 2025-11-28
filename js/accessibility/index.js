@@ -3,7 +3,8 @@ class AccessibilityManager {
         this.settings = {
             fontSize: 'medium',
             colorScheme: 'default',
-            imagesEnabled: true
+            imagesEnabled: true,
+            darkTheme: false
         };
         
         this.init();
@@ -50,6 +51,12 @@ class AccessibilityManager {
             document.body.classList.add('images-disabled');
         }
         
+        if (this.settings.darkTheme) {
+            document.body.classList.add('theme-dark');
+        } else {
+            document.body.classList.remove('theme-dark');
+        }
+        
         this.updateUI();
     }
     
@@ -65,6 +72,11 @@ class AccessibilityManager {
         const imagesToggle = document.getElementById('imagesToggle');
         if (imagesToggle) {
             imagesToggle.checked = this.settings.imagesEnabled;
+        }
+        
+        const themeToggle = document.getElementById('themeToggle');
+        if (themeToggle) {
+            themeToggle.checked = this.settings.darkTheme;
         }
     }
     
@@ -99,6 +111,11 @@ class AccessibilityManager {
         
         document.getElementById('imagesToggle').addEventListener('change', (e) => {
             this.settings.imagesEnabled = e.target.checked;
+            this.applySettings();
+        });
+        
+        document.getElementById('themeToggle').addEventListener('change', (e) => {
+            this.settings.darkTheme = e.target.checked;
             this.applySettings();
         });
         
@@ -149,6 +166,18 @@ class AccessibilityManager {
             this.applySettings();
             this.saveSettings();
         });
+        
+        const themeButton = document.createElement('button');
+        themeButton.className = 'tool-btn';
+        themeButton.setAttribute('data-action', 'toggle-theme');
+        themeButton.textContent = 'Тема';
+        document.querySelector('.accessibility-bar__tools').appendChild(themeButton);
+        
+        document.querySelector('[data-action="toggle-theme"]').addEventListener('click', () => {
+            this.settings.darkTheme = !this.settings.darkTheme;
+            this.applySettings();
+            this.saveSettings();
+        });
     }
     
     openModal() {
@@ -165,7 +194,8 @@ class AccessibilityManager {
         this.settings = {
             fontSize: 'medium',
             colorScheme: 'default',
-            imagesEnabled: true
+            imagesEnabled: true,
+            darkTheme: false
         };
         this.applySettings();
         localStorage.removeItem('accessibilitySettings');
