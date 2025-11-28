@@ -102,7 +102,6 @@ header{
     color: white;
 }
 
-/* Стили для бургер-меню */
 .nav__burger {
     display: none;
     flex-direction: column;
@@ -127,7 +126,6 @@ header{
     border-radius: 2px;
 }
 
-/* Анимации для бургер-меню */
 .nav__burger--active .nav__burger-line:nth-child(1) {
     transform: rotate(45deg) translate(6px, 6px);
 }
@@ -141,19 +139,18 @@ header{
     transform: rotate(-45deg) translate(6px, -6px);
 }
 
-/* Медиа-запросы для бургер-меню */
 @media (max-width: 1024px) {
     .header-top-block {
         padding: 1rem 0.8rem;
     }
     
     .header-top-block button {
-        font-size: 0.8rem;
+        font-size: 0.8em;
         padding: 0.4rem 0.8rem;
     }
     
     .header-top-block p {
-        font-size: 0.9rem;
+        font-size: 0.9em;
     }
     
     .nav__menu {
@@ -162,11 +159,11 @@ header{
     }
     
     .nav__link {
-        font-size: 1rem;
+        font-size: 1em;
     }
     
     .nav__button {
-        font-size: 1rem;
+        font-size: 1em;
         padding: 0.6rem 1.2rem;
     }
 }
@@ -202,7 +199,6 @@ header{
         border-right: none;
     }
 
-    /* Стили для бургер-меню на мобильных */
     .nav__burger {
         display: flex;
     }
@@ -235,7 +231,7 @@ header{
         width: 100%;
         border-bottom: 1px solid #eee;
         color: #333;
-        font-size: 1.1rem;
+        font-size: 1.1em;
         text-align: left;
         font-weight: 500;
         transition: all 0.3s ease;
@@ -261,7 +257,6 @@ header{
         justify-content: space-between;
     }
 
-    /* Затемнение фона при открытом меню */
     .nav__overlay {
         display: none;
         position: fixed;
@@ -285,7 +280,7 @@ header{
     }
     
     .header-top-block button {
-        font-size: 0.6rem;
+        font-size: 0.6em;
         padding: 0.2rem 0.4rem;
     }
     
@@ -294,12 +289,12 @@ header{
     }
     
     .header-bottom {
-        padding: 0.6rem 1rem;
+        padding: 0.6em 1rem;
     }
     
     .nav__link {
         padding: 1rem;
-        font-size: 1rem;
+        font-size: 1em;
     }
     
     .nav__burger {
@@ -324,44 +319,41 @@ header{
     }
     
     .header-top-block button {
-        font-size: 0.55rem;
+        font-size: 0.55em;
         padding: 0.2rem 0.3rem;
     }
     
     .header-top-block p {
-        font-size: 0.65rem;
+        font-size: 0.65em;
     }
 
     .nav__link {
-        font-size: 0.9rem;
+        font-size: 0.9em;
         padding: 0.8rem;
     }
 }
 
-/* Планшетная версия для бургер-меню */
 @media (min-width: 769px) and (max-width: 1024px) {
     .nav__menu {
         gap: 1rem;
     }
     
     .nav__link {
-        font-size: 0.95rem;
+        font-size: 0.95em;
     }
     
     .nav__button {
-        font-size: 0.95rem;
+        font-size: 0.95em;
         padding: 0.5rem 1rem;
     }
 }
 
-/* Плавные переходы для всех интерактивных элементов */
 .nav__burger,
 .nav__link,
 .nav__button {
     transition: all 0.3s ease;
 }
 
-/* Улучшенная доступность */
 .nav__burger:focus {
     outline: 2px solid #00868A;
     outline-offset: 2px;
@@ -372,7 +364,6 @@ header{
     outline-offset: -2px;
 }
 
-/* Анимация появления меню */
 @keyframes slideInFromTop {
     from {
         opacity: 0;
@@ -393,3 +384,5 @@ header{
 .nav__menu--active .nav__link:nth-child(3) { animation-delay: 0.2s; }
 .nav__menu--active .nav__link:nth-child(4) { animation-delay: 0.25s; }
 .nav__menu--active .nav__link:nth-child(5) { animation-delay: 0.3s; }
+
+

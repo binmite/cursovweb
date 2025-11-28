@@ -18,7 +18,7 @@ footer {
 }
 
 .footer__column h3 {
-    font-size: 1.5rem;
+    font-size: 1.5em;
     margin-bottom: 1.5rem;
     font-weight: 600;
 }
@@ -36,7 +36,7 @@ footer {
 .footer__links a {
     color: white;
     text-decoration: none;
-    font-size: 1rem;
+    font-size: 1em;
     transition: color 0.3s ease;
 }
 
@@ -52,7 +52,7 @@ footer {
 
 .footer__contact p {
     margin: 0;
-    font-size: 1rem;
+    font-size: 1em;
 }
 
 .footer__social {
@@ -82,7 +82,7 @@ footer {
 }
 
 .footer__copyright {
-    font-size: 0.9rem;
+    font-size: 0.9em;
     opacity: 0.8;
 }
 
@@ -94,7 +94,7 @@ footer {
 .footer__legal a {
     color: white;
     text-decoration: none;
-    font-size: 0.9rem;
+    font-size: 0.9em;
     transition: color 0.3s ease;
 }
 
@@ -120,7 +120,7 @@ footer {
     }
     
     .footer__column h3 {
-        font-size: 1.3rem;
+        font-size: 1.3em;
         margin-bottom: 1rem;
     }
     

@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../styles/header.css">
     <link rel="stylesheet" href="../styles/footer.css">
     <link rel="stylesheet" href="../styles/contacts.css">
+    <link rel="stylesheet" href="../styles/accessibility.css">
 </head>
 <body>
     <header>
@@ -46,11 +47,6 @@
             <div class="header-top-block--mobile">
                 <p style="font-size: 0.8rem; margin: 0;">+7 (123) 456 78 90</p>
             </div>
-            <div class="header-top-block--mobile">
-                <button style="font-size: 0.7rem; padding: 0.2rem 0.4rem;">
-                    <img src="../images/simple-line-icon.png" alt="simple-eye" style="height: 12px;"> Версия
-                </button>
-            </div>
         </div>
 
         <div class="header-bottom">
@@ -72,6 +68,79 @@
                     </button>
                 </div>
             </nav>
+        </div>
+        <div id="accessibilityModal" class="accessibility-modal">
+            <div class="accessibility-modal__content">
+                <div class="accessibility-modal__header">
+                    <h2>Версия для слабовидящих</h2>
+                    <button class="accessibility-modal__close">&times;</button>
+                </div>
+                
+                <div class="accessibility-modal__body">
+                    <div class="accessibility-option">
+                        <h3>Размер шрифта</h3>
+                        <div class="font-size-buttons">
+                            <button class="font-size-btn" data-size="small">Маленький</button>
+                            <button class="font-size-btn active" data-size="medium">Средний</button>
+                            <button class="font-size-btn" data-size="large">Большой</button>
+                        </div>
+                    </div>
+
+                    <div class="accessibility-option">
+                        <h3>Цветовая схема</h3>
+                        <div class="color-scheme-buttons">
+                            <button class="color-scheme-btn" data-scheme="black-white">
+                                <span class="color-preview" style="background: #000; border-color: #fff"></span>
+                                Черный/Белый
+                            </button>
+                            <button class="color-scheme-btn" data-scheme="black-green">
+                                <span class="color-preview" style="background: #000; border-color: #0f0"></span>
+                                Черный/Зеленый
+                            </button>
+                            <button class="color-scheme-btn active" data-scheme="default">
+                                <span class="color-preview" style="background: #fff; border-color: #000"></span>
+                                Стандартная
+                            </button>
+                            <button class="color-scheme-btn" data-scheme="beige-brown">
+                                <span class="color-preview" style="background: #f5f5dc; border-color: #8b4513"></span>
+                                Бежевый/Коричневый
+                            </button>
+                            <button class="color-scheme-btn" data-scheme="blue-darkblue">
+                                <span class="color-preview" style="background: #87ceeb; border-color: #00008b"></span>
+                                Голубой/Темно-синий
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="accessibility-option">
+                        <h3>Изображения</h3>
+                        <div class="image-toggle">
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="imagesToggle" checked>
+                                <span class="toggle-slider"></span>
+                                <span class="toggle-label">Показывать изображения</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accessibility-modal__footer">
+                    <button class="reset-settings-btn">Сбросить настройки</button>
+                    <button class="apply-settings-btn">Применить</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="accessibilityBar" class="accessibility-bar">
+            <button class="accessibility-bar__toggle">
+                <img src="../images/simple-line-icon.png" alt="Доступность">
+            </button>
+            <div class="accessibility-bar__tools">
+                <button class="tool-btn" data-action="increase-font">A+</button>
+                <button class="tool-btn" data-action="decrease-font">A-</button>
+                <button class="tool-btn" data-action="toggle-contrast">Контраст</button>
+                <button class="tool-btn" data-action="toggle-images">Изобр.</button>
+            </div>
         </div>
         <div class="nav__overlay"></div>
     </header>
@@ -216,5 +285,6 @@
     <script src="../js/map/index.js"></script>
     <script src="../js/burger-menu/index.js"></script>
     <script src="../js/form-contact/index.js"></script>
+    <script src="../js/accessibility/index.js"></script>
 </body>
 </html>

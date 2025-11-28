@@ -12,12 +12,12 @@
 }
 
 .about-hero h1 {
-    font-size: 3rem;
+    font-size: 3em;
     margin-bottom: 1rem;
 }
 
 .about-hero p {
-    font-size: 1.2rem;
+    font-size: 1.2em;
     opacity: 0.9;
 }
 
@@ -35,12 +35,12 @@
 
 .story-content h2 {
     color: #00868A;
-    font-size: 2.5rem;
+    font-size: 2.5em;
     margin-bottom: 2rem;
 }
 
 .story-content p {
-    font-size: 1.1rem;
+    font-size: 1.1em;
     line-height: 1.6;
     margin-bottom: 1.5rem;
     color: #555;
@@ -58,7 +58,7 @@
 
 .image-placeholder {
     color: #00868A;
-    font-size: 1.2rem;
+    font-size: 1.2em;
     font-weight: 500;
 }
 
@@ -71,7 +71,7 @@
 .about-values h2 {
     text-align: center;
     color: #00868A;
-    font-size: 2.5rem;
+    font-size: 2.5em;
     margin-bottom: 3rem;
 }
 
@@ -96,7 +96,7 @@
 
 .value-card h3 {
     color: #00868A;
-    font-size: 1.5rem;
+    font-size: 1.5em;
     margin-bottom: 1rem;
 }
 
@@ -113,7 +113,7 @@
 .about-team h2 {
     text-align: center;
     color: #00868A;
-    font-size: 2.5rem;
+    font-size: 2.5em;
     margin-bottom: 3rem;
 }
 
@@ -151,7 +151,7 @@
 
 .team-card h3 {
     color: #00868A;
-    font-size: 1.3rem;
+    font-size: 1.3em;
     margin-bottom: 0.5rem;
 }
 
@@ -163,7 +163,7 @@
 
 .team-card span {
     color: #888;
-    font-size: 0.9rem;
+    font-size: 0.9em;
 }
 
 @media (max-width: 768px) {
@@ -173,13 +173,13 @@
     }
     
     .about-hero h1 {
-        font-size: 2rem;
+        font-size: 2em;
     }
     
     .story-content h2,
     .about-values h2,
     .about-team h2 {
-        font-size: 2rem;
+        font-size: 2em;
     }
     
     .team-grid,
