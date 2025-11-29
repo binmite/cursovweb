@@ -32,6 +32,15 @@ header{
     background: #00868A;
     color: white;
     border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.header-top-block button:hover {
+    background: #006D70;
+    transform: translateY(-1px);
 }
 
 .header-top-block button img {
@@ -95,6 +104,8 @@ header{
     cursor: pointer;
     transition: background 0.3s ease;
     white-space: nowrap;
+    border-radius: 4px;
+    font-weight: 600;
 }
 
 .nav__button:hover {
@@ -139,7 +150,82 @@ header{
     transform: rotate(-45deg) translate(6px, -6px);
 }
 
-@media (max-width: 1024px) {
+.user-info-nav {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-left: auto;
+}
+
+.user-name {
+    color: white;
+    font-weight: 600;
+    font-size: 1em;
+    white-space: nowrap;
+    padding: 0.5rem 0;
+}
+
+.admin-nav-btn {
+    background: #FF6B35;
+    color: white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.95em;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    font-family: inherit;
+}
+
+.admin-nav-btn:hover {
+    background: #E55A2B;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(255, 107, 53, 0.3);
+}
+
+.reset-settings-btn {
+    background: #F39C12;
+    color: white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.95em;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    font-family: inherit;
+}
+
+.reset-settings-btn:hover {
+    background: #E67E22;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(243, 156, 18, 0.3);
+}
+
+.logout-nav-btn {
+    background: #95A5A6;
+    color: white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.95em;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    font-family: inherit;
+}
+
+.logout-nav-btn:hover {
+    background: #7F8C8D;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(149, 165, 166, 0.3);
+}
+
+@media (max-width: 1450px) {
     .header-top-block {
         padding: 1rem 0.8rem;
     }
@@ -166,9 +252,24 @@ header{
         font-size: 1em;
         padding: 0.6rem 1.2rem;
     }
+    
+    .user-info-nav {
+        gap: 0.8rem;
+    }
+    
+    .user-name {
+        font-size: 0.9em;
+    }
+    
+    .admin-nav-btn,
+    .reset-settings-btn,
+    .logout-nav-btn {
+        font-size: 0.85em;
+        padding: 0.5rem 1rem;
+    }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
     .header-top {
         display: none;
     }
@@ -188,6 +289,7 @@ header{
         background: #00868A;
         color: white;
         border: none;
+        border-radius: 4px;
     }
 
     .header-top-block--mobile {
@@ -211,15 +313,15 @@ header{
         left: 0;
         right: 0;
         bottom: 0;
-        background: rgba(79, 191, 165, 0.5); 
+        background: rgba(79, 191, 165, 0.95);
         flex-direction: column;
         gap: 0;
         padding: 120px 2rem 2rem;
         z-index: 1000;
         overflow-y: auto;
         box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
-        backdrop-filter: blur(10px); 
-        -webkit-backdrop-filter: blur(10px); 
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
     }
     
     .nav__menu--active {
@@ -229,8 +331,8 @@ header{
     .nav__link {
         padding: 1.2rem 1rem;
         width: 100%;
-        border-bottom: 1px solid #eee;
-        color: #333;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        color: white;
         font-size: 1.1em;
         text-align: left;
         font-weight: 500;
@@ -238,8 +340,8 @@ header{
     }
     
     .nav__link:hover {
-        background: #f8f8f8;
-        color: #00868A;
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
         padding-left: 1.5rem;
     }
     
@@ -255,6 +357,35 @@ header{
     .header-bottom {
         padding: 0.8rem 1rem;
         justify-content: space-between;
+    }
+    
+    .user-info-nav {
+        flex-direction: column;
+        gap: 0.8rem;
+        margin-left: 0;
+        width: 100%;
+        text-align: center;
+        order: 3;
+        margin-top: 1rem;
+        padding-top: 1rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .user-name {
+        color: white;
+        font-size: 1.1em;
+        margin-bottom: 0.5rem;
+        width: 100%;
+        text-align: center;
+    }
+    
+    .admin-nav-btn,
+    .reset-settings-btn,
+    .logout-nav-btn {
+        width: 100%;
+        padding: 1rem;
+        font-size: 1em;
+        margin-bottom: 0.5rem;
     }
 
     .nav__overlay {
@@ -309,7 +440,18 @@ header{
     }
 
     .nav__menu {
-        padding: 120px 1rem 1rem;
+        padding: 100px 1rem 1rem;
+    }
+    
+    .user-info-nav {
+        gap: 0.5rem;
+    }
+    
+    .admin-nav-btn,
+    .reset-settings-btn,
+    .logout-nav-btn {
+        padding: 0.8rem;
+        font-size: 0.9em;
     }
 }
 
@@ -331,6 +473,10 @@ header{
         font-size: 0.9em;
         padding: 0.8rem;
     }
+    
+    .user-name {
+        font-size: 1em;
+    }
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
@@ -346,15 +492,32 @@ header{
         font-size: 0.95em;
         padding: 0.5rem 1rem;
     }
+    
+    .user-info-nav {
+        gap: 0.8rem;
+    }
+    
+    .admin-nav-btn,
+    .reset-settings-btn,
+    .logout-nav-btn {
+        font-size: 0.85em;
+        padding: 0.5rem 0.8rem;
+    }
 }
 
 .nav__burger,
 .nav__link,
-.nav__button {
+.nav__button,
+.admin-nav-btn,
+.reset-settings-btn,
+.logout-nav-btn {
     transition: all 0.3s ease;
 }
 
-.nav__burger:focus {
+.nav__burger:focus,
+.admin-nav-btn:focus,
+.reset-settings-btn:focus,
+.logout-nav-btn:focus {
     outline: 2px solid #00868A;
     outline-offset: 2px;
 }
@@ -385,43 +548,12 @@ header{
 .nav__menu--active .nav__link:nth-child(4) { animation-delay: 0.25s; }
 .nav__menu--active .nav__link:nth-child(5) { animation-delay: 0.3s; }
 
-
-.user-info-nav {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-left: auto;
-    padding: 0.5rem 1rem;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 6px;
+.nav__menu--active .user-info-nav {
+    animation: slideInFromTop 0.4s ease forwards;
 }
 
-.user-name {
-    color: white;
-    font-weight: 500;
-}
-
-.logout-nav-btn {
-    background: rgba(255, 255, 255, 0.2);
-    color: white;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    padding: 0.3rem 0.8rem;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 0.8rem;
-    transition: all 0.3s ease;
-}
-
-.logout-nav-btn:hover {
-    background: rgba(255, 255, 255, 0.3);
-}
-
-@media (max-width: 768px) {
-    .user-info-nav {
-        flex-direction: column;
-        gap: 0.5rem;
-        margin-left: 0;
-        width: 100%;
-        text-align: center;
-    }
+.nav__menu--active .admin-nav-btn,
+.nav__menu--active .reset-settings-btn,
+.nav__menu--active .logout-nav-btn {
+    animation: slideInFromTop 0.5s ease forwards;
 }

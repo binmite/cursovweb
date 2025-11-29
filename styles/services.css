@@ -208,3 +208,65 @@
         font-size: 2em;
     }
 }
+
+.category-description {
+    text-align: center;
+    color: #666;
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+    line-height: 1.5;
+}
+
+.service-description {
+    color: #555;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.service-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1rem 0;
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
+}
+
+.duration {
+    color: #666;
+    font-size: 0.8rem;
+}
+
+.service-btn {
+    width: 100%;
+    background: #00868A;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.3s ease;
+}
+
+.service-btn:hover {
+    background: #00696D;
+}
+
+.popular-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #e74c3c;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
+.service-card.popular {
+    border: 2px solid #00868A;
+    position: relative;
+}
