@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вход и регистрация</title>
+    <link rel="stylesheet" href="../styles/auth.css">
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-form">
+            <div class="auth-tabs">
+                <button class="auth-tab active" data-tab="login">Вход</button>
+                <button class="auth-tab" data-tab="register">Регистрация</button>
+            </div>
+
+            <form id="loginForm" class="auth-content active">
+                <h1>Вход в аккаунт</h1>
+                
+                <div class="form-group">
+                    <label for="loginEmail">Email *</label>
+                    <input type="text" id="loginEmail" name="loginEmail" placeholder="example@mail.com или +375..." required>
+                    <div class="error-message" id="loginEmailError"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="loginPassword">Пароль *</label>
+                    <input type="password" id="loginPassword" name="loginPassword" placeholder="Введите пароль" required>
+                    <div class="error-message" id="loginPasswordError"></div>
+                </div>
+
+                <button type="submit" class="auth-btn">Войти</button>
+            </form>
+
+            <form id="registrationForm" class="auth-content">
+                <h1>Регистрация</h1>
+
+                <div class="form-group">
+                    <label for="phone">Номер телефона *</label>
+                    <input type="tel" id="phone" name="phone" placeholder="+375 (XX) XXX-XX-XX" required>
+                    <div class="error-message" id="phoneError"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" name="email" placeholder="example@mail.com" required>
+                    <div class="error-message" id="emailError"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="birthDate">Дата рождения *</label>
+                    <input type="date" id="birthDate" name="birthDate" required>
+                    <div class="error-message" id="birthDateError"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="lastName">Фамилия *</label>
+                    <input type="text" id="lastName" name="lastName" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="firstName">Имя *</label>
+                    <input type="text" id="firstName" name="firstName" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="middleName">Отчество</label>
+                    <input type="text" id="middleName" name="middleName">
+                </div>
+
+                <div class="form-group">
+                    <label for="username">Никнейм *</label>
+                    <div class="username-group">
+                        <input type="text" id="username" name="username" readonly required>
+                        <button type="button" id="generateUsername" class="generate-btn">Сгенерировать</button>
+                    </div>
+                    <div class="attempts-counter">Попыток: <span id="attemptsCount">0</span>/5</div>
+                    <div class="error-message" id="usernameError"></div>
+                </div>
+
+                <div class="form-group">
+                    <label>Способ задания пароля *</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="passwordType" value="auto" checked>
+                            Автоматически
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="passwordType" value="manual">
+                            Самостоятельно
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group auto-password-group">
+                    <label for="autoPassword">Автоматически сгенерированный пароль</label>
+                    <input type="text" id="autoPassword" readonly>
+                    <button type="button" id="copyPassword" class="copy-btn">Копировать</button>
+                </div>
+
+                <div class="form-group manual-password-group" style="display: none;">
+                    <label for="password">Пароль *</label>
+                    <input type="password" id="password" name="password" placeholder="Введите пароль">
+                    <div class="password-requirements">
+                        Пароль должен содержать: минимум 8 символов, заглавную и строчную буквы, цифру, специальный символ
+                    </div>
+                    <div class="error-message" id="passwordError"></div>
+                </div>
+
+                <div class="form-group manual-password-group" style="display: none;">
+                    <label for="confirmPassword">Подтверждение пароля *</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Повторите пароль">
+                    <div class="error-message" id="confirmPasswordError"></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="agreement" name="agreement" required>
+                        <span class="checkmark"></span>
+                        Я прочитал(а) и согласен(на) с <a href="#" class="agreement-link">Соглашением пользователя</a> *
+                    </label>
+                    <div class="error-message" id="agreementError"></div>
+                </div>
+
+                <button type="submit" id="registerBtn" class="auth-btn" disabled>Зарегистрироваться</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="../js/auth/auth-manager.js"></script>
+    <script src="../js/auth/auth-tabs.js"></script>
+    <script src="../js/auth/registration.js"></script>
+    <script src="../js/auth/login.js"></script>
+    <script src="../js/i18n/index.js"></script>
+</body>
+</html>

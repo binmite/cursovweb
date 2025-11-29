@@ -386,3 +386,42 @@ header{
 .nav__menu--active .nav__link:nth-child(5) { animation-delay: 0.3s; }
 
 
+.user-info-nav {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-left: auto;
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+}
+
+.user-name {
+    color: white;
+    font-weight: 500;
+}
+
+.logout-nav-btn {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 0.3rem 0.8rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: all 0.3s ease;
+}
+
+.logout-nav-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+@media (max-width: 768px) {
+    .user-info-nav {
+        flex-direction: column;
+        gap: 0.5rem;
+        margin-left: 0;
+        width: 100%;
+        text-align: center;
+    }
+}

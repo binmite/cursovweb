@@ -1,0 +1,33 @@
+{
+  "users": [
+    {
+      "id": 1764415332850,
+      "role": "user",
+      "phone": "+375295345334",
+      "email": "ergrege@gmail.com",
+      "birthDate": "1999-07-30",
+      "lastName": "werwer",
+      "firstName": "erwerwerew",
+      "middleName": "",
+      "username": "СмелыйТигр776",
+      "password": "bY3s%7PuNDBA",
+      "registrationDate": "2025-11-29T11:22:12.850Z",
+      "isActive": true
+    },
+    {
+      "id": 1764415780736,
+      "role": "user",
+      "phone": "+375296081313",
+      "email": "qwe@gmail.com",
+      "birthDate": "2000-12-12",
+      "lastName": "wer",
+      "firstName": "qweqw",
+      "middleName": "",
+      "username": "КрутойЕдинорог77rew4",
+      "password": "yxNr^Mw1iDw^",
+      "registrationDate": "2025-11-29T11:29:40.736Z",
+      "isActive": true
+    }
+  ],
+  "appointments": []
+}
