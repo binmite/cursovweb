@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Новости - Медицинский центр</title>
+    <title data-i18n="nav.news">Новости - Медицинский центр</title>
     <link rel="stylesheet" href="../styles/global.css">
     <link rel="stylesheet" href="../styles/header.css">
     <link rel="stylesheet" href="../styles/footer.css">
     <link rel="stylesheet" href="../styles/news.css">
     <link rel="stylesheet" href="../styles/accessibility.css">
+    <link rel="stylesheet" href="../styles/i18n.css">
 </head>
 <body>
     <header>
@@ -17,14 +18,23 @@
                 <img src="../images/logo.png" alt="logo">
             </div>
             <div class="header-top-block">
-                <p>+7 (123) 456 78 90</p>
+                <p data-i18n="header.phone">+7 (123) 456 78 90</p>
             </div>
             <div class="header-top-block">
-                <p>Наши салоны</p>
+                <p data-i18n="header.salons">Наши салоны</p>
                 <img src="../images/Group1.png" alt="group">
             </div>
             <div class="header-top-block">
-                <button><img src="../images/simple-line-icon.png" alt="simple-eye"> ВЕРСИЯ ДЛЯ СЛАБОВИДЯЩИХ</button>
+                <button>
+                    <img src="../images/simple-line-icon.png" alt="simple-eye"> 
+                    <span data-i18n="header.accessibility">ВЕРСИЯ ДЛЯ СЛАБОВИДЯЩИХ</span>
+                </button>
+            </div>
+            <div class="header-top-block language-switcher-container">
+                <div class="language-switcher">
+                    <button class="lang-btn active" data-lang="ru">RU</button>
+                    <button class="lang-btn" data-lang="en">EN</button>
+                </div>
             </div>
             <div class="header-top-block">
                 <img src="../images/vk.png" alt="vk">
@@ -45,7 +55,13 @@
                 <img src="../images/logo.png" alt="logo" style="height: 24px;">
             </div>
             <div class="header-top-block--mobile">
-                <p style="font-size: 0.8rem; margin: 0;">+7 (123) 456 78 90</p>
+                <p style="font-size: 0.8rem; margin: 0;" data-i18n="header.phone">+7 (123) 456 78 90</p>
+            </div>
+            <div class="header-top-block language-switcher-container">
+                <div class="language-switcher">
+                    <button class="lang-btn active" data-lang="ru">RU</button>
+                    <button class="lang-btn" data-lang="en">EN</button>
+                </div>
             </div>
         </div>
 
@@ -53,12 +69,12 @@
             <nav class="nav">
                 <div class="nav__container">
                     <div class="nav__menu">
-                        <a href="./home.html" class="nav__link">Главная</a>
-                        <a href="./services.html" class="nav__link">Услуги</a>
-                        <a href="./about.html" class="nav__link">О нас</a>
-                        <a href="./news.html" class="nav__link">Новости</a>
-                        <a href="./" class="nav__link">Контакты</a>
-                        <button class="nav__button">Запись на прием</button>
+                        <a href="./home.html" class="nav__link" data-i18n="nav.home">Главная</a>
+                        <a href="./services.html" class="nav__link" data-i18n="nav.services">Услуги</a>
+                        <a href="./about.html" class="nav__link" data-i18n="nav.about">О нас</a>
+                        <a href="./news.html" class="nav__link" data-i18n="nav.news">Новости</a>
+                        <a href="./contacts.html" class="nav__link" data-i18n="nav.contacts">Контакты</a>
+                        <button class="nav__button" data-i18n="header.appointment">Запись на прием</button>
                     </div>
 
                     <button class="nav__burger" aria-label="Открыть меню">
@@ -69,75 +85,76 @@
                 </div>
             </nav>
         </div>
+        
         <div id="accessibilityModal" class="accessibility-modal">
             <div class="accessibility-modal__content">
                 <div class="accessibility-modal__header">
-                    <h2>Версия для слабовидящих</h2>
+                    <h2 data-i18n="accessibility.title">Версия для слабовидящих</h2>
                     <button class="accessibility-modal__close">&times;</button>
                 </div>
                 
                 <div class="accessibility-modal__body">
                     <div class="accessibility-option">
-                        <h3>Размер шрифта</h3>
+                        <h3 data-i18n="accessibility.font_size">Размер шрифта</h3>
                         <div class="font-size-buttons">
-                            <button class="font-size-btn" data-size="small">Маленький</button>
-                            <button class="font-size-btn active" data-size="medium">Средний</button>
-                            <button class="font-size-btn" data-size="large">Большой</button>
+                            <button class="font-size-btn" data-size="small" data-i18n="accessibility.small">Маленький</button>
+                            <button class="font-size-btn active" data-size="medium" data-i18n="accessibility.medium">Средний</button>
+                            <button class="font-size-btn" data-size="large" data-i18n="accessibility.large">Большой</button>
                         </div>
                     </div>
 
                     <div class="accessibility-option">
-                        <h3>Цветовая схема</h3>
+                        <h3 data-i18n="accessibility.color_scheme">Цветовая схема</h3>
                         <div class="color-scheme-buttons">
                             <button class="color-scheme-btn" data-scheme="black-white">
                                 <span class="color-preview" style="background: #000; border-color: #fff"></span>
-                                Черный/Белый
+                                <span data-i18n="accessibility.black_white">Черный/Белый</span>
                             </button>
                             <button class="color-scheme-btn" data-scheme="black-green">
                                 <span class="color-preview" style="background: #000; border-color: #0f0"></span>
-                                Черный/Зеленый
+                                <span data-i18n="accessibility.black_green">Черный/Зеленый</span>
                             </button>
                             <button class="color-scheme-btn active" data-scheme="default">
                                 <span class="color-preview" style="background: #fff; border-color: #000"></span>
-                                Стандартная
+                                <span data-i18n="accessibility.default">Стандартная</span>
                             </button>
                             <button class="color-scheme-btn" data-scheme="beige-brown">
                                 <span class="color-preview" style="background: #f5f5dc; border-color: #8b4513"></span>
-                                Бежевый/Коричневый
+                                <span data-i18n="accessibility.beige_brown">Бежевый/Коричневый</span>
                             </button>
                             <button class="color-scheme-btn" data-scheme="blue-darkblue">
                                 <span class="color-preview" style="background: #87ceeb; border-color: #00008b"></span>
-                                Голубой/Темно-синий
+                                <span data-i18n="accessibility.blue_darkblue">Голубой/Темно-синий</span>
                             </button>
                         </div>
                     </div>
 
                     <div class="accessibility-option">
-                        <h3>Тема</h3>
+                        <h3 data-i18n="accessibility.theme">Тема</h3>
                         <div class="theme-toggle">
                             <label class="toggle-switch">
                                 <input type="checkbox" id="themeToggle">
                                 <span class="toggle-slider"></span>
-                                <span class="toggle-label">Темная тема</span>
+                                <span class="toggle-label" data-i18n="accessibility.dark_theme">Темная тема</span>
                             </label>
                         </div>
                     </div>
 
                     <div class="accessibility-option">
-                        <h3>Изображения</h3>
+                        <h3 data-i18n="accessibility.images">Изображения</h3>
                         <div class="image-toggle">
                             <label class="toggle-switch">
                                 <input type="checkbox" id="imagesToggle" checked>
                                 <span class="toggle-slider"></span>
-                                <span class="toggle-label">Показывать изображения</span>
+                                <span class="toggle-label" data-i18n="accessibility.show_images">Показывать изображения</span>
                             </label>
                         </div>
                     </div>
                 </div>
                 
                 <div class="accessibility-modal__footer">
-                    <button class="reset-settings-btn">Сбросить настройки</button>
-                    <button class="apply-settings-btn">Применить</button>
+                    <button class="reset-settings-btn" data-i18n="accessibility.reset">Сбросить настройки</button>
+                    <button class="apply-settings-btn" data-i18n="accessibility.apply">Применить</button>
                 </div>
             </div>
         </div>
@@ -149,8 +166,8 @@
             <div class="accessibility-bar__tools">
                 <button class="tool-btn" data-action="increase-font">A+</button>
                 <button class="tool-btn" data-action="decrease-font">A-</button>
-                <button class="tool-btn" data-action="toggle-contrast">Контраст</button>
-                <button class="tool-btn" data-action="toggle-images">Изобр.</button>
+                <button class="tool-btn" data-action="toggle-contrast" data-i18n="accessibility.contrast">Контраст</button>
+                <button class="tool-btn" data-action="toggle-images" data-i18n="accessibility.images_short">Изобр.</button>
             </div>
         </div>
         <div class="nav__overlay"></div>
@@ -159,19 +176,18 @@
     <main>
         <section class="news-hero">
             <div class="news-container">
-                <h1>Новости и статьи</h1>
-                <p>Актуальная информация из мира медицины и косметологии</p>
+                <h1 data-i18n="news.page_title">Новости и статьи</h1>
+                <p data-i18n="news.page_subtitle">Актуальная информация из мира медицины и косметологии</p>
             </div>
         </section>
 
         <section class="news-filters">
             <div class="news-container">
                 <div class="filter-buttons">
-                    <button class="filter-btn active">Все новости</button>
-                    <button class="filter-btn">Косметология</button>
-                    <button class="filter-btn">Стоматология</button>
-                    <button class="filter-btn">Хирургия</button>
-                    <button class="filter-btn">Акции</button>
+                    <button class="filter-btn" data-i18n="news.categories.cosmetology">Косметология</button>
+                    <button class="filter-btn" data-i18n="news.categories.dentistry">Стоматология</button>
+                    <button class="filter-btn" data-i18n="news.categories.surgery">Хирургия</button>
+                    <button class="filter-btn" data-i18n="news.categories.promotions">Акции</button>
                 </div>
             </div>
         </section>
@@ -180,89 +196,82 @@
             <div class="news-container">
                 <div class="news-grid">
                     <article class="news-card">
-                        <div class="news-image">Изображение новости</div>
+                        <div class="news-image" data-i18n="news.images.news">Изображение новости</div>
                         <div class="news-content">
-                            <span class="news-category">Косметология</span>
-                            <h3>Новая методика лазерного омоложения</h3>
-                            <p>В нашем центре появилась инновационная система лазерного омоложения, которая позволяет добиваться впечатляющих результатов без длительного восстановительного периода...</p>
+                            <span class="news-category" data-i18n="news.categories.cosmetology">Косметология</span>
+                            <h3 data-i18n="news.titles.laser_rejuvenation">Новая методика лазерного омоложения</h3>
+                            <p data-i18n="news.descriptions.laser_rejuvenation">В нашем центре появилась инновационная система лазерного омоложения, которая позволяет добиваться впечатляющих результатов без длительного восстановительного периода...</p>
                             <div class="news-meta">
-                                <span class="date">15 января 2024</span>
-                                <a href="#" class="read-more">Читать далее</a>
+                                <span class="date" data-i18n="news.dates.january_15">15 января 2024</span>
+                                <a href="#" class="read-more" data-i18n="news.read_more">Читать далее</a>
                             </div>
                         </div>
                     </article>
 
                     <article class="news-card">
-                        <div class="news-image">Изображение новости</div>
+                        <div class="news-image" data-i18n="news.images.news">Изображение новости</div>
                         <div class="news-content">
-                            <span class="news-category">Акция</span>
-                            <h3>Специальное предложение на отбеливание зубов</h3>
-                            <p>Только в этом месяце скидка 30% на профессиональное отбеливание зубов системой Zoom 4. Подарите себе ослепительную улыбку по специальной цене...</p>
+                            <span class="news-category" data-i18n="news.categories.promotions">Акция</span>
+                            <h3 data-i18n="news.titles.teeth_whitening">Специальное предложение на отбеливание зубов</h3>
+                            <p data-i18n="news.descriptions.teeth_whitening">Только в этом месяце скидка 30% на профессиональное отбеливание зубов системой Zoom 4. Подарите себе ослепительную улыбку по специальной цене...</p>
                             <div class="news-meta">
-                                <span class="date">10 января 2024</span>
-                                <a href="#" class="read-more">Читать далее</a>
+                                <span class="date" data-i18n="news.dates.january_10">10 января 2024</span>
+                                <a href="#" class="read-more" data-i18n="news.read_more">Читать далее</a>
                             </div>
                         </div>
                     </article>
 
                     <article class="news-card">
-                        <div class="news-image">Изображение новости</div>
+                        <div class="news-image" data-i18n="news.images.news">Изображение новости</div>
                         <div class="news-content">
-                            <span class="news-category">Стоматология</span>
-                            <h3>Имплантация зубов по новой технологии</h3>
-                            <p>Внедрена методика одномоментной имплантации, которая сокращает время лечения и делает процесс установки имплантов более комфортным для пациентов...</p>
+                            <span class="news-category" data-i18n="news.categories.dentistry">Стоматология</span>
+                            <h3 data-i18n="news.titles.implantation">Имплантация зубов по новой технологии</h3>
+                            <p data-i18n="news.descriptions.implantation">Внедрена методика одномоментной имплантации, которая сокращает время лечения и делает процесс установки имплантов более комфортным для пациентов...</p>
                             <div class="news-meta">
-                                <span class="date">5 января 2024</span>
-                                <a href="#" class="read-more">Читать далее</a>
+                                <span class="date" data-i18n="news.dates.january_5">5 января 2024</span>
+                                <a href="#" class="read-more" data-i18n="news.read_more">Читать далее</a>
                             </div>
                         </div>
                     </article>
 
                     <article class="news-card">
-                        <div class="news-image">Изображение новости</div>
+                        <div class="news-image" data-i18n="news.images.news">Изображение новости</div>
                         <div class="news-content">
-                            <span class="news-category">Хирургия</span>
-                            <h3>Минимально инвазивная пластическая хирургия</h3>
-                            <p>Наши хирурги освоили новые техники минимально инвазивных операций, которые позволяют достигать отличных результатов с минимальным вмешательством...</p>
+                            <span class="news-category" data-i18n="news.categories.surgery">Хирургия</span>
+                            <h3 data-i18n="news.titles.minimally_invasive">Минимально инвазивная пластическая хирургия</h3>
+                            <p data-i18n="news.descriptions.minimally_invasive">Наши хирурги освоили новые техники минимально инвазивных операций, которые позволяют достигать отличных результатов с минимальным вмешательством...</p>
                             <div class="news-meta">
-                                <span class="date">28 декабря 2023</span>
-                                <a href="#" class="read-more">Читать далее</a>
+                                <span class="date" data-i18n="news.dates.december_28">28 декабря 2023</span>
+                                <a href="#" class="read-more" data-i18n="news.read_more">Читать далее</a>
                             </div>
                         </div>
                     </article>
 
                     <article class="news-card">
-                        <div class="news-image">Изображение новости</div>
+                        <div class="news-image" data-i18n="news.images.news">Изображение новости</div>
                         <div class="news-content">
-                            <span class="news-category">Косметология</span>
-                            <h3>Безинъекционная биоревитализация</h3>
-                            <p>Теперь доступна процедура безинъекционной биоревитализации с использованием новейшего оборудования для доставки активных веществ в глубокие слои кожи...</p>
+                            <span class="news-category" data-i18n="news.categories.cosmetology">Косметология</span>
+                            <h3 data-i18n="news.titles.biorevitalization">Безинъекционная биоревитализация</h3>
+                            <p data-i18n="news.descriptions.biorevitalization">Теперь доступна процедура безинъекционной биоревитализации с использованием новейшего оборудования для доставки активных веществ в глубокие слои кожи...</p>
                             <div class="news-meta">
-                                <span class="date">20 декабря 2023</span>
-                                <a href="#" class="read-more">Читать далее</a>
+                                <span class="date" data-i18n="news.dates.december_20">20 декабря 2023</span>
+                                <a href="#" class="read-more" data-i18n="news.read_more">Читать далее</a>
                             </div>
                         </div>
                     </article>
 
                     <article class="news-card">
-                        <div class="news-image">Изображение новости</div>
+                        <div class="news-image" data-i18n="news.images.news">Изображение новости</div>
                         <div class="news-content">
-                            <span class="news-category">Акция</span>
-                            <h3>Новогодние скидки на комплексные программы</h3>
-                            <p>В преддверии Нового года мы подготовили специальные предложения на комплексные программы омоложения и коррекции фигуры. Успейте записаться!</p>
+                            <span class="news-category" data-i18n="news.categories.promotions">Акция</span>
+                            <h3 data-i18n="news.titles.new_year_discounts">Новогодние скидки на комплексные программы</h3>
+                            <p data-i18n="news.descriptions.new_year_discounts">В преддверии Нового года мы подготовили специальные предложения на комплексные программы омоложения и коррекции фигуры. Успейте записаться!</p>
                             <div class="news-meta">
-                                <span class="date">15 декабря 2023</span>
-                                <a href="#" class="read-more">Читать далее</a>
+                                <span class="date" data-i18n="news.dates.december_15">15 декабря 2023</span>
+                                <a href="#" class="read-more" data-i18n="news.read_more">Читать далее</a>
                             </div>
                         </div>
                     </article>
-                </div>
-
-                <div class="pagination">
-                    <button class="page-btn active">1</button>
-                    <button class="page-btn">2</button>
-                    <button class="page-btn">3</button>
-                    <button class="page-btn next">→</button>
                 </div>
             </div>
         </section>
@@ -270,11 +279,11 @@
         <section class="news-subscribe">
             <div class="news-container">
                 <div class="subscribe-content">
-                    <h2>Будьте в курсе новостей</h2>
-                    <p>Подпишитесь на нашу рассылку и получайте самые актуальные новости из мира медицины</p>
+                    <h2 data-i18n="news.subscribe.title">Будьте в курсе новостей</h2>
+                    <p data-i18n="news.subscribe.subtitle">Подпишитесь на нашу рассылку и получайте самые актуальные новости из мира медицины</p>
                     <form class="subscribe-form">
-                        <input type="email" placeholder="Ваш email" required>
-                        <button type="submit">Подписаться</button>
+                        <input type="email" placeholder="Ваш email" data-i18n-placeholder="news.subscribe.placeholder" required>
+                        <button type="submit" data-i18n="news.subscribe.button">Подписаться</button>
                     </form>
                 </div>
             </div>
@@ -285,41 +294,41 @@
         <div class="footer">
             <div class="footer__top">
                 <div class="footer__column">
-                    <h3>Косметология</h3>
+                    <h3 data-i18n="footer.cosmetology">Косметология</h3>
                     <ul class="footer__links">
-                        <li><a href="#">Уход за лицом</a></li>
-                        <li><a href="#">Коррекция тела</a></li>
-                        <li><a href="#">Омоложение</a></li>
-                        <li><a href="#">Аппаратная косметология</a></li>
+                        <li><a href="#" data-i18n="footer.facial_care">Уход за лицом</a></li>
+                        <li><a href="#" data-i18n="footer.body_correction">Коррекция тела</a></li>
+                        <li><a href="#" data-i18n="footer.rejuvenation">Омоложение</a></li>
+                        <li><a href="#" data-i18n="footer.hardware_cosmetology">Аппаратная косметология</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer__column">
-                    <h3>Пластическая хирургия</h3>
+                    <h3 data-i18n="footer.plastic_surgery">Пластическая хирургия</h3>
                     <ul class="footer__links">
-                        <li><a href="#">Пластика лица</a></li>
-                        <li><a href="#">Коррекция фигуры</a></li>
-                        <li><a href="#">Маммопластика</a></li>
-                        <li><a href="#">Реконструктивная хирургия</a></li>
+                        <li><a href="#" data-i18n="footer.facial_plastic">Пластика лица</a></li>
+                        <li><a href="#" data-i18n="footer.figure_correction">Коррекция фигуры</a></li>
+                        <li><a href="#" data-i18n="footer.mammoplasty">Маммопластика</a></li>
+                        <li><a href="#" data-i18n="footer.reconstructive_surgery">Реконструктивная хирургия</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer__column">
-                    <h3>Стоматология</h3>
+                    <h3 data-i18n="footer.dentistry">Стоматология</h3>
                     <ul class="footer__links">
-                        <li><a href="#">Имплантация зубов</a></li>
-                        <li><a href="#">Эстетическая стоматология</a></li>
-                        <li><a href="#">Исправление прикуса</a></li>
-                        <li><a href="#">Профессиональная гигиена</a></li>
+                        <li><a href="#" data-i18n="footer.dental_implantation">Имплантация зубов</a></li>
+                        <li><a href="#" data-i18n="footer.aesthetic_dentistry">Эстетическая стоматология</a></li>
+                        <li><a href="#" data-i18n="footer.bite_correction">Исправление прикуса</a></li>
+                        <li><a href="#" data-i18n="footer.professional_hygiene">Профессиональная гигиена</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer__column">
-                    <h3>Контакты</h3>
+                    <h3 data-i18n="footer.contacts">Контакты</h3>
                     <div class="footer__contact">
-                        <p>+7 (123) 456 78 90</p>
-                        <p>Москва, ул. Примерная, 123</p>
-                        <p>info@clinic.ru</p>
+                        <p data-i18n="footer.contact_phone">+7 (123) 456 78 90</p>
+                        <p data-i18n="footer.contact_address">Москва, ул. Примерная, 123</p>
+                        <p data-i18n="footer.contact_email">info@clinic.ru</p>
                         <div class="footer__social">
                             <a href="#"><img src="../images/vk.png" alt="VK"></a>
                             <a href="#"><img src="../images/youtube.png" alt="YouTube"></a>
@@ -331,23 +340,20 @@
             </div>
             
             <div class="footer__bottom">
-                <div class="footer__copyright">
-                    © 2025 Медицинский центр. Все права защищены.
-                </div>
+                <div class="footer__copyright" data-i18n="footer.copyright">© 2025 Медицинский центр. Все права защищены.</div>
                 <div class="footer__legal">
-                    <a href="#">Политика конфиденциальности</a>
-                    <a href="#">Пользовательское соглашение</a>
+                    <a href="#" data-i18n="footer.privacy_policy">Политика конфиденциальности</a>
+                    <a href="#" data-i18n="footer.user_agreement">Пользовательское соглашение</a>
                 </div>
             </div>
         </div>
     </footer>
     
+    <script src="../js/i18n/index.js"></script>
     <script src="../js/burger-menu/index.js"></script>
     <script src="../js/filter-news/index.js"></script>
-    <script src="../js/pagination/index.js"></script>
     <script src="../js/accessibility/index.js"></script>
     <script src="../js/navigation/index.js"></script>
     <script src="../js/auth/auth-manager.js"></script>
-    <script src="../js/i18n/index.js"></script>
 </body>
 </html>

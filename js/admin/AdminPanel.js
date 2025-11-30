@@ -14,6 +14,33 @@ export class AdminPanel {
         this.init();
     }
 
+    t(key) {
+        if (window.i18nManager && typeof window.i18nManager.t === 'function') {
+            return window.i18nManager.t(key);
+        }
+        
+        const fallbackTranslations = {
+            'admin.page_title': 'Панель администратора',
+            'admin.title': 'Панель администратора',
+            'admin.refresh': 'Обновить',
+            'admin.back': 'Назад',
+            
+            'admin.tabs.appointments': 'Заявки',
+            'admin.tabs.services': 'Услуги',
+            
+            'admin.messages.refresh_success': 'Данные обновлены',
+            'admin.messages.init_error': 'Ошибка инициализации панели администратора',
+            'admin.messages.access_denied': 'Доступ запрещен. Требуются права администратора.',
+            
+            'admin.preloader': 'Загрузка панели администратора...',
+            
+            'auth.unauthorized': 'Необходима авторизация',
+            'auth.access_denied': 'Доступ запрещен'
+        };
+        
+        return fallbackTranslations[key] || key;
+    }
+
     async init() {
         console.log('AdminPanel init started');
         
@@ -46,7 +73,7 @@ export class AdminPanel {
         } catch (error) {
             console.error('AdminPanel init error:', error);
             this.hidePreloader();
-            this.showError('Ошибка инициализации панели администратора');
+            this.showError(this.t('admin.messages.init_error'));
         }
     }
 
@@ -54,6 +81,11 @@ export class AdminPanel {
         const preloader = document.getElementById('preloader');
         if (preloader) {
             preloader.classList.remove('preloader--hidden');
+            
+            const preloaderText = preloader.querySelector('.preloader-text');
+            if (preloaderText) {
+                preloaderText.textContent = this.t('admin.preloader');
+            }
         }
     }
 
@@ -76,6 +108,48 @@ export class AdminPanel {
         
         this.tabButtons = document.querySelectorAll('.tab-btn');
         this.tabContents = document.querySelectorAll('.tab-content');
+        
+        this.updateTranslations();
+    }
+
+    updateTranslations() {
+        document.title = this.t('admin.page_title');
+        
+        const title = document.querySelector('.admin-header h1');
+        if (title) {
+            title.textContent = this.t('admin.title');
+        }
+        
+        if (this.refreshBtn) {
+            this.refreshBtn.textContent = this.t('admin.refresh');
+            this.refreshBtn.title = this.t('admin.refresh');
+        }
+        
+        if (this.backBtn) {
+            this.backBtn.textContent = this.t('admin.back');
+            this.backBtn.title = this.t('admin.back');
+        }
+        
+        this.tabButtons.forEach(btn => {
+            const tab = btn.getAttribute('data-tab');
+            if (tab === 'appointments') {
+                btn.textContent = this.t('admin.tabs.appointments');
+            } else if (tab === 'services') {
+                btn.textContent = this.t('admin.tabs.services');
+            }
+        });
+        
+        if (this.managers.appointments && typeof this.managers.appointments.refreshTranslations === 'function') {
+            this.managers.appointments.refreshTranslations();
+        }
+        
+        if (this.managers.services && typeof this.managers.services.refreshTranslations === 'function') {
+            this.managers.services.refreshTranslations();
+        }
+        
+        if (this.managers.modal && typeof this.managers.modal.refreshTranslations === 'function') {
+            this.managers.modal.refreshTranslations();
+        }
     }
 
     initializeManagers() {
@@ -94,13 +168,21 @@ export class AdminPanel {
                 this.showTab(tab);
             });
         });
+        
+        document.addEventListener('languageChanged', () => {
+            this.refreshTranslations();
+        });
+    }
+
+    refreshTranslations() {
+        this.updateTranslations();
     }
 
     async handleRefresh() {
         this.showLoading(true);
         await this.loadAllData();
         this.showLoading(false);
-        this.showSuccess('Данные обновлены');
+        this.showSuccess(this.t('admin.messages.refresh_success'));
     }
 
     async loadAllData() {
@@ -149,7 +231,7 @@ export class AdminPanel {
         const isAdmin = user && (user.role === 'admin' || user.email === 'admin@gmail.com');
         
         if (!isAdmin) {
-            alert('Доступ запрещен. Требуются права администратора.');
+            this.showError(this.t('admin.messages.access_denied'));
             window.location.href = 'home.html';
             return false;
         }

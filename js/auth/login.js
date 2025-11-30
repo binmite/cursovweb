@@ -1,7 +1,22 @@
 class LoginForm {
     constructor() {
+        this.i18n = window.i18nManager;
         this.initializeElements();
         this.initializeEventListeners();
+        this.bindLanguageChange();
+    }
+
+    bindLanguageChange() {
+        document.addEventListener('languageChanged', () => {
+            this.updateTranslations();
+        });
+    }
+
+    updateTranslations() {
+        this.loginBtn.textContent = this.i18n.t('auth.login_button');
+        
+        this.validateLoginEmail();
+        this.validateLoginPassword();
     }
 
     initializeElements() {
@@ -26,7 +41,7 @@ class LoginForm {
         const value = this.loginEmailInput.value.trim();
         
         if (!value) {
-            this.showError('loginEmail', 'Email или телефон обязателен');
+            this.showError('loginEmail', this.i18n.t('validation.required'));
             return false;
         }
         
@@ -34,7 +49,7 @@ class LoginForm {
         const isPhone = /^\+375(25|29|33|44)\d{7}$/.test(value.replace(/\D/g, ''));
         
         if (!isEmail && !isPhone) {
-            this.showError('loginEmail', 'Введите корректный email или номер телефона');
+            this.showError('loginEmail', this.i18n.t('validation.invalid_login'));
             return false;
         }
         
@@ -46,7 +61,7 @@ class LoginForm {
         const password = this.loginPasswordInput.value;
         
         if (!password) {
-            this.showError('loginPassword', 'Пароль обязателен');
+            this.showError('loginPassword', this.i18n.t('validation.required'));
             return false;
         }
         
@@ -71,18 +86,18 @@ class LoginForm {
             if (user) {
                 authManager.setUser(user);
                 
-                alert('Вход выполнен успешно!');
+                alert(this.i18n.t('auth.login_success'));
                 
                 setTimeout(() => {
                     window.location.href = 'home.html';
                 }, 1000);
                 
             } else {
-                this.showError('loginPassword', 'Неверный email/телефон или пароль');
+                this.showError('loginPassword', this.i18n.t('auth.login_failed'));
             }
         } catch (error) {
             console.error('Login error:', error);
-            alert('Ошибка соединения с сервером');
+            alert(this.i18n.t('auth.connection_error'));
         }
     }
 

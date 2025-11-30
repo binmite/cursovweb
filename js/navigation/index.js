@@ -7,7 +7,11 @@ function handleAppointmentButtonClick() {
 }
 
 function resetSettings() {
-    if (confirm('Вы уверены, что хотите сбросить все настройки? Это очистит все данные кроме текущей авторизации.')) {
+    const i18n = window.i18nManager;
+    const confirmMessage = i18n.t('user.reset_confirm');
+    const successMessage = i18n.t('user.reset_success');
+    
+    if (confirm(confirmMessage)) {
         const currentUser = localStorage.getItem('currentUser');
         
         localStorage.clear();
@@ -18,13 +22,14 @@ function resetSettings() {
         
         sessionStorage.clear();
         
-        alert('Настройки сброшены. Текущая авторизация сохранена. Страница будет перезагружена.');
+        alert(successMessage);
         
         window.location.reload();
     }
 }
 
 function updateNavigation() {
+    const i18n = window.i18nManager;
     const user = authManager.getCurrentUser();
     const nav = document.querySelector('.nav__menu');
     
@@ -38,9 +43,8 @@ function updateNavigation() {
         
         userInfo.innerHTML = `
             <span class="user-name">${user.firstName} ${user.lastName}</span>
-            ${isAdmin ? '<button class="admin-nav-btn">Админ панель</button>' : ''}
-            <button class="reset-settings-btn">Сбросить настройки</button>
-            <button class="logout-nav-btn">Выйти</button>
+            ${isAdmin ? `<button class="admin-nav-btn">${i18n.t('user.admin_panel')}</button>` : ''}
+            <button class="logout-nav-btn">${i18n.t('user.logout')}</button>
         `;
         
         const oldUserInfo = document.querySelector('.user-info-nav');
@@ -74,6 +78,12 @@ function updateNavigation() {
     }
 }
 
+function bindLanguageChange() {
+    document.addEventListener('languageChanged', () => {
+        updateNavigation();
+    });
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     const appointmentButton = document.querySelector('.nav__button');
     if (appointmentButton) {
@@ -81,4 +91,5 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     updateNavigation();
+    bindLanguageChange();
 });

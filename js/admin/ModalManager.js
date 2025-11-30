@@ -1,8 +1,60 @@
 export class ModalManager {
     constructor(adminPanel) {
         this.adminPanel = adminPanel;
+        this.i18n = window.i18nManager;
         this.initializeElements();
         this.initializeEventListeners();
+        this.bindLanguageChange();
+    }
+
+    bindLanguageChange() {
+        document.addEventListener('languageChanged', () => {
+            this.updateTranslations();
+        });
+    }
+
+    updateTranslations() {
+        if (this.modalTitle && this.adminPanel.managers.appointments.currentAppointment) {
+            const isViewMode = this.modalTitle.textContent.includes('Просмотр') || this.modalTitle.textContent.includes('View');
+            this.modalTitle.textContent = isViewMode ? 
+                this.i18n.t('admin.modal.appointment_title') : 
+                this.i18n.t('admin.modal.appointment_edit_title');
+        }
+        
+        if (this.serviceModalTitle) {
+            const isAddMode = this.serviceModalTitle.textContent.includes('Добавить') || this.serviceModalTitle.textContent.includes('Add');
+            this.serviceModalTitle.textContent = isAddMode ? 
+                this.i18n.t('admin.modal.service_add_title') : 
+                this.i18n.t('admin.modal.service_edit_title');
+        }
+        
+        this.updateButtonText();
+        
+        this.updatePlaceholders();
+    }
+
+    updateButtonText() {
+        if (this.saveAppointmentBtn) {
+            this.saveAppointmentBtn.textContent = this.i18n.t('admin.buttons.save');
+        }
+        if (this.confirmAppointmentBtn) {
+            this.confirmAppointmentBtn.textContent = this.i18n.t('admin.buttons.confirm');
+        }
+        if (this.rejectAppointmentBtn) {
+            this.rejectAppointmentBtn.textContent = this.i18n.t('admin.buttons.reject');
+        }
+        if (this.deleteAppointmentBtn) {
+            this.deleteAppointmentBtn.textContent = this.i18n.t('admin.buttons.delete');
+        }
+        if (this.saveServiceBtn) {
+            this.saveServiceBtn.textContent = this.i18n.t('admin.buttons.save');
+        }
+    }
+
+    updatePlaceholders() {
+        if (this.adminNotes) {
+            this.adminNotes.placeholder = this.i18n.t('admin.modal.admin_notes_placeholder');
+        }
     }
 
     initializeElements() {
@@ -31,12 +83,77 @@ export class ModalManager {
         this.confirmAppointmentBtn = document.getElementById('confirmAppointmentBtn');
         this.rejectAppointmentBtn = document.getElementById('rejectAppointmentBtn');
         this.deleteAppointmentBtn = document.getElementById('deleteAppointmentBtn');
+
+        this.updateFormLabels();
+    }
+
+    updateFormLabels() {
+        const labels = {
+            'modalClient': 'admin.modal.client',
+            'modalService': 'admin.modal.service',
+            'modalDoctor': 'admin.modal.doctor',
+            'modalPrice': 'admin.modal.price',
+            'modalDate': 'admin.modal.date',
+            'modalTime': 'admin.modal.time',
+            'modalStatus': 'admin.modal.status',
+            'modalNotes': 'admin.modal.client_notes',
+            'adminNotes': 'admin.modal.admin_notes'
+        };
+
+        Object.entries(labels).forEach(([elementId, translationKey]) => {
+            const label = document.querySelector(`label[for="${elementId}"]`);
+            if (label) {
+                label.textContent = this.i18n.t(translationKey);
+            }
+        });
     }
 
     initializeServiceForm() {
         this.serviceModalTitle = document.getElementById('serviceModalTitle');
         this.serviceForm = document.getElementById('serviceForm');
         this.saveServiceBtn = document.getElementById('saveServiceBtn');
+
+        this.updateServiceFormLabels();
+    }
+
+    updateServiceFormLabels() {
+        const labels = {
+            'serviceName': 'admin.modal.service_name',
+            'serviceCategory': 'admin.modal.service_category',
+            'servicePrice': 'admin.modal.service_price',
+            'servicePriceUnit': 'admin.modal.service_price_unit',
+            'serviceDuration': 'admin.modal.service_duration',
+            'serviceDescription': 'admin.modal.service_description',
+            'serviceProcedures': 'admin.modal.service_procedures'
+        };
+
+        Object.entries(labels).forEach(([elementId, translationKey]) => {
+            const label = document.querySelector(`label[for="${elementId}"]`);
+            if (label) {
+                label.textContent = this.i18n.t(translationKey);
+            }
+        });
+
+        const placeholders = {
+            'serviceDuration': 'admin.modal.service_duration_placeholder',
+            'serviceProcedures': 'admin.modal.service_procedures_placeholder'
+        };
+
+        Object.entries(placeholders).forEach(([elementId, translationKey]) => {
+            const input = document.getElementById(elementId);
+            if (input) {
+                input.placeholder = this.i18n.t(translationKey);
+            }
+        });
+
+        this.updateCategoryOptions();
+    }
+
+    updateCategoryOptions() {
+        const categorySelect = document.getElementById('serviceCategory');
+        if (categorySelect && categorySelect.firstChild) {
+            categorySelect.firstChild.textContent = this.i18n.t('admin.modal.service_category_placeholder');
+        }
     }
 
     initializeEventListeners() {
@@ -60,10 +177,10 @@ export class ModalManager {
     openAppointmentModal(mode, appointment) {
         this.adminPanel.managers.appointments.currentAppointment = appointment;
         
-        this.modalClient.value = `Клиент ID: ${appointment.userId}`;
+        this.modalClient.value = `${this.i18n.t('admin.modal.client')} ID: ${appointment.userId}`;
         this.modalService.value = appointment.service;
         this.modalDoctor.value = appointment.doctor;
-        this.modalPrice.value = appointment.price ? appointment.price.toLocaleString() + ' ₽' : '-';
+        this.modalPrice.value = appointment.price ? appointment.price.toLocaleString() + ' ' + this.i18n.t('services.currency') : '-';
         this.modalDate.value = appointment.date;
         this.modalTime.value = appointment.time;
         this.modalStatus.value = appointment.status;
@@ -71,7 +188,9 @@ export class ModalManager {
         this.adminNotes.value = appointment.adminNotes || '';
         
         const isViewMode = mode === 'view';
-        this.modalTitle.textContent = isViewMode ? 'Просмотр заявки' : 'Редактирование заявки';
+        this.modalTitle.textContent = isViewMode ? 
+            this.i18n.t('admin.modal.appointment_title') : 
+            this.i18n.t('admin.modal.appointment_edit_title');
         
         const readonly = isViewMode;
         this.modalDate.readOnly = readonly;
@@ -119,11 +238,11 @@ export class ModalManager {
             
             await this.adminPanel.managers.appointments.loadAppointments();
             this.closeAllModals();
-            this.adminPanel.showSuccess('Заявка успешно обновлена!');
+            this.adminPanel.showSuccess(this.i18n.t('admin.messages.appointment_updated'));
             
         } catch (error) {
             console.error('Error updating appointment:', error);
-            this.adminPanel.showError('Ошибка при обновлении заявки.');
+            this.adminPanel.showError(this.i18n.t('admin.messages.appointment_update_error'));
         } finally {
             this.adminPanel.showLoading(false);
         }
@@ -132,7 +251,9 @@ export class ModalManager {
     openServiceModal(mode, service = null) {
         this.adminPanel.managers.services.currentService = service;
         
-        this.serviceModalTitle.textContent = mode === 'add' ? 'Добавить услугу' : 'Редактировать услугу';
+        this.serviceModalTitle.textContent = mode === 'add' ? 
+            this.i18n.t('admin.modal.service_add_title') : 
+            this.i18n.t('admin.modal.service_edit_title');
         
         if (mode === 'edit' && service) {
             document.getElementById('serviceName').value = service.name;
@@ -161,7 +282,7 @@ export class ModalManager {
             procedures: document.getElementById('serviceProcedures').value.split(',').map(p => p.trim()).filter(p => p)
         };
 
-        const mode = this.serviceModalTitle.textContent.includes('Добавить') ? 'add' : 'edit';
+        const mode = this.serviceModalTitle.textContent.includes(this.i18n.t('admin.modal.service_add_title')) ? 'add' : 'edit';
         const currentService = this.adminPanel.managers.services.currentService;
         
         await this.adminPanel.managers.services.saveService(serviceData, mode, currentService);

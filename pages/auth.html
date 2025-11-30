@@ -3,113 +3,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Вход и регистрация</title>
+    <title data-i18n="auth.page_title">Вход и регистрация</title>
     <link rel="stylesheet" href="../styles/auth.css">
 </head>
 <body>
     <div class="auth-container">
         <div class="auth-form">
             <div class="auth-tabs">
-                <button class="auth-tab active" data-tab="login">Вход</button>
-                <button class="auth-tab" data-tab="register">Регистрация</button>
+                <button class="auth-tab active" data-tab="login" data-i18n="auth.login_tab">Вход</button>
+                <button class="auth-tab" data-tab="register" data-i18n="auth.register_tab">Регистрация</button>
             </div>
 
             <form id="loginForm" class="auth-content active">
-                <h1>Вход в аккаунт</h1>
+                <h1 data-i18n="auth.login_title">Вход в аккаунт</h1>
                 
                 <div class="form-group">
-                    <label for="loginEmail">Email *</label>
-                    <input type="text" id="loginEmail" name="loginEmail" placeholder="example@mail.com или +375..." required>
+                    <label for="loginEmail" data-i18n="auth.email">Email *</label>
+                    <input type="text" id="loginEmail" name="loginEmail" 
+                           data-i18n-placeholder="auth.email_placeholder" 
+                           placeholder="example@mail.com или +375..." required>
                     <div class="error-message" id="loginEmailError"></div>
                 </div>
 
                 <div class="form-group">
-                    <label for="loginPassword">Пароль *</label>
-                    <input type="password" id="loginPassword" name="loginPassword" placeholder="Введите пароль" required>
+                    <label for="loginPassword" data-i18n="auth.password">Пароль *</label>
+                    <input type="password" id="loginPassword" name="loginPassword" 
+                           data-i18n-placeholder="auth.password_placeholder"
+                           placeholder="Введите пароль" required>
                     <div class="error-message" id="loginPasswordError"></div>
                 </div>
 
-                <button type="submit" class="auth-btn">Войти</button>
+                <button type="submit" class="auth-btn" data-i18n="auth.login_button">Войти</button>
             </form>
 
             <form id="registrationForm" class="auth-content">
-                <h1>Регистрация</h1>
+                <h1 data-i18n="auth.register_title">Регистрация</h1>
 
                 <div class="form-group">
-                    <label for="phone">Номер телефона *</label>
-                    <input type="tel" id="phone" name="phone" placeholder="+375 (XX) XXX-XX-XX" required>
+                    <label for="phone" data-i18n="auth.phone">Номер телефона *</label>
+                    <input type="tel" id="phone" name="phone" 
+                           data-i18n-placeholder="auth.phone_placeholder"
+                           placeholder="+375 (XX) XXX-XX-XX" required>
                     <div class="error-message" id="phoneError"></div>
                 </div>
 
                 <div class="form-group">
-                    <label for="email">Email *</label>
-                    <input type="email" id="email" name="email" placeholder="example@mail.com" required>
+                    <label for="email" data-i18n="auth.email">Email *</label>
+                    <input type="email" id="email" name="email" 
+                           data-i18n-placeholder="auth.email_placeholder"
+                           placeholder="example@mail.com" required>
                     <div class="error-message" id="emailError"></div>
                 </div>
 
                 <div class="form-group">
-                    <label for="birthDate">Дата рождения *</label>
+                    <label for="birthDate" data-i18n="auth.birth_date">Дата рождения *</label>
                     <input type="date" id="birthDate" name="birthDate" required>
                     <div class="error-message" id="birthDateError"></div>
                 </div>
 
                 <div class="form-group">
-                    <label for="lastName">Фамилия *</label>
+                    <label for="lastName" data-i18n="auth.last_name">Фамилия *</label>
                     <input type="text" id="lastName" name="lastName" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="firstName">Имя *</label>
+                    <label for="firstName" data-i18n="auth.first_name">Имя *</label>
                     <input type="text" id="firstName" name="firstName" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="middleName">Отчество</label>
+                    <label for="middleName" data-i18n="auth.middle_name">Отчество</label>
                     <input type="text" id="middleName" name="middleName">
                 </div>
 
                 <div class="form-group">
-                    <label for="username">Никнейм *</label>
+                    <label for="username" data-i18n="auth.username">Никнейм *</label>
                     <div class="username-group">
                         <input type="text" id="username" name="username" readonly required>
-                        <button type="button" id="generateUsername" class="generate-btn">Сгенерировать</button>
+                        <button type="button" id="generateUsername" class="generate-btn" data-i18n="auth.generate_username">Сгенерировать</button>
                     </div>
-                    <div class="attempts-counter">Попыток: <span id="attemptsCount">0</span>/5</div>
+                    <div class="attempts-counter">
+                        <span data-i18n="auth.attempts">Попыток:</span> 
+                        <span id="attemptsCount">0</span>/5
+                    </div>
                     <div class="error-message" id="usernameError"></div>
                 </div>
 
                 <div class="form-group">
-                    <label>Способ задания пароля *</label>
+                    <label data-i18n="auth.password_method">Способ задания пароля *</label>
                     <div class="radio-group">
                         <label class="radio-label">
                             <input type="radio" name="passwordType" value="auto" checked>
-                            Автоматически
+                            <span data-i18n="auth.auto_password">Автоматически</span>
                         </label>
                         <label class="radio-label">
                             <input type="radio" name="passwordType" value="manual">
-                            Самостоятельно
+                            <span data-i18n="auth.manual_password">Самостоятельно</span>
                         </label>
                     </div>
                 </div>
 
                 <div class="form-group auto-password-group">
-                    <label for="autoPassword">Автоматически сгенерированный пароль</label>
+                    <label for="autoPassword" data-i18n="auth.auto_password_label">Автоматически сгенерированный пароль</label>
                     <input type="text" id="autoPassword" readonly>
-                    <button type="button" id="copyPassword" class="copy-btn">Копировать</button>
+                    <button type="button" id="copyPassword" class="copy-btn" data-i18n="auth.copy_password">Копировать</button>
                 </div>
 
                 <div class="form-group manual-password-group" style="display: none;">
-                    <label for="password">Пароль *</label>
-                    <input type="password" id="password" name="password" placeholder="Введите пароль">
-                    <div class="password-requirements">
+                    <label for="password" data-i18n="auth.password">Пароль *</label>
+                    <input type="password" id="password" name="password" 
+                           data-i18n-placeholder="auth.password_placeholder"
+                           placeholder="Введите пароль">
+                    <div class="password-requirements" data-i18n="auth.password_requirements">
                         Пароль должен содержать: минимум 8 символов, заглавную и строчную буквы, цифру, специальный символ
                     </div>
                     <div class="error-message" id="passwordError"></div>
                 </div>
 
                 <div class="form-group manual-password-group" style="display: none;">
-                    <label for="confirmPassword">Подтверждение пароля *</label>
-                    <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Повторите пароль">
+                    <label for="confirmPassword" data-i18n="auth.confirm_password">Подтверждение пароля *</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" 
+                           data-i18n-placeholder="auth.confirm_password_placeholder"
+                           placeholder="Повторите пароль">
                     <div class="error-message" id="confirmPasswordError"></div>
                 </div>
 
@@ -117,20 +132,20 @@
                     <label class="checkbox-label">
                         <input type="checkbox" id="agreement" name="agreement" required>
                         <span class="checkmark"></span>
-                        Я прочитал(а) и согласен(на) с <a href="#" class="agreement-link">Соглашением пользователя</a> *
+                        <span data-i18n="auth.agreement">Я прочитал(а) и согласен(на) с</span>
+                        <a href="#" class="agreement-link" data-i18n="auth.user_agreement">Соглашением пользователя</a> *
                     </label>
                     <div class="error-message" id="agreementError"></div>
                 </div>
 
-                <button type="submit" id="registerBtn" class="auth-btn" disabled>Зарегистрироваться</button>
+                <button type="submit" id="registerBtn" class="auth-btn" disabled data-i18n="auth.register_button">Зарегистрироваться</button>
             </form>
         </div>
     </div>
-
+    <script src="../js/i18n/index.js"></script>
     <script src="../js/auth/auth-manager.js"></script>
     <script src="../js/auth/auth-tabs.js"></script>
     <script src="../js/auth/registration.js"></script>
     <script src="../js/auth/login.js"></script>
-    <script src="../js/i18n/index.js"></script>
 </body>
 </html>

@@ -1,28 +1,39 @@
 document.addEventListener('DOMContentLoaded', function() {
+    const i18n = window.i18nManager;
     const appointmentForm = document.querySelector('.appointment-form-content');
     const directionSelect = document.querySelector('select[required]');
     const serviceSelect = document.querySelectorAll('select')[1];
     
-    if (directionSelect && serviceSelect) {
-        directionSelect.addEventListener('change', function() {
-            const direction = this.value;
-            serviceSelect.innerHTML = '<option value="">Выберите услугу</option>';
+    function updateServiceOptions() {
+        if (directionSelect && serviceSelect && directionSelect.value) {
+            const direction = directionSelect.value;
+            serviceSelect.innerHTML = `<option value="">${i18n.t('appointment.service_placeholder')}</option>`;
             
             if (direction === 'cosmetology') {
                 serviceSelect.innerHTML += `
-                    <option value="consultation">Консультация косметолога</option>
-                    <option value="injection">Инъекционные процедуры</option>
-                    <option value="apparatus">Аппаратная косметология</option>
-                    <option value="care">Эстетический уход</option>
+                    <option value="consultation">${i18n.t('appointment.services.cosmetology.consultation')}</option>
+                    <option value="injection">${i18n.t('appointment.services.cosmetology.injection')}</option>
+                    <option value="apparatus">${i18n.t('appointment.services.cosmetology.apparatus')}</option>
+                    <option value="care">${i18n.t('appointment.services.cosmetology.care')}</option>
                 `;
             } else if (direction === 'surgery') {
                 serviceSelect.innerHTML += `
-                    <option value="consultation">Консультация хирурга</option>
-                    <option value="face">Пластика лица</option>
-                    <option value="body">Коррекция фигуры</option>
-                    <option value="reconstruction">Реконструктивная хирургия</option>
+                    <option value="consultation">${i18n.t('appointment.services.surgery.consultation')}</option>
+                    <option value="face">${i18n.t('appointment.services.surgery.face')}</option>
+                    <option value="body">${i18n.t('appointment.services.surgery.body')}</option>
+                    <option value="reconstruction">${i18n.t('appointment.services.surgery.reconstruction')}</option>
                 `;
             }
+        }
+    }
+    
+    if (directionSelect && serviceSelect) {
+        directionSelect.addEventListener('change', function() {
+            updateServiceOptions();
+        });
+        
+        document.addEventListener('languageChanged', function() {
+            updateServiceOptions();
         });
     }
     
@@ -44,13 +55,14 @@ document.addEventListener('DOMContentLoaded', function() {
             
             if (isValid) {
                 const submitBtn = this.querySelector('.submit-btn');
-                submitBtn.textContent = 'Отправка...';
+                const originalText = submitBtn.textContent;
+                submitBtn.textContent = i18n.t('form.sending');
                 submitBtn.disabled = true;
                 
                 setTimeout(() => {
-                    alert('Запись успешно отправлена! Мы свяжемся с вами в ближайшее время.');
+                    alert(i18n.t('appointment.success.message'));
                     this.reset();
-                    submitBtn.textContent = 'Записаться на прием';
+                    submitBtn.textContent = originalText;
                     submitBtn.disabled = false;
                 }, 2000);
             }

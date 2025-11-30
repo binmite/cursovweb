@@ -1,10 +1,43 @@
 class RegistrationForm {
     constructor() {
+        this.i18n = window.i18nManager;
         this.initializeElements();
         this.initializeEventListeners();
         this.attemptsCount = 0;
         this.maxAttempts = 5;
         this.commonPasswords = this.getCommonPasswords();
+        this.bindLanguageChange();
+    }
+
+    bindLanguageChange() {
+        document.addEventListener('languageChanged', () => {
+            this.updateTranslations();
+        });
+    }
+
+    updateTranslations() {
+        this.generateBtn.textContent = this.i18n.t('auth.generate_username');
+        this.copyBtn.textContent = this.i18n.t('auth.copy_password');
+        this.registerBtn.textContent = this.i18n.t('auth.register_button');
+        
+        this.attemptsCounter.textContent = this.attemptsCount;
+        
+        document.querySelectorAll('input[name="passwordType"]').forEach((radio, index) => {
+            const label = radio.closest('.radio-label');
+            if (label) {
+                const span = label.querySelector('span');
+                if (span) {
+                    span.textContent = index === 0 ? this.i18n.t('auth.auto_password') : this.i18n.t('auth.manual_password');
+                }
+            }
+        });
+        
+        const autoPasswordLabel = document.querySelector('.auto-password-group label');
+        if (autoPasswordLabel) {
+            autoPasswordLabel.textContent = this.i18n.t('auth.auto_password_label');
+        }
+        
+        this.validateForm();
     }
 
     initializeElements() {
@@ -103,18 +136,18 @@ class RegistrationForm {
             if (response.id) { 
                 authManager.setUser(formData);
                 
-                alert('Регистрация успешна! Добро пожаловать!');
+                alert(this.i18n.t('auth.registration_success'));
                 
                 setTimeout(() => {
                     window.location.href = 'home.html';
                 }, 2000);
                 
             } else {
-                alert('Ошибка регистрации. Попробуйте еще раз.');
+                alert(this.i18n.t('auth.registration_failed'));
             }
         } catch (error) {
             console.error('Registration error:', error);
-            alert('Ошибка соединения с сервером');
+            alert(this.i18n.t('auth.connection_error'));
         }
     }
 
@@ -123,12 +156,12 @@ class RegistrationForm {
         const belarusPattern = /^(375)(25|29|33|44)(\d{7})$/;
         
         if (!phone) {
-            this.showError('phone', 'Номер телефона обязателен');
+            this.showError('phone', this.i18n.t('validation.required'));
             return false;
         }
         
         if (!belarusPattern.test(phone)) {
-            this.showError('phone', 'Введите корректный номер телефона РБ (+375 XX XXX-XX-XX)');
+            this.showError('phone', this.i18n.t('validation.invalid_phone'));
             return false;
         }
         
@@ -141,12 +174,12 @@ class RegistrationForm {
         const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         
         if (!email) {
-            this.showError('email', 'Email обязателен');
+            this.showError('email', this.i18n.t('validation.required'));
             return false;
         }
         
         if (!emailPattern.test(email)) {
-            this.showError('email', 'Введите корректный email');
+            this.showError('email', this.i18n.t('validation.invalid_email'));
             return false;
         }
         
@@ -160,12 +193,12 @@ class RegistrationForm {
         const minAgeDate = new Date(today.getFullYear() - 16, today.getMonth(), today.getDate());
         
         if (!this.birthDateInput.value) {
-            this.showError('birthDate', 'Дата рождения обязательна');
+            this.showError('birthDate', this.i18n.t('validation.required'));
             return false;
         }
         
         if (birthDate > minAgeDate) {
-            this.showError('birthDate', 'Вам должно быть не менее 16 лет');
+            this.showError('birthDate', this.i18n.t('validation.invalid_birth_date'));
             return false;
         }
         
@@ -177,12 +210,18 @@ class RegistrationForm {
         if (this.attemptsCount >= this.maxAttempts) {
             this.usernameInput.removeAttribute('readonly');
             this.generateBtn.disabled = true;
-            this.generateBtn.textContent = 'Введите вручную';
+            this.generateBtn.textContent = this.i18n.t('auth.enter_manually');
             return;
         }
         
-        const adjectives = ['Крутой', 'Веселый', 'Серьезный', 'Яркий', 'Смелый', 'Умный', 'Быстрый', 'Сильный'];
-        const nouns = ['Тигр', 'Орел', 'Волк', 'Дракон', 'Феникс', 'Единорог', 'Лев', 'Сокол'];
+        const adjectives = this.i18n.currentLang === 'ru' 
+            ? ['Крутой', 'Веселый', 'Серьезный', 'Яркий', 'Смелый', 'Умный', 'Быстрый', 'Сильный']
+            : ['Cool', 'Funny', 'Serious', 'Bright', 'Brave', 'Smart', 'Fast', 'Strong'];
+        
+        const nouns = this.i18n.currentLang === 'ru'
+            ? ['Тигр', 'Орел', 'Волк', 'Дракон', 'Феникс', 'Единорог', 'Лев', 'Сокол']
+            : ['Tiger', 'Eagle', 'Wolf', 'Dragon', 'Phoenix', 'Unicorn', 'Lion', 'Falcon'];
+        
         const numbers = Math.floor(Math.random() * 1000);
         
         const adjective = adjectives[Math.floor(Math.random() * adjectives.length)];
@@ -200,12 +239,12 @@ class RegistrationForm {
         const username = this.usernameInput.value;
         
         if (!username) {
-            this.showError('username', 'Никнейм обязателен');
+            this.showError('username', this.i18n.t('validation.required'));
             return false;
         }
         
         if (username.length < 3) {
-            this.showError('username', 'Никнейм должен содержать минимум 3 символа');
+            this.showError('username', this.i18n.t('validation.username_too_short'));
             return false;
         }
         
@@ -255,9 +294,9 @@ class RegistrationForm {
         if (navigator.clipboard && window.isSecureContext) {
             navigator.clipboard.writeText(password)
                 .then(() => {
-                    this.copyBtn.textContent = 'Скопировано!';
+                    this.copyBtn.textContent = this.i18n.t('auth.password_copied');
                     setTimeout(() => {
-                        this.copyBtn.textContent = 'Копировать';
+                        this.copyBtn.textContent = this.i18n.t('auth.copy_password');
                     }, 2000);
                 })
                 .catch(err => {
@@ -284,9 +323,9 @@ class RegistrationForm {
         try {
             const successful = document.execCommand('copy');
             if (successful) {
-                this.copyBtn.textContent = 'Скопировано!';
+                this.copyBtn.textContent = this.i18n.t('auth.password_copied');
                 setTimeout(() => {
-                    this.copyBtn.textContent = 'Копировать';
+                    this.copyBtn.textContent = this.i18n.t('auth.copy_password');
                 }, 2000);
             } else {
                 this.showCopyError();
@@ -300,11 +339,11 @@ class RegistrationForm {
     }
 
     showCopyError() {
-        this.copyBtn.textContent = 'Ошибка копирования';
+        this.copyBtn.textContent = this.i18n.t('auth.copy_error');
         this.copyBtn.style.background = '#e74c3c';
         
         setTimeout(() => {
-            this.copyBtn.textContent = 'Копировать';
+            this.copyBtn.textContent = this.i18n.t('auth.copy_password');
             this.copyBtn.style.background = '#27ae60';
         }, 2000);
     }
@@ -316,37 +355,37 @@ class RegistrationForm {
         if (passwordType === 'auto') return true;
         
         if (!password) {
-            this.showError('password', 'Пароль обязателен');
+            this.showError('password', this.i18n.t('validation.required'));
             return false;
         }
         
         if (password.length < 8 || password.length > 20) {
-            this.showError('password', 'Пароль должен быть от 8 до 20 символов');
+            this.showError('password', this.i18n.t('validation.password_length'));
             return false;
         }
         
         if (!/(?=.*[a-z])/.test(password)) {
-            this.showError('password', 'Пароль должен содержать строчную букву');
+            this.showError('password', this.i18n.t('validation.password_lowercase'));
             return false;
         }
         
         if (!/(?=.*[A-Z])/.test(password)) {
-            this.showError('password', 'Пароль должен содержать заглавную букву');
+            this.showError('password', this.i18n.t('validation.password_uppercase'));
             return false;
         }
         
         if (!/(?=.*\d)/.test(password)) {
-            this.showError('password', 'Пароль должен содержать цифру');
+            this.showError('password', this.i18n.t('validation.password_number'));
             return false;
         }
         
         if (!/(?=.*[!@#$%^&*])/.test(password)) {
-            this.showError('password', 'Пароль должен содержать специальный символ');
+            this.showError('password', this.i18n.t('validation.password_special'));
             return false;
         }
         
         if (this.commonPasswords.includes(password.toLowerCase())) {
-            this.showError('password', 'Этот пароль слишком распространен');
+            this.showError('password', this.i18n.t('validation.password_common'));
             return false;
         }
         
@@ -362,12 +401,12 @@ class RegistrationForm {
         if (passwordType === 'auto') return true;
         
         if (!confirmPassword) {
-            this.showError('confirmPassword', 'Подтверждение пароля обязательно');
+            this.showError('confirmPassword', this.i18n.t('validation.required'));
             return false;
         }
         
         if (password !== confirmPassword) {
-            this.showError('confirmPassword', 'Пароли не совпадают');
+            this.showError('confirmPassword', this.i18n.t('validation.passwords_not_match'));
             return false;
         }
         
@@ -377,7 +416,7 @@ class RegistrationForm {
 
     validateAgreement() {
         if (!this.agreementCheckbox.checked) {
-            this.showError('agreement', 'Необходимо принять соглашение');
+            this.showError('agreement', this.i18n.t('validation.agreement_required'));
             return false;
         }
         

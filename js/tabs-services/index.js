@@ -1,13 +1,41 @@
 class ServicesTabs {
     constructor() {
         this.categories = [];
+        this.i18n = window.i18nManager;
+        this.localTranslations = {
+            ru: {
+                "popular": "Популярно",
+                "currency": "₽",
+                "book_button": "Записаться",
+                "load_error": "Ошибка загрузки услуг. Пожалуйста, проверьте подключение к серверу.",
+                "price_unit_from": "от",
+                "price_unit_procedure": "за процедуру",
+                "price_unit_session": "за сеанс",
+                "price_unit_course": "за курс"
+            },
+            en: {
+                "popular": "Popular",
+                "currency": "RUB",
+                "book_button": "Book Now",
+                "load_error": "Error loading services. Please check your server connection.",
+                "price_unit_from": "from",
+                "price_unit_procedure": "per procedure",
+                "price_unit_session": "per session",
+                "price_unit_course": "per course"
+            }
+        };
         this.init();
+    }
+
+    lt(key) {
+        return this.localTranslations[this.i18n.currentLang]?.[key] || key;
     }
 
     async init() {
         await this.loadServices();
         this.initializeTabs();
         this.renderCategories();
+        this.bindLanguageChange();
     }
 
     async loadServices() {
@@ -17,8 +45,18 @@ class ServicesTabs {
             this.categories = data.categories;
         } catch (error) {
             console.error('Error loading services:', error);
-            alert('Ошибка загрузки услуг. Пожалуйста, проверьте подключение к серверу.');
+            this.showError(this.lt('load_error'));
         }
+    }
+
+    bindLanguageChange() {
+        document.addEventListener('languageChanged', () => {
+            this.renderCategories();
+        });
+    }
+
+    showError(message) {
+        alert(message);
     }
 
     initializeTabs() {
@@ -46,53 +84,101 @@ class ServicesTabs {
         const tabsContainer = document.querySelector('.category-tabs');
         const contentContainer = document.querySelector('.services-categories .services-container');
 
+        if (!tabsContainer || !contentContainer) return;
+
         tabsContainer.innerHTML = '';
         contentContainer.querySelectorAll('.category-content').forEach(el => el.remove());
 
         this.categories.forEach((category, index) => {
-            const tabButton = document.createElement('button');
-            tabButton.className = `tab-btn ${index === 0 ? 'active' : ''}`;
-            tabButton.setAttribute('data-category', category.id);
-            tabButton.textContent = category.name;
+            const tabButton = this.createTabButton(category, index);
             tabsContainer.appendChild(tabButton);
 
-            const categoryContent = document.createElement('div');
-            categoryContent.className = `category-content ${index === 0 ? 'active' : ''}`;
-            categoryContent.id = category.id;
-            
-            categoryContent.innerHTML = `
-                <h2>${category.name}</h2>
-                <p class="category-description">${category.description}</p>
-                <div class="services-grid" id="services-${category.id}"></div>
-            `;
-
+            const categoryContent = this.createCategoryContent(category, index);
             contentContainer.appendChild(categoryContent);
+
             this.renderServices(category.id, category.services);
         });
 
         this.initializeTabs();
     }
 
+    createTabButton(category, index) {
+        const tabButton = document.createElement('button');
+        tabButton.className = `tab-btn ${index === 0 ? 'active' : ''}`;
+        tabButton.setAttribute('data-category', category.id);
+        
+        const categoryName = category.name[this.i18n.currentLang] || category.name;
+        tabButton.textContent = categoryName;
+        
+        return tabButton;
+    }
+
+    createCategoryContent(category, index) {
+        const categoryContent = document.createElement('div');
+        categoryContent.className = `category-content ${index === 0 ? 'active' : ''}`;
+        categoryContent.id = category.id;
+        
+        const categoryName = category.name[this.i18n.currentLang] || category.name;
+        const categoryDescription = category.description[this.i18n.currentLang] || category.description;
+        
+        categoryContent.innerHTML = `
+            <h2>${categoryName}</h2>
+            <p class="category-description">${categoryDescription}</p>
+            <div class="services-grid" id="services-${category.id}"></div>
+        `;
+
+        return categoryContent;
+    }
+
     renderServices(categoryId, services) {
         const servicesGrid = document.getElementById(`services-${categoryId}`);
+        if (!servicesGrid) return;
         
-        servicesGrid.innerHTML = services.map(service => `
+        servicesGrid.innerHTML = services.map(service => this.createServiceCard(service)).join('');
+        this.addServiceButtonHandlers();
+    }
+
+    createServiceCard(service) {
+        const serviceName = service.name[this.i18n.currentLang] || service.name;
+        const serviceDescription = service.description[this.i18n.currentLang] || service.description;
+        const procedures = service.procedures[this.i18n.currentLang] || service.procedures;
+        
+        return `
             <div class="service-card ${service.popular ? 'popular' : ''}">
-                ${service.popular ? '<span class="popular-badge">Популярно</span>' : ''}
-                <h3>${service.name}</h3>
-                <p class="service-description">${service.description}</p>
+                ${service.popular ? `<span class="popular-badge">${this.lt('popular')}</span>` : ''}
+                <h3>${serviceName}</h3>
+                <p class="service-description">${serviceDescription}</p>
                 <ul>
-                    ${service.procedures.map(procedure => `<li>${procedure}</li>`).join('')}
+                    ${Array.isArray(procedures) 
+                        ? procedures.map(procedure => `<li>${procedure}</li>`).join('')
+                        : procedures.split(',').map(procedure => `<li>${procedure.trim()}</li>`).join('')
+                    }
                 </ul>
                 <div class="service-meta">
-                    <div class="price">${service.priceUnit} ${service.price.toLocaleString()} ₽</div>
-                    <div class="duration">${service.duration}</div>
+                    <div class="price">
+                        ${service.priceUnit ? this.getLocalizedPriceUnit(service.priceUnit) + ' ' : ''}
+                        ${service.price.toLocaleString()} ${this.lt('currency')}
+                    </div>
+                    <div class="duration">
+                        ${service.duration[this.i18n.currentLang] || service.duration}
+                    </div>
                 </div>
-                <button class="service-btn" data-service="${service.id}">Записаться</button>
+                <button class="service-btn" data-service="${service.id}">
+                    ${this.lt('book_button')}
+                </button>
             </div>
-        `).join('');
+        `;
+    }
 
-        this.addServiceButtonHandlers();
+    getLocalizedPriceUnit(priceUnit) {
+        const priceUnits = {
+            'от': this.lt('price_unit_from'),
+            'за процедуру': this.lt('price_unit_procedure'),
+            'за сеанс': this.lt('price_unit_session'),
+            'за курс': this.lt('price_unit_course')
+        };
+        
+        return priceUnits[priceUnit] || priceUnit;
     }
 
     addServiceButtonHandlers() {
@@ -105,7 +191,7 @@ class ServicesTabs {
     }
 
     handleServiceSelection(serviceId) {
-        if (!authManager.isAuthenticated()) {
+        if (!window.authManager || !window.authManager.isAuthenticated()) {
             window.location.href = 'auth.html';
             return;
         }

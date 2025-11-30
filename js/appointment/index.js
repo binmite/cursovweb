@@ -1,207 +1,183 @@
-class AppointmentForm {
+class AppointmentManager {
     constructor() {
+        this.baseUrl = 'http://localhost:3000';
+        this.currentUser = null;
         this.categories = [];
-        this.selectedService = null;
+        this.services = [];
+        this.doctors = [
+            { id: 'dr_smirnova', name: 'Смирнова О.Л.', specialty: 'Косметолог', category: 'cosmetology' },
+            { id: 'dr_ivanova', name: 'Иванова А.П.', specialty: 'Косметолог', category: 'cosmetology' },
+            { id: 'dr_petrov', name: 'Петров С.М.', specialty: 'Пластический хирург', category: 'surgery' },
+            { id: 'dr_sidorov', name: 'Сидоров В.И.', specialty: 'Пластический хирург', category: 'surgery' },
+            { id: 'dr_kuznetsova', name: 'Кузнецова Е.В.', specialty: 'Стоматолог', category: 'dentistry' },
+            { id: 'dr_volkov', name: 'Волков А.С.', specialty: 'Стоматолог', category: 'dentistry' },
+            { id: 'dr_orlova', name: 'Орлова М.К.', specialty: 'Лазерный терапевт', category: 'laser' },
+            { id: 'dr_zhukov', name: 'Жуков Д.Н.', specialty: 'Лазерный терапевт', category: 'laser' }
+        ];
+        
         this.init();
     }
 
     async init() {
-        console.log('AppointmentForm init started');
-        
-        if (!authManager.isAuthenticated()) {
-            console.log('User not authenticated, redirecting to auth.html');
-            window.location.href = 'auth.html';
-            return;
+        await this.loadCurrentUser();
+        if (!this.currentUser) {
+            return; 
         }
-
-        await this.loadServices();
-        this.initializeElements();
-        this.initializeEventListeners();
-        this.displayUserInfo();
+        await this.loadCategories();
+        this.bindEvents();
         this.setMinDate();
-        this.populateCategories();
-        await this.checkPreSelectedService();
-        
-        console.log('AppointmentForm init completed');
+        this.updateUI();
     }
 
-    async loadServices() {
+    async loadCurrentUser() {
         try {
-            console.log('Loading services from server...');
-            const response = await fetch('http://localhost:3000/services');
+            const userData = localStorage.getItem('currentUser');
+            if (userData) {
+                this.currentUser = JSON.parse(userData);
+                console.log('Пользователь найден в localStorage:', this.currentUser);
+            } else {
+                console.log('Пользователь не авторизован, перенаправление...');
+                this.redirectToAuth();
+                return null;
+            }
+        } catch (error) {
+            console.error('Ошибка загрузки пользователя из localStorage:', error);
+            this.redirectToAuth();
+            return null;
+        }
+    }
+
+    redirectToAuth() {
+        const currentPath = window.location.pathname;
+        const returnUrl = encodeURIComponent(currentPath);
+        window.location.href = `../auth.html?returnUrl=${returnUrl}`;
+    }
+
+    async loadCategories() {
+        try {
+            const response = await fetch(`${this.baseUrl}/services`);
             if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
+                throw new Error('Ошибка загрузки данных с сервера');
             }
             const data = await response.json();
             this.categories = data.categories;
-            console.log('Services loaded:', this.categories);
+            this.populateCategories();
         } catch (error) {
-            console.error('Error loading services:', error);
-            alert('Ошибка загрузки услуг. Пожалуйста, проверьте подключение к серверу.');
+            console.error('Ошибка загрузки категорий:', error);
+            this.showError(i18nManager.t('appointment.error.message'));
+            
+            this.showLoadingError();
         }
     }
 
-    initializeElements() {
-        console.log('Initializing elements...');
+    showLoadingError() {
+        const form = document.getElementById('appointmentForm');
+        const errorDiv = document.createElement('div');
+        errorDiv.className = 'loading-error';
+        errorDiv.style.cssText = `
+            background: #ffebee;
+            color: #c62828;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+            border: 1px solid #ffcdd2;
+        `;
+        errorDiv.innerHTML = `
+            <p><strong>${i18nManager.t('appointment.error.title')}</strong></p>
+            <p>${i18nManager.t('appointment.error.message')}</p>
+            <button id="retryLoading" class="retry-btn" style="
+                background: #1976d2;
+                color: white;
+                border: none;
+                padding: 8px 16px;
+                border-radius: 4px;
+                cursor: pointer;
+                margin-top: 10px;
+            ">${i18nManager.t('appointment.retry_button') || 'Повторить попытку'}</button>
+        `;
         
-        this.form = document.getElementById('appointmentForm');
-        this.userNameElement = document.getElementById('userName');
-        this.categorySelect = document.getElementById('category');
-        this.serviceSelect = document.getElementById('service');
-        this.doctorSelect = document.getElementById('doctor');
-        this.dateInput = document.getElementById('date');
-        this.timeSelect = document.getElementById('time');
-        this.notesTextarea = document.getElementById('notes');
-        this.submitBtn = document.querySelector('.submit-btn');
-        this.backBtn = document.getElementById('backBtn');
+        form.parentNode.insertBefore(errorDiv, form);
         
-        this.serviceInfo = document.querySelector('.selected-service-info');
-        this.serviceName = document.getElementById('serviceName');
-        this.serviceDescription = document.getElementById('serviceDescription');
-        this.servicePrice = document.getElementById('servicePrice');
-        this.serviceDuration = document.getElementById('serviceDuration');
-        this.serviceProcedures = document.getElementById('serviceProcedures');
-
-        console.log('Elements initialized');
-    }
-
-    initializeEventListeners() {
-        console.log('Initializing event listeners...');
-        
-        if (this.form) {
-            this.form.addEventListener('submit', (e) => this.handleSubmit(e));
-        }
-        
-        if (this.backBtn) {
-            this.backBtn.addEventListener('click', () => this.handleBack());
-        }
-        
-        if (this.categorySelect) {
-            this.categorySelect.addEventListener('change', () => this.onCategoryChange());
-        }
-        
-        if (this.serviceSelect) {
-            this.serviceSelect.addEventListener('change', () => this.onServiceChange());
-        }
-        
-        if (this.dateInput) {
-            this.dateInput.addEventListener('change', () => this.updateSubmitButton());
-        }
-        
-        if (this.timeSelect) {
-            this.timeSelect.addEventListener('change', () => this.updateSubmitButton());
-        }
-        
-        if (this.doctorSelect) {
-            this.doctorSelect.addEventListener('change', () => this.updateSubmitButton());
-        }
-    }
-
-    displayUserInfo() {
-        const user = authManager.getCurrentUser();
-        if (user && this.userNameElement) {
-            this.userNameElement.textContent = `${user.firstName} ${user.lastName}`;
-        }
-    }
-
-    setMinDate() {
-        if (!this.dateInput) return;
-        
-        const today = new Date();
-        const tomorrow = new Date(today);
-        tomorrow.setDate(today.getDate() + 1);
-        
-        const minDate = tomorrow.toISOString().split('T')[0];
-        this.dateInput.min = minDate;
+        document.getElementById('retryLoading').addEventListener('click', () => {
+            errorDiv.remove();
+            this.loadCategories();
+        });
     }
 
     populateCategories() {
-        if (!this.categorySelect) return;
-        
-        this.categorySelect.innerHTML = '<option value="">Выберите категорию</option>';
+        const categorySelect = document.getElementById('category');
+        categorySelect.innerHTML = '<option value="" data-i18n="appointment.category_placeholder">Выберите категорию</option>';
         
         this.categories.forEach(category => {
             const option = document.createElement('option');
             option.value = category.id;
-            option.textContent = category.name;
-            this.categorySelect.appendChild(option);
+            
+            const translationKey = `appointment.categories.${category.id}`;
+            const translatedName = i18nManager.t(translationKey);
+            option.textContent = translatedName !== translationKey ? translatedName : category.name;
+            
+            categorySelect.appendChild(option);
         });
+        
+        i18nManager.applyTranslations();
     }
 
-    async checkPreSelectedService() {
-        const selectedService = localStorage.getItem('selectedService');
-        
-        if (selectedService && this.categorySelect && this.serviceSelect) {
-            try {
-                const service = JSON.parse(selectedService);
-                
-                const category = this.categories.find(cat => 
-                    cat.services.some(s => s.id === service.id)
-                );
-                
-                if (category) {
-                    this.categorySelect.value = category.id;
-                    await this.onCategoryChange();
-                    
-                    setTimeout(() => {
-                        if (this.serviceSelect) {
-                            this.serviceSelect.value = service.id;
-                            this.onServiceChange();
-                        }
-                    }, 100);
-                }
-                
-                localStorage.removeItem('selectedService');
-            } catch (error) {
-                console.error('Error parsing selected service:', error);
-            }
-        }
-    }
-
-    async onCategoryChange() {
-        if (!this.categorySelect || !this.serviceSelect || !this.doctorSelect) return;
-        
-        const categoryId = this.categorySelect.value;
-        this.serviceSelect.innerHTML = '<option value="">Выберите услугу</option>';
-        this.serviceSelect.disabled = !categoryId;
-        this.doctorSelect.disabled = true;
-        this.doctorSelect.innerHTML = '<option value="">Сначала выберите услугу</option>';
-        this.hideServiceInfo();
-        this.updateSubmitButton();
-
-        if (!categoryId) return;
-
+    populateServices(categoryId) {
+        const serviceSelect = document.getElementById('service');
         const category = this.categories.find(cat => cat.id === categoryId);
-        if (category && category.services) {
+        
+        serviceSelect.innerHTML = '<option value="" data-i18n="appointment.service_placeholder">Сначала выберите категорию</option>';
+        serviceSelect.disabled = true;
+        
+        if (category) {
+            serviceSelect.innerHTML = '<option value="" data-i18n="appointment.service_placeholder">Выберите услугу</option>';
             category.services.forEach(service => {
                 const option = document.createElement('option');
                 option.value = service.id;
-                option.textContent = `${service.name} - ${service.priceUnit} ${service.price.toLocaleString()} ₽`;
-                this.serviceSelect.appendChild(option);
+                option.textContent = service.name;
+                option.dataset.service = JSON.stringify(service);
+                serviceSelect.appendChild(option);
             });
-            this.serviceSelect.disabled = false;
+            serviceSelect.disabled = false;
         }
+        
+        this.hideServiceInfo();
+        document.getElementById('doctor').disabled = true;
+        this.updateSubmitButton();
+        
+        i18nManager.applyTranslations();
     }
 
-    onServiceChange() {
-        if (!this.serviceSelect || !this.doctorSelect) return;
+    populateDoctors(serviceId) {
+        const doctorSelect = document.getElementById('doctor');
+        const service = this.findServiceById(serviceId);
         
-        const serviceId = this.serviceSelect.value;
-        this.doctorSelect.disabled = !serviceId;
-        this.updateSubmitButton();
-
-        if (!serviceId) {
-            this.hideServiceInfo();
-            this.doctorSelect.innerHTML = '<option value="">Сначала выберите услугу</option>';
-            return;
+        doctorSelect.innerHTML = '<option value="" data-i18n="appointment.doctor_placeholder">Сначала выберите услугу</option>';
+        doctorSelect.disabled = true;
+        
+        if (service) {
+            const category = this.categories.find(cat => 
+                cat.services.some(s => s.id === serviceId)
+            );
+            
+            if (category) {
+                const availableDoctors = this.doctors.filter(doctor => 
+                    doctor.category === category.id
+                );
+                
+                doctorSelect.innerHTML = '<option value="" data-i18n="appointment.doctor_placeholder">Выберите специалиста</option>';
+                availableDoctors.forEach(doctor => {
+                    const option = document.createElement('option');
+                    option.value = doctor.id;
+                    option.textContent = `${doctor.name} - ${doctor.specialty}`;
+                    doctorSelect.appendChild(option);
+                });
+                doctorSelect.disabled = false;
+            }
         }
-
-        this.selectedService = this.findServiceById(serviceId);
-        if (this.selectedService) {
-            this.showServiceInfo(this.selectedService);
-            this.updateDoctors();
-            this.doctorSelect.disabled = false;
-        }
+        
+        i18nManager.applyTranslations();
     }
 
     findServiceById(serviceId) {
@@ -213,158 +189,242 @@ class AppointmentForm {
     }
 
     showServiceInfo(service) {
-        if (!this.serviceInfo) return;
-        
-        this.serviceName.textContent = service.name;
-        this.serviceDescription.textContent = service.description;
-        this.servicePrice.textContent = `${service.priceUnit} ${service.price.toLocaleString()} ₽`;
-        this.serviceDuration.textContent = service.duration;
-        this.serviceProcedures.textContent = service.procedures.join(', ');
-        this.serviceInfo.style.display = 'block';
+        const serviceInfo = document.querySelector('.selected-service-info');
+        const serviceName = document.getElementById('serviceName');
+        const serviceDescription = document.getElementById('serviceDescription');
+        const servicePrice = document.getElementById('servicePrice');
+        const serviceDuration = document.getElementById('serviceDuration');
+        const serviceProcedures = document.getElementById('serviceProcedures');
+
+        serviceName.textContent = service.name;
+        serviceDescription.textContent = service.description;
+        servicePrice.textContent = `${service.priceUnit || 'от'} ${service.price} ${i18nManager.t('appointment.price_currency')}`;
+        serviceDuration.textContent = service.duration;
+        serviceProcedures.textContent = service.procedures.join(', ');
+
+        serviceInfo.style.display = 'block';
     }
 
     hideServiceInfo() {
-        if (this.serviceInfo) {
-            this.serviceInfo.style.display = 'none';
-        }
-        this.selectedService = null;
+        const serviceInfo = document.querySelector('.selected-service-info');
+        serviceInfo.style.display = 'none';
     }
 
-    updateDoctors() {
-        if (!this.categorySelect || !this.doctorSelect) return;
+    setMinDate() {
+        const dateInput = document.getElementById('date');
+        const today = new Date().toISOString().split('T')[0];
+        dateInput.min = today;
         
-        const categoryId = this.categorySelect.value;
-        this.doctorSelect.innerHTML = '<option value="">Выберите специалиста</option>';
-        
-        if (!categoryId) return;
-
-        const doctors = this.getDoctorsByCategory(categoryId);
-        doctors.forEach(doctor => {
-            const option = document.createElement('option');
-            option.value = doctor.id;
-            option.textContent = doctor.name;
-            this.doctorSelect.appendChild(option);
-        });
-    }
-
-    getDoctorsByCategory(categoryId) {
-        const doctors = {
-            'cosmetology': [
-                { id: 'dr_ivanova', name: 'Иванова А.П. - Косметолог' },
-                { id: 'dr_smirnova', name: 'Смирнова О.Л. - Косметолог' },
-                { id: 'dr_orlova', name: 'Орлова М.В. - Дерматолог' }
-            ],
-            'surgery': [
-                { id: 'dr_petrov', name: 'Петров В.С. - Пластический хирург' },
-                { id: 'dr_volkov', name: 'Волков М.А. - Хирург' },
-                { id: 'dr_nikolaeva', name: 'Николаева Е.И. - Челюстно-лицевой хирург' }
-            ],
-            'dentistry': [
-                { id: 'dr_sidorova', name: 'Сидорова М.К. - Стоматолог-терапевт' },
-                { id: 'dr_fedorov', name: 'Федоров П.С. - Ортодонт' },
-                { id: 'dr_kuzmin', name: 'Кузьмин А.В. - Хирург-имплантолог' }
-            ],
-            'laser': [
-                { id: 'dr_kuznetsov', name: 'Кузнецов Д.И. - Лазерный терапевт' },
-                { id: 'dr_romanova', name: 'Романова Е.В. - Дерматолог-косметолог' },
-                { id: 'dr_belova', name: 'Белова О.С. - Специалист по лазерной эпиляции' }
-            ]
-        };
-        
-        return doctors[categoryId] || [];
+        dateInput.value = today;
     }
 
     updateSubmitButton() {
-        if (!this.submitBtn) return;
+        const submitBtn = document.querySelector('.submit-btn');
+        const form = document.getElementById('appointmentForm');
         
-        const isFormValid = this.categorySelect?.value && 
-                           this.serviceSelect?.value && 
-                           this.doctorSelect?.value &&
-                           this.dateInput?.value && 
-                           this.timeSelect?.value;
+        const category = document.getElementById('category').value;
+        const service = document.getElementById('service').value;
+        const doctor = document.getElementById('doctor').value;
+        const date = document.getElementById('date').value;
+        const time = document.getElementById('time').value;
         
-        this.submitBtn.disabled = !isFormValid;
+        const isValid = category && service && doctor && date && time;
+        submitBtn.disabled = !isValid;
     }
 
-    async handleSubmit(e) {
-        e.preventDefault();
-        console.log('Form submit triggered');
-        
-        if (!this.validateForm()) {
-            alert('Пожалуйста, заполните все обязательные поля');
-            return;
-        }
-
-        const formData = this.prepareFormData();
-        console.log('Submitting appointment:', formData);
-
-        try {
-            const response = await this.sendAppointment(formData);
-            console.log('Server response:', response);
-            
-            if (response.id) {
-                alert('Запись на прием успешно создана!');
-                window.location.href = 'home.html'; 
-            } else {
-                throw new Error('Invalid response from server');
-            }
-        } catch (error) {
-            console.error('Appointment error:', error);
-            alert('Ошибка при создании записи. Попробуйте еще раз.');
-        }
-    }
-
-    validateForm() {
-        return this.categorySelect?.value && 
-               this.serviceSelect?.value && 
-               this.doctorSelect?.value &&
-               this.dateInput?.value && 
-               this.timeSelect?.value &&
-               this.selectedService;
-    }
-
-    prepareFormData() {
-        const user = authManager.getCurrentUser();
-        return {
-            userId: user.id,
-            category: this.categorySelect.options[this.categorySelect.selectedIndex]?.text,
-            categoryId: this.categorySelect.value,
-            service: this.selectedService.name,
-            serviceId: this.serviceSelect.value,
-            doctor: this.doctorSelect.options[this.doctorSelect.selectedIndex]?.text,
-            doctorId: this.doctorSelect.value,
-            date: this.dateInput.value,
-            time: this.timeSelect.value,
-            notes: this.notesTextarea.value,
-            price: this.selectedService.price,
-            status: 'pending',
-            createdAt: new Date().toISOString()
-        };
-    }
-
-    async sendAppointment(data) {
-        const response = await fetch('http://localhost:3000/appointments', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data)
+    bindEvents() {
+        document.getElementById('category').addEventListener('change', (e) => {
+            this.populateServices(e.target.value);
         });
-        
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        
-        return await response.json();
+
+        document.getElementById('service').addEventListener('change', (e) => {
+            const selectedOption = e.target.options[e.target.selectedIndex];
+            if (selectedOption.value && selectedOption.dataset.service) {
+                const service = JSON.parse(selectedOption.dataset.service);
+                this.showServiceInfo(service);
+                this.populateDoctors(e.target.value);
+            } else {
+                this.hideServiceInfo();
+                document.getElementById('doctor').disabled = true;
+            }
+            this.updateSubmitButton();
+        });
+
+        document.getElementById('doctor').addEventListener('change', () => {
+            this.updateSubmitButton();
+        });
+
+        document.getElementById('date').addEventListener('change', () => {
+            this.updateSubmitButton();
+        });
+
+        document.getElementById('time').addEventListener('change', () => {
+            this.updateSubmitButton();
+        });
+
+        document.getElementById('appointmentForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            this.submitAppointment();
+        });
+
+        document.getElementById('backBtn').addEventListener('click', () => {
+            window.history.back();
+        });
+
+        document.getElementById('appointmentForm').addEventListener('input', () => {
+            this.updateSubmitButton();
+        });
+
+        document.getElementById('notes').addEventListener('input', () => {
+        });
     }
 
-    handleBack() {
-        window.location.href = 'home.html';
+    async submitAppointment() {
+        const submitBtn = document.querySelector('.submit-btn');
+        const originalText = submitBtn.textContent;
+        
+        try {
+            submitBtn.disabled = true;
+            submitBtn.textContent = i18nManager.t('appointment.loading.creating');
+            
+            const formData = new FormData(document.getElementById('appointmentForm'));
+            const selectedService = this.findServiceById(formData.get('service'));
+            const selectedDoctor = this.doctors.find(d => d.id === formData.get('doctor'));
+            const selectedCategory = this.categories.find(cat => 
+                cat.services.some(s => s.id === formData.get('service'))
+            );
+
+            if (!selectedService || !selectedDoctor || !selectedCategory) {
+                throw new Error('Не удалось найти выбранные услуги или специалиста');
+            }
+
+            const appointment = {
+                id: this.generateAppointmentId(),
+                userId: this.currentUser.id,
+                category: selectedCategory.name,
+                categoryId: selectedCategory.id,
+                service: selectedService.name,
+                serviceId: selectedService.id,
+                doctor: `${selectedDoctor.name} - ${selectedDoctor.specialty}`,
+                doctorId: selectedDoctor.id,
+                date: formData.get('date'),
+                time: formData.get('time'),
+                notes: formData.get('notes') || '',
+                price: selectedService.price,
+                status: 'pending',
+                adminNotes: '',
+                createdAt: new Date().toISOString(),
+                updatedAt: new Date().toISOString()
+            };
+
+            const response = await fetch(`${this.baseUrl}/appointments`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(appointment)
+            });
+
+            if (response.ok) {
+                this.showSuccess(appointment.id);
+                document.getElementById('appointmentForm').reset();
+                this.hideServiceInfo();
+                this.setMinDate();
+                this.updateSubmitButton();
+            } else {
+                throw new Error('Ошибка HTTP: ' + response.status);
+            }
+
+        } catch (error) {
+            console.error('Ошибка создания записи:', error);
+            this.showError(i18nManager.t('appointment.error.message'));
+        } finally {
+            submitBtn.disabled = false;
+            submitBtn.textContent = originalText;
+        }
+    }
+
+    generateAppointmentId() {
+        return Math.random().toString(36).substr(2, 9);
+    }
+
+    showSuccess(appointmentId) {
+        const modal = document.createElement('div');
+        modal.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        `;
+        
+        modal.innerHTML = `
+            <div style="
+                background: white;
+                padding: 30px;
+                border-radius: 12px;
+                max-width: 400px;
+                text-align: center;
+                box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            ">
+                <div style="color: #4caf50; font-size: 48px; margin-bottom: 15px;">✓</div>
+                <h3 style="color: #2e7d32; margin-bottom: 15px;">${i18nManager.t('appointment.success.title')}</h3>
+                <p style="margin-bottom: 10px; color: #555;">${i18nManager.t('appointment.success.message')}</p>
+                <p style="margin-bottom: 20px; font-weight: bold; color: #333;">
+                    ${i18nManager.t('appointment.success.number')} <span style="color: #1976d2;">${appointmentId}</span>
+                </p>
+                <button id="successOk" style="
+                    background: #4caf50;
+                    color: white;
+                    border: none;
+                    padding: 10px 20px;
+                    border-radius: 6px;
+                    cursor: pointer;
+                    font-size: 16px;
+                ">OK</button>
+            </div>
+        `;
+        
+        document.body.appendChild(modal);
+        
+        document.getElementById('successOk').addEventListener('click', () => {
+            modal.remove();
+        });
+    }
+
+    showError(message) {
+        alert(`${i18nManager.t('appointment.error.title')}\n${message}`);
+    }
+
+    updateUI() {
+        if (this.currentUser) {
+            const userNameElement = document.getElementById('userName');
+            const displayName = this.currentUser.firstName || this.currentUser.username || 'Пользователь';
+            userNameElement.textContent = displayName;
+            
+            console.log('Интерфейс обновлен для пользователя:', displayName);
+        }
     }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    if (document.getElementById('appointmentForm')) {
-        new AppointmentForm();
+if (translations.ru) {
+    translations.ru['appointment.retry_button'] = 'Повторить попытку';
+}
+if (translations.en) {
+    translations.en['appointment.retry_button'] = 'Retry';
+}
+
+document.addEventListener('DOMContentLoaded', async function() {
+    if (!window.i18nManager) {
+        window.i18nManager = new I18nManager();
     }
+    
+    setTimeout(() => {
+        window.appointmentManager = new AppointmentManager();
+    }, 100);
 });

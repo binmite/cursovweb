@@ -1,7 +1,7 @@
 {
   "users": [
     {
-      "id": 1764415332850,
+      "id": "1764415332850",
       "role": "user",
       "phone": "+375295345334",
       "email": "ergrege@gmail.com",
@@ -15,7 +15,7 @@
       "isActive": true
     },
     {
-      "id": 1764415780736,
+      "id": "1764415780736",
       "role": "user",
       "phone": "+375296081313",
       "email": "qwe@gmail.com",
@@ -29,7 +29,7 @@
       "isActive": true
     },
     {
-      "id": 1764420501727,
+      "id": "1764420501727",
       "role": "admin",
       "phone": "+375293131234",
       "email": "admin@gmail.com",
@@ -40,6 +40,20 @@
       "username": "Admin",
       "password": "1jLWLKMO9*!H",
       "registrationDate": "2025-11-29T12:48:21.727Z",
+      "isActive": true
+    },
+    {
+      "id": 1764497502837,
+      "role": "user",
+      "phone": "+375291231233",
+      "email": "qwerty@gmail.com",
+      "birthDate": "2002-12-12",
+      "lastName": "qwerewter",
+      "firstName": "qwerty",
+      "middleName": "",
+      "username": "SmartTiger438",
+      "password": "4H!4#6uCcHz^",
+      "registrationDate": "2025-11-30T10:11:42.837Z",
       "isActive": true
     }
   ],
@@ -61,6 +75,24 @@
       "adminNotes": "Заявка подтверждена администратором",
       "createdAt": "2025-11-29T12:35:29.890Z",
       "updatedAt": "2025-11-29T13:18:24.498Z"
+    },
+    {
+      "id": "egrzqhyfq",
+      "userId": 1764497502837,
+      "category": "Косметология",
+      "categoryId": "cosmetology",
+      "service": "Инъекционная косметология",
+      "serviceId": "cosmetic-injections",
+      "doctor": "Смирнова О.Л. - Косметолог",
+      "doctorId": "dr_smirnova",
+      "date": "2025-11-30",
+      "time": "16:00",
+      "notes": "qweqwewqe",
+      "price": 5000,
+      "status": "rejected",
+      "adminNotes": "ну нет",
+      "createdAt": "2025-11-30T10:49:10.930Z",
+      "updatedAt": "2025-11-30T10:55:40.712Z"
     }
   ],
   "services": {

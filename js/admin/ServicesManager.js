@@ -1,11 +1,27 @@
 export class ServicesManager {
     constructor(adminPanel) {
         this.adminPanel = adminPanel;
+        this.i18n = window.i18nManager;
         this.services = [];
         this.categories = [];
         this.currentService = null;
         
         this.initializeElements();
+        this.bindLanguageChange();
+    }
+
+    bindLanguageChange() {
+        document.addEventListener('languageChanged', () => {
+            this.updateTranslations();
+        });
+    }
+
+    updateTranslations() {
+        this.renderServices();
+        
+        if (this.services.length === 0) {
+            this.renderServices(); 
+        }
     }
 
     initializeElements() {
@@ -39,7 +55,7 @@ export class ServicesManager {
             category.services.forEach(service => {
                 allServices.push({
                     ...service,
-                    category: category.name,
+                    category: category.name[this.i18n.currentLang] || category.name,
                     categoryId: category.id
                 });
             });
@@ -57,8 +73,8 @@ export class ServicesManager {
             row.innerHTML = `
                 <td colspan="6">
                     <div class="empty-state">
-                        <h3>Услуги не найдены</h3>
-                        <p>Добавьте первую услугу</p>
+                        <h3>${this.i18n.t('admin.messages.no_services')}</h3>
+                        <p>${this.i18n.t('admin.messages.add_first_service')}</p>
                     </div>
                 </td>
             `;
@@ -69,16 +85,22 @@ export class ServicesManager {
         this.services.forEach(service => {
             const row = document.createElement('tr');
             
+            const serviceName = service.name[this.i18n.currentLang] || service.name;
+            
             row.innerHTML = `
                 <td>${service.id}</td>
-                <td><strong>${service.name}</strong></td>
+                <td><strong>${serviceName}</strong></td>
                 <td>${service.category}</td>
-                <td>${service.price ? service.price.toLocaleString() + ' ₽' : '-'}</td>
+                <td>${service.price ? service.price.toLocaleString() + ' ' + this.i18n.t('services.currency') : '-'}</td>
                 <td>${service.duration || '-'}</td>
                 <td>
                     <div class="action-buttons">
-                        <button class="action-btn btn-edit" data-id="${service.id}" data-action="edit">Редакт.</button>
-                        <button class="action-btn btn-delete" data-id="${service.id}" data-action="delete">Удалить</button>
+                        <button class="action-btn btn-edit" data-id="${service.id}" data-action="edit">
+                            ${this.i18n.t('admin.buttons.edit')}
+                        </button>
+                        <button class="action-btn btn-delete" data-id="${service.id}" data-action="delete">
+                            ${this.i18n.t('admin.buttons.delete')}
+                        </button>
                     </div>
                 </td>
             `;
@@ -103,7 +125,7 @@ export class ServicesManager {
     handleAction(serviceId, action) {
         const service = this.services.find(s => s.id == serviceId);
         if (!service) {
-            this.adminPanel.showError('Услуга не найдена');
+            this.adminPanel.showError(this.i18n.t('admin.messages.service_not_found'));
             return;
         }
         
@@ -131,11 +153,11 @@ export class ServicesManager {
             }
 
             await this.loadServices();
-            this.adminPanel.showSuccess('Услуга успешно сохранена!');
+            this.adminPanel.showSuccess(this.i18n.t('admin.messages.service_saved'));
 
         } catch (error) {
             console.error('Error saving service:', error);
-            this.adminPanel.showError('Ошибка при сохранении услуги.');
+            this.adminPanel.showError(this.i18n.t('admin.messages.service_save_error'));
         } finally {
             this.adminPanel.showLoading(false);
         }
@@ -152,7 +174,7 @@ export class ServicesManager {
 
         const categoryIndex = categories.findIndex(cat => cat.id === serviceData.categoryId);
         if (categoryIndex === -1) {
-            throw new Error('Категория не найдена');
+            throw new Error(this.i18n.t('admin.messages.category_not_found'));
         }
 
         const newService = {
@@ -190,12 +212,12 @@ export class ServicesManager {
 
         const categoryIndex = categories.findIndex(cat => cat.id === serviceData.categoryId);
         if (categoryIndex === -1) {
-            throw new Error('Категория не найдена');
+            throw new Error(this.i18n.t('admin.messages.category_not_found'));
         }
 
         const serviceIndex = categories[categoryIndex].services.findIndex(s => s.id === currentService.id);
         if (serviceIndex === -1) {
-            throw new Error('Услуга не найдена');
+            throw new Error(this.i18n.t('admin.messages.service_not_found'));
         }
 
         categories[categoryIndex].services[serviceIndex] = {
@@ -222,7 +244,10 @@ export class ServicesManager {
     async deleteService() {
         if (!this.currentService) return;
         
-        if (confirm(`Удалить услугу "${this.currentService.name}"?`)) {
+        const serviceName = this.currentService.name[this.i18n.currentLang] || this.currentService.name;
+        const confirmMessage = `${this.i18n.t('admin.messages.delete_confirm_service')} "${serviceName}"?`;
+        
+        if (confirm(confirmMessage)) {
             try {
                 this.adminPanel.showLoading(true);
                 
@@ -246,7 +271,7 @@ export class ServicesManager {
                 }
 
                 if (!serviceDeleted) {
-                    throw new Error('Услуга не найдена');
+                    throw new Error(this.i18n.t('admin.messages.service_not_found'));
                 }
 
                 const updateResponse = await fetch('http://localhost:3000/services', {
@@ -260,11 +285,11 @@ export class ServicesManager {
                 }
                 
                 await this.loadServices();
-                this.adminPanel.showSuccess('Услуга удалена!');
+                this.adminPanel.showSuccess(this.i18n.t('admin.messages.service_deleted'));
                 
             } catch (error) {
                 console.error('Error deleting service:', error);
-                this.adminPanel.showError('Ошибка при удалении услуги.');
+                this.adminPanel.showError(this.i18n.t('admin.messages.service_delete_error'));
             } finally {
                 this.adminPanel.showLoading(false);
             }
