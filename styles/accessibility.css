@@ -287,39 +287,203 @@ body.accessibility-mode p {
     line-height: 1.8 !important;
 }
 
-body.scheme-black-white {
+.scheme-black-white .header-top-block img{
+    filter: invert(1);
+}
+
+body.scheme-black-white,
+.scheme-black-white .header-bottom,
+.scheme-black-white .section-slider,
+.scheme-black-white .news-section,
+.scheme-black-white .consult-btn,
+.scheme-black-white .about-values,
+.scheme-black-white .contacts-info {  
     background: #000000 !important;
     color: #ffffff !important;
 }
 
-body.scheme-black-white a {
+.scheme-black-white .section-slider-bottom-block,
+.scheme-black-white .block-text,
+.scheme-black-white .news-right,
+.scheme-black-white .mod-section-blocks-block-bottom,
+.scheme-black-white  footer,
+.scheme-black-white .services-hero,
+.scheme-black-white .services-consultation,
+.scheme-black-white .about-hero,
+.scheme-black-white .about-values,
+.scheme-black-white .contacts-hero,
+.scheme-black-white .contact-card,
+.scheme-black-white .contacts-form,
+.scheme-black-white .news-hero,
+.scheme-black-white .news-subscribe,
+.scheme-black-white .admin-header,
+.scheme-black-white .tab-btn,
+.scheme-black-white .stat-card,
+.scheme-black-white .filters-container,
+.scheme-black-white #appointmentsTableBody,
+.scheme-black-white #servicesTableBody,
+.scheme-black-white .admin-header h1,
+.scheme-black-white .stat-card h3,
+.scheme-black-white .stat-card span,
+.scheme-black-white .filter-group label,
+.scheme-black-white .tab-header h2 {  
+    background: #2a2a2a !important;
     color: #ffffff !important;
 }
 
-body.scheme-black-green {
+body.scheme-black-white a,
+.scheme-black-white .section-slider-top-slider-slide h2,
+.scheme-black-white .section-slider-top-slider-slide p,
+.scheme-black-white .user-info-nav span,
+.scheme-black-white .news-featured-title {
+    color: #ffffff !important;
+}
+
+.scheme-black-green .header-top-block img{
+    filter: invert(1);
+}
+
+body.scheme-black-green a,
+.scheme-black-green .section-slider-top-slider-slide h2,
+.scheme-black-green .section-slider-top-slider-slide p,
+.scheme-black-green .user-info-nav span,
+.scheme-black-green .news-featured-title {
+    color: #00ff00 !important;
+}
+
+body.scheme-black-green,
+.scheme-black-green .header-bottom,
+.scheme-black-green .section-slider,
+.scheme-black-green .news-section,
+.scheme-black-green .consult-btn,
+.scheme-black-green .about-values,
+.scheme-black-green .contacts-info {  
     background: #000000 !important;
     color: #00ff00 !important;
 }
 
-body.scheme-black-green a {
+.scheme-black-green .section-slider-bottom-block,
+.scheme-black-green .block-text,
+.scheme-black-green .news-right,
+.scheme-black-green .mod-section-blocks-block-bottom,
+.scheme-black-green  footer,
+.scheme-black-green .services-hero,
+.scheme-black-green .services-consultation,
+.scheme-black-green .about-hero,
+.scheme-black-green .about-values,
+.scheme-black-green .contacts-hero,
+.scheme-black-green .contact-card,
+.scheme-black-green .contacts-form,
+.scheme-black-green .news-hero,
+.scheme-black-green .news-subscribe,
+.scheme-black-green .admin-header,
+.scheme-black-green .tab-btn,
+.scheme-black-green .stat-card,
+.scheme-black-green .filters-container,
+.scheme-black-green #appointmentsTableBody,
+.scheme-black-green #servicesTableBody,
+.scheme-black-green .admin-header h1,
+.scheme-black-green .stat-card h3,
+.scheme-black-green .stat-card span,
+.scheme-black-green .filter-group label,
+.scheme-black-green .tab-header h2 {  
+    background: rgb(67, 67, 67) !important;
     color: #00ff00 !important;
 }
 
-body.scheme-beige-brown {
+body.scheme-beige-brown a,
+.scheme-beige-brown .section-slider-top-slider-slide h2,
+.scheme-beige-brown .section-slider-top-slider-slide p,
+.scheme-beige-brown .user-info-nav span,
+.scheme-beige-brown .news-featured-title {
+    color: #8b4513 !important;
+}
+
+body.scheme-beige-brown,
+.scheme-beige-brown .header-bottom,
+.scheme-beige-brown .section-slider,
+.scheme-beige-brown .news-section,
+.scheme-beige-brown .consult-btn,
+.scheme-beige-brown .about-values,
+.scheme-beige-brown .contacts-info {  
     background: #f5f5dc !important;
     color: #8b4513 !important;
 }
 
-body.scheme-beige-brown a {
+.scheme-beige-brown .section-slider-bottom-block,
+.scheme-beige-brown .block-text,
+.scheme-beige-brown .news-right,
+.scheme-beige-brown .mod-section-blocks-block-bottom,
+.scheme-beige-brown  footer,
+.scheme-beige-brown .services-hero,
+.scheme-beige-brown .services-consultation,
+.scheme-beige-brown .about-hero,
+.scheme-beige-brown .about-values,
+.scheme-beige-brown .contacts-hero,
+.scheme-beige-brown .contact-card,
+.scheme-beige-brown .contacts-form,
+.scheme-beige-brown .news-hero,
+.scheme-beige-brown .news-subscribe,
+.scheme-beige-brown .admin-header,
+.scheme-beige-brown .tab-btn,
+.scheme-beige-brown .stat-card,
+.scheme-beige-brown .filters-container,
+.scheme-beige-brown #appointmentsTableBody,
+.scheme-beige-brown #servicesTableBody,
+.scheme-beige-brown .admin-header h1,
+.scheme-beige-brown .stat-card h3,
+.scheme-beige-brown .stat-card span,
+.scheme-beige-brown .filter-group label,
+.scheme-beige-brown .tab-header h2 {  
+    background: #fafaf2 !important;
     color: #8b4513 !important;
 }
 
-body.scheme-blue-darkblue {
+body.scheme-blue-darkblue a,
+.scheme-blue-darkblue .section-slider-top-slider-slide h2,
+.scheme-blue-darkblue .section-slider-top-slider-slide p,
+.scheme-blue-darkblue .user-info-nav span,
+.scheme-blue-darkblue .news-featured-title {
+    color: #00008b !important;
+}
+
+body.scheme-blue-darkblue,
+.scheme-blue-darkblue .header-bottom,
+.scheme-blue-darkblue .section-slider,
+.scheme-blue-darkblue .news-section,
+.scheme-blue-darkblue .consult-btn,
+.scheme-blue-darkblue .about-values,
+.scheme-blue-darkblue .contacts-info {  
     background: #87ceeb !important;
     color: #00008b !important;
 }
 
-body.scheme-blue-darkblue a {
+.scheme-blue-darkblue .section-slider-bottom-block,
+.scheme-blue-darkblue .block-text,
+.scheme-blue-darkblue .news-right,
+.scheme-blue-darkblue .mod-section-blocks-block-bottom,
+.scheme-blue-darkblue  footer,
+.scheme-blue-darkblue .services-hero,
+.scheme-blue-darkblue .services-consultation,
+.scheme-blue-darkblue .about-hero,
+.scheme-blue-darkblue .about-values,
+.scheme-blue-darkblue .contacts-hero,
+.scheme-blue-darkblue .contact-card,
+.scheme-blue-darkblue .contacts-form,
+.scheme-blue-darkblue .news-hero,
+.scheme-blue-darkblue .news-subscribe,
+.scheme-blue-darkblue .admin-header,
+.scheme-blue-darkblue .tab-btn,
+.scheme-blue-darkblue .stat-card,
+.scheme-blue-darkblue .filters-container,
+.scheme-blue-darkblue #appointmentsTableBody,
+.scheme-blue-darkblue #servicesTableBody,
+.scheme-blue-darkblue .admin-header h1,
+.scheme-blue-darkblue .stat-card h3,
+.scheme-blue-darkblue .stat-card span,
+.scheme-blue-darkblue .filter-group label,
+.scheme-blue-darkblue .tab-header h2 {  
+    background: #cae4ef !important;
     color: #00008b !important;
 }
 
@@ -349,9 +513,48 @@ body.images-disabled .image-placeholder {
     font-style: italic;
 }
 
-body.theme-dark {
+body.theme-dark,
+.theme-dark .header-bottom,
+.theme-dark .section-slider,
+.theme-dark .news-section,
+.theme-dark .consult-btn,
+.theme-dark .about-values,
+.theme-dark .contacts-info {  
     background: #1a1a1a !important;
     color: #ffffff !important;
+}
+
+.theme-dark .section-slider-bottom-block,
+.theme-dark .block-text,
+.theme-dark .news-right,
+.theme-dark .mod-section-blocks-block-bottom,
+.theme-dark  footer,
+.theme-dark .services-hero,
+.theme-dark .services-consultation,
+.theme-dark .about-hero,
+.theme-dark .about-values,
+.theme-dark .contacts-hero,
+.theme-dark .contact-card,
+.theme-dark .contacts-form,
+.theme-dark .news-hero,
+.theme-dark .news-subscribe,
+.theme-dark .admin-header,
+.theme-dark .tab-btn,
+.theme-dark .stat-card,
+.theme-dark .filters-container,
+.theme-dark #appointmentsTableBody,
+.theme-dark #servicesTableBody,
+.theme-dark .admin-header h1,
+.theme-dark .stat-card h3,
+.theme-dark .stat-card span,
+.theme-dark .filter-group label,
+.theme-dark .tab-header h2 {  
+    background: #3f3f3f !important;
+    color: #ffffff !important;
+}
+
+.theme-dark .header-top-block img{
+    filter: invert(1);
 }
 
 body.theme-dark .header-top {
@@ -418,11 +621,6 @@ body.theme-dark .mod-section-blocks-block {
     background: #333 !important;
     color: #ffffff !important;
     border: 1px solid #444 !important;
-}
-
-body.theme-dark .footer {
-    background: #2d2d2d !important;
-    color: #ffffff !important;
 }
 
 body.theme-dark .footer__links a,

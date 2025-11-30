@@ -4,9 +4,173 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-i18n="auth.page_title">Вход и регистрация</title>
+    <link rel="stylesheet" href="../styles/global.css">
     <link rel="stylesheet" href="../styles/auth.css">
+    <link rel="stylesheet" href="../styles/accessibility.css">
+    <link rel="stylesheet" href="../styles/header.css">
 </head>
 <body>
+    <header>
+        <div class="header-top">
+            <div class="header-top-block">
+                <img src="../images/logo.png" alt="logo">
+            </div>
+            <div class="header-top-block">
+                <p data-i18n="header.phone">+7 (123) 456 78 90</p>
+            </div>
+            <div class="header-top-block">
+                <p data-i18n="header.salons">Наши салоны</p>
+                <img src="../images/Group1.png" alt="group">
+            </div>
+            <div class="header-top-block">
+                <button>
+                    <img src="../images/simple-line-icon.png" alt="simple-eye"> 
+                    <span data-i18n="header.accessibility">ВЕРСИЯ ДЛЯ СЛАБОВИДЯЩИХ</span>
+                </button>
+            </div>
+            <div class="header-top-block language-switcher-container">
+                <div class="language-switcher">
+                    <button class="lang-btn active" data-lang="ru">RU</button>
+                    <button class="lang-btn" data-lang="en">EN</button>
+                </div>
+            </div>
+            <div class="header-top-block">
+                <img src="../images/vk.png" alt="vk">
+            </div>
+            <div class="header-top-block">
+                <img src="../images/youtube.png" alt="youtube">
+            </div>
+            <div class="header-top-block">
+                <img src="../images/facebook.png" alt="facebook">
+            </div>
+            <div class="header-top-block">
+                <img src="../images/instagram.png" alt="instagram">
+            </div>
+        </div>
+
+        <div class="header-top--mobile">
+            <div class="header-top-block--mobile">
+                <img src="../images/logo.png" alt="logo" style="height: 24px;">
+            </div>
+            <div class="header-top-block--mobile">
+                <p style="font-size: 0.8rem; margin: 0;" data-i18n="header.phone">+7 (123) 456 78 90</p>
+            </div>
+            <div class="header-top-block language-switcher-container">
+                <div class="language-switcher">
+                    <button class="lang-btn active" data-lang="ru">RU</button>
+                    <button class="lang-btn" data-lang="en">EN</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="header-bottom">
+            <nav class="nav">
+                <div class="nav__container">
+                    <div class="nav__menu">
+                        <a href="./home.html" class="nav__link" data-i18n="nav.home">Главная</a>
+                        <a href="./services.html" class="nav__link" data-i18n="nav.services">Услуги</a>
+                        <a href="./about.html" class="nav__link" data-i18n="nav.about">О нас</a>
+                        <a href="./news.html" class="nav__link" data-i18n="nav.news">Новости</a>
+                        <a href="./contacts.html" class="nav__link" data-i18n="nav.contacts">Контакты</a>
+                        <button class="nav__button" data-i18n="header.appointment">Запись на прием</button>
+                    </div>
+
+                    <button class="nav__burger" aria-label="Открыть меню">
+                        <span class="nav__burger-line"></span>
+                        <span class="nav__burger-line"></span>
+                        <span class="nav__burger-line"></span>
+                    </button>
+                </div>
+            </nav>
+        </div>
+        
+        <div id="accessibilityModal" class="accessibility-modal">
+            <div class="accessibility-modal__content">
+                <div class="accessibility-modal__header">
+                    <h2 data-i18n="accessibility.title">Версия для слабовидящих</h2>
+                    <button class="accessibility-modal__close">&times;</button>
+                </div>
+                
+                <div class="accessibility-modal__body">
+                    <div class="accessibility-option">
+                        <h3 data-i18n="accessibility.font_size">Размер шрифта</h3>
+                        <div class="font-size-buttons">
+                            <button class="font-size-btn" data-size="small" data-i18n="accessibility.small">Маленький</button>
+                            <button class="font-size-btn active" data-size="medium" data-i18n="accessibility.medium">Средний</button>
+                            <button class="font-size-btn" data-size="large" data-i18n="accessibility.large">Большой</button>
+                        </div>
+                    </div>
+
+                    <div class="accessibility-option">
+                        <h3 data-i18n="accessibility.color_scheme">Цветовая схема</h3>
+                        <div class="color-scheme-buttons">
+                            <button class="color-scheme-btn" data-scheme="black-white">
+                                <span class="color-preview" style="background: #000; border-color: #fff"></span>
+                                <span data-i18n="accessibility.black_white">Черный/Белый</span>
+                            </button>
+                            <button class="color-scheme-btn" data-scheme="black-green">
+                                <span class="color-preview" style="background: #000; border-color: #0f0"></span>
+                                <span data-i18n="accessibility.black_green">Черный/Зеленый</span>
+                            </button>
+                            <button class="color-scheme-btn active" data-scheme="default">
+                                <span class="color-preview" style="background: #fff; border-color: #000"></span>
+                                <span data-i18n="accessibility.default">Стандартная</span>
+                            </button>
+                            <button class="color-scheme-btn" data-scheme="beige-brown">
+                                <span class="color-preview" style="background: #f5f5dc; border-color: #8b4513"></span>
+                                <span data-i18n="accessibility.beige_brown">Бежевый/Коричневый</span>
+                            </button>
+                            <button class="color-scheme-btn" data-scheme="blue-darkblue">
+                                <span class="color-preview" style="background: #87ceeb; border-color: #00008b"></span>
+                                <span data-i18n="accessibility.blue_darkblue">Голубой/Темно-синий</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="accessibility-option">
+                        <h3 data-i18n="accessibility.theme">Тема</h3>
+                        <div class="theme-toggle">
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="themeToggle">
+                                <span class="toggle-slider"></span>
+                                <span class="toggle-label" data-i18n="accessibility.dark_theme">Темная тема</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="accessibility-option">
+                        <h3 data-i18n="accessibility.images">Изображения</h3>
+                        <div class="image-toggle">
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="imagesToggle" checked>
+                                <span class="toggle-slider"></span>
+                                <span class="toggle-label" data-i18n="accessibility.show_images">Показывать изображения</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accessibility-modal__footer">
+                    <button class="reset-settings-btn" data-i18n="accessibility.reset">Сбросить настройки</button>
+                    <button class="apply-settings-btn" data-i18n="accessibility.apply">Применить</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="accessibilityBar" class="accessibility-bar">
+            <button class="accessibility-bar__toggle">
+                <img src="../images/simple-line-icon.png" alt="Доступность">
+            </button>
+            <div class="accessibility-bar__tools">
+                <button class="tool-btn" data-action="increase-font">A+</button>
+                <button class="tool-btn" data-action="decrease-font">A-</button>
+                <button class="tool-btn" data-action="toggle-contrast" data-i18n="accessibility.contrast">Контраст</button>
+                <button class="tool-btn" data-action="toggle-images" data-i18n="accessibility.images_short">Изобр.</button>
+            </div>
+        </div>
+        <div class="nav__overlay"></div>
+    </header>
+    <main>
     <div class="auth-container">
         <div class="auth-form">
             <div class="auth-tabs">
@@ -142,10 +306,13 @@
             </form>
         </div>
     </div>
+    </main>
     <script src="../js/i18n/index.js"></script>
     <script src="../js/auth/auth-manager.js"></script>
+    <script src="../js/accessibility/index.js"></script>
     <script src="../js/auth/auth-tabs.js"></script>
     <script src="../js/auth/registration.js"></script>
     <script src="../js/auth/login.js"></script>
+    <script src="../js/navigation/index.js"></script>
 </body>
 </html>
