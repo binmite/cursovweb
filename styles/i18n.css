@@ -1,0 +1,67 @@
+.language-switcher {
+    display: flex;
+    gap: 0.5rem;
+    margin-right: 1rem;
+}
+
+.lang-btn {
+    padding: 0.3rem 0.8rem;
+    border: 1px solid #ccc;
+    background: white;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.lang-btn:hover {
+    border-color: #00868A;
+    background: #f8f9fa;
+}
+
+.lang-btn.active {
+    background: #00868A;
+    color: white;
+    border-color: #00868A;
+}
+
+body[dir="rtl"] {
+    direction: rtl;
+    text-align: right;
+}
+
+body[dir="rtl"] .header-top-block,
+body[dir="rtl"] .nav__menu,
+body[dir="rtl"] .contacts-grid,
+body[dir="rtl"] .special-offers-grid {
+    direction: rtl;
+}
+
+body[dir="rtl"] .section-certificate-left-top-button,
+body[dir="rtl"] .section-certificate-right-buttom-left-block,
+body[dir="rtl"] .mod-section-blocks-block-bottom {
+    flex-direction: row-reverse;
+}
+
+@media (max-width: 768px) {
+    .language-switcher {
+        margin-right: 0.5rem;
+    }
+    
+    .lang-btn {
+        padding: 0.2rem 0.6rem;
+        font-size: 0.7rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .language-switcher {
+        gap: 0.3rem;
+    }
+    
+    .lang-btn {
+        padding: 0.15rem 0.4rem;
+        font-size: 0.65rem;
+    }
+}

@@ -1,0 +1,347 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+}
+
+.auth-container {
+    width: 100%;
+    max-width: 500px;
+    padding: 20px;
+}
+
+.auth-form {
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.auth-form h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+    font-size: 28px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #333;
+}
+
+label[for]::after {
+    content: " *";
+    color: #e74c3c;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="date"],
+input[type="password"] {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #e1e5e9;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+input:focus {
+    outline: none;
+    border-color: #3498db;
+}
+
+input:invalid:not(:focus) {
+    border-color: #e74c3c;
+}
+
+.username-group {
+    display: flex;
+    gap: 10px;
+}
+
+.generate-btn {
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    white-space: nowrap;
+    transition: background 0.3s ease;
+}
+
+.generate-btn:hover {
+    background: #2980b9;
+}
+
+.attempts-counter {
+    font-size: 12px;
+    color: #666;
+    margin-top: 5px;
+}
+
+.radio-group {
+    display: flex;
+    gap: 20px;
+    margin-top: 8px;
+}
+
+.radio-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    font-weight: normal;
+}
+
+.radio-label::after {
+    content: none !important;
+}
+
+.radio-label input[type="radio"] {
+    margin: 0;
+}
+
+.auto-password-group {
+    display: flex;
+    gap: 10px;
+    align-items: flex-end;
+}
+
+.auto-password-group input {
+    flex: 1;
+}
+
+.copy-btn {
+    background: #27ae60;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    white-space: nowrap;
+    transition: background 0.3s ease;
+}
+
+.copy-btn:hover {
+    background: #219a52;
+}
+
+.password-requirements {
+    font-size: 12px;
+    color: #666;
+    margin-top: 5px;
+    line-height: 1.4;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    cursor: pointer;
+    font-weight: normal;
+    line-height: 1.4;
+}
+
+.checkbox-label::after {
+    content: none !important;
+}
+
+.checkbox-label input[type="checkbox"] {
+    margin-top: 2px;
+}
+
+.agreement-link {
+    color: #3498db;
+    text-decoration: none;
+}
+
+.agreement-link:hover {
+    text-decoration: underline;
+}
+
+.error-message {
+    color: #e74c3c;
+    font-size: 12px;
+    margin-top: 5px;
+    min-height: 18px;
+}
+
+@media (max-width: 768px) {
+    .auth-container {
+        padding: 10px;
+    }
+    
+    .auth-form {
+        padding: 30px 20px;
+    }
+    
+    .username-group,
+    .auto-password-group {
+        flex-direction: column;
+    }
+    
+    .generate-btn,
+    .copy-btn {
+        width: 100%;
+        margin-top: 10px;
+    }
+    
+    .radio-group {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+.role-description {
+    font-size: 12px;
+    color: #666;
+    margin-top: 8px;
+    padding: 10px;
+    background: #f8f9fa;
+    border-radius: 6px;
+    border-left: 3px solid #3498db;
+}
+
+.admin-code-group {
+    background: #fff3cd;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #ffeaa7;
+}
+
+.admin-code-group label {
+    color: #856404;
+}
+
+.admin-code-group input {
+    background: #fff;
+    border-color: #ffeaa7;
+}
+
+.role-badge {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-left: 8px;
+}
+
+.role-badge.user {
+    background: #e3f2fd;
+    color: #1976d2;
+}
+
+.role-badge.admin {
+    background: #fff3e0;
+    color: #f57c00;
+}
+
+.auth-tabs {
+    display: flex;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid #e1e5e9;
+}
+
+.auth-tab {
+    flex: 1;
+    background: none;
+    border: none;
+    padding: 1rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #666;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.auth-tab.active {
+    color: #00868A;
+}
+
+.auth-tab.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: #00868A;
+}
+
+.auth-tab:hover:not(.active) {
+    color: #00868A;
+    background: rgba(0, 134, 138, 0.05);
+}
+
+.auth-content {
+    display: none;
+}
+
+.auth-content.active {
+    display: block;
+}
+
+.auth-btn {
+    width: 100%;
+    background: #00868A;
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    margin-top: 10px;
+}
+
+.auth-btn:hover {
+    background: #00696D;
+}
+
+.auth-btn:disabled {
+    background: #bdc3c7;
+    cursor: not-allowed;
+}
+
+.copy-btn {
+    background: #27ae60;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+}
+
+.copy-btn:hover {
+    background: #219a52;
+}
+
+.copy-btn:active {
+    transform: scale(0.98);
+}

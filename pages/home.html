@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="nav.home">Главная</title>
+    <link rel="stylesheet" href="../styles/global.css">
+    <link rel="stylesheet" href="../styles/header.css">
+    <link rel="stylesheet" href="../styles/footer.css">
+    <link rel="stylesheet" href="../styles/home.css">
+    <link rel="stylesheet" href="../styles/accessibility.css">
+    <link rel="stylesheet" href="../styles/i18n.css">
+</head>
+<body>
+    <header>
+        <div class="header-top">
+            <div class="header-top-block">
+                <img src="../images/logo.png" alt="logo">
+            </div>
+            <div class="header-top-block">
+                <p data-i18n="header.phone">+7 (123) 456 78 90</p>
+            </div>
+            <div class="header-top-block">
+                <p data-i18n="header.salons">Наши салоны</p>
+                <img src="../images/Group1.png" alt="group">
+            </div>
+            <div class="header-top-block">
+                <button>
+                    <img src="../images/simple-line-icon.png" alt="simple-eye"> 
+                    <span data-i18n="header.accessibility">ВЕРСИЯ ДЛЯ СЛАБОВИДЯЩИХ</span>
+                </button>
+            </div>
+            <div class="header-top-block language-switcher-container">
+                <div class="language-switcher">
+                    <button class="lang-btn active" data-lang="ru">RU</button>
+                    <button class="lang-btn" data-lang="en">EN</button>
+                </div>
+            </div>
+            <div class="header-top-block">
+                <img src="../images/vk.png" alt="vk">
+            </div>
+            <div class="header-top-block">
+                <img src="../images/youtube.png" alt="youtube">
+            </div>
+            <div class="header-top-block">
+                <img src="../images/facebook.png" alt="facebook">
+            </div>
+            <div class="header-top-block">
+                <img src="../images/instagram.png" alt="instagram">
+            </div>
+        </div>
+
+        <div class="header-top--mobile">
+            <div class="header-top-block--mobile">
+                <img src="../images/logo.png" alt="logo" style="height: 24px;">
+            </div>
+            <div class="header-top-block--mobile">
+                <p style="font-size: 0.8rem; margin: 0;" data-i18n="header.phone">+7 (123) 456 78 90</p>
+            </div>
+            <div class="header-top-block language-switcher-container">
+                <div class="language-switcher">
+                    <button class="lang-btn active" data-lang="ru">RU</button>
+                    <button class="lang-btn" data-lang="en">EN</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="header-bottom">
+            <nav class="nav">
+                <div class="nav__container">
+                    <div class="nav__menu">
+                        <a href="./home.html" class="nav__link" data-i18n="nav.home">Главная</a>
+                        <a href="./services.html" class="nav__link" data-i18n="nav.services">Услуги</a>
+                        <a href="./about.html" class="nav__link" data-i18n="nav.about">О нас</a>
+                        <a href="./news.html" class="nav__link" data-i18n="nav.news">Новости</a>
+                        <a href="./contacts.html" class="nav__link" data-i18n="nav.contacts">Контакты</a>
+                        <button class="nav__button" data-i18n="header.appointment">Запись на прием</button>
+                    </div>
+
+                    <button class="nav__burger" aria-label="Открыть меню">
+                        <span class="nav__burger-line"></span>
+                        <span class="nav__burger-line"></span>
+                        <span class="nav__burger-line"></span>
+                    </button>
+                </div>
+            </nav>
+        </div>
+        
+        <div id="accessibilityModal" class="accessibility-modal">
+            <div class="accessibility-modal__content">
+                <div class="accessibility-modal__header">
+                    <h2 data-i18n="accessibility.title">Версия для слабовидящих</h2>
+                    <button class="accessibility-modal__close">&times;</button>
+                </div>
+                
+                <div class="accessibility-modal__body">
+                    <div class="accessibility-option">
+                        <h3 data-i18n="accessibility.font_size">Размер шрифта</h3>
+                        <div class="font-size-buttons">
+                            <button class="font-size-btn" data-size="small" data-i18n="accessibility.small">Маленький</button>
+                            <button class="font-size-btn active" data-size="medium" data-i18n="accessibility.medium">Средний</button>
+                            <button class="font-size-btn" data-size="large" data-i18n="accessibility.large">Большой</button>
+                        </div>
+                    </div>
+
+                    <div class="accessibility-option">
+                        <h3 data-i18n="accessibility.color_scheme">Цветовая схема</h3>
+                        <div class="color-scheme-buttons">
+                            <button class="color-scheme-btn" data-scheme="black-white">
+                                <span class="color-preview" style="background: #000; border-color: #fff"></span>
+                                <span data-i18n="accessibility.black_white">Черный/Белый</span>
+                            </button>
+                            <button class="color-scheme-btn" data-scheme="black-green">
+                                <span class="color-preview" style="background: #000; border-color: #0f0"></span>
+                                <span data-i18n="accessibility.black_green">Черный/Зеленый</span>
+                            </button>
+                            <button class="color-scheme-btn active" data-scheme="default">
+                                <span class="color-preview" style="background: #fff; border-color: #000"></span>
+                                <span data-i18n="accessibility.default">Стандартная</span>
+                            </button>
+                            <button class="color-scheme-btn" data-scheme="beige-brown">
+                                <span class="color-preview" style="background: #f5f5dc; border-color: #8b4513"></span>
+                                <span data-i18n="accessibility.beige_brown">Бежевый/Коричневый</span>
+                            </button>
+                            <button class="color-scheme-btn" data-scheme="blue-darkblue">
+                                <span class="color-preview" style="background: #87ceeb; border-color: #00008b"></span>
+                                <span data-i18n="accessibility.blue_darkblue">Голубой/Темно-синий</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="accessibility-option">
+                        <h3 data-i18n="accessibility.theme">Тема</h3>
+                        <div class="theme-toggle">
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="themeToggle">
+                                <span class="toggle-slider"></span>
+                                <span class="toggle-label" data-i18n="accessibility.dark_theme">Темная тема</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="accessibility-option">
+                        <h3 data-i18n="accessibility.images">Изображения</h3>
+                        <div class="image-toggle">
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="imagesToggle" checked>
+                                <span class="toggle-slider"></span>
+                                <span class="toggle-label" data-i18n="accessibility.show_images">Показывать изображения</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accessibility-modal__footer">
+                    <button class="reset-settings-btn" data-i18n="accessibility.reset">Сбросить настройки</button>
+                    <button class="apply-settings-btn" data-i18n="accessibility.apply">Применить</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="accessibilityBar" class="accessibility-bar">
+            <button class="accessibility-bar__toggle">
+                <img src="../images/simple-line-icon.png" alt="Доступность">
+            </button>
+            <div class="accessibility-bar__tools">
+                <button class="tool-btn" data-action="increase-font">A+</button>
+                <button class="tool-btn" data-action="decrease-font">A-</button>
+                <button class="tool-btn" data-action="toggle-contrast" data-i18n="accessibility.contrast">Контраст</button>
+                <button class="tool-btn" data-action="toggle-images" data-i18n="accessibility.images_short">Изобр.</button>
+            </div>
+        </div>
+        <div class="nav__overlay"></div>
+    </header>
+    
+    <main>
+        <section class="section-slider">
+            <div class="section-slider-top">
+                <div class="section-slider-top-slider">
+                    <div class="section-slider-top-slider-wrapper">
+                        <div class="section-slider-top-slider-slide active">
+                            <h2 data-i18n="slider.cosmetology">Косметология</h2>
+                            <p data-i18n="slider.cosmetology_desc">Современный мир диктует новые каноны жизни: ухоженное лицо и тело, стройная, подтянутая фигура — сегодня это неотъемлемые черты привлекательной внешности, характеризующие человека благополучного и успешного.</p>
+                            <button data-i18n="slider.details">ПОДРОБНЕЕ</button>
+                        </div>
+                        <div class="section-slider-top-slider-slide">
+                            <h2 data-i18n="slider.plastic_surgery">Пластическая хирургия</h2>
+                            <p data-i18n="slider.plastic_surgery_desc">Современные технологии в пластической хирургии позволяют достигать впечатляющих результатов с минимальным вмешательством.</p>
+                            <button data-i18n="slider.details">ПОДРОБНЕЕ</button>
+                        </div>
+                        <div class="section-slider-top-slider-slide">
+                            <h2 data-i18n="slider.dentistry">Стоматология</h2>
+                            <p data-i18n="slider.dentistry_desc">Профессиональный уход за зубами и современные методы лечения помогут сохранить вашу улыбку здоровой и красивой.</p>
+                            <button data-i18n="slider.details">ПОДРОБНЕЕ</button>
+                        </div>
+                        <div class="section-slider-top-slider-slide">
+                            <h2 data-i18n="slider.laser_medicine">Лазерная медицина</h2>
+                            <p data-i18n="slider.laser_medicine_desc">Инновационные лазерные технологии для эффективного омоложения, удаления нежелательных волос и лечения кожных заболеваний.</p>
+                            <button data-i18n="slider.details">ПОДРОБНЕЕ</button>
+                        </div>
+                        <div class="section-slider-top-slider-slide">
+                            <h2 data-i18n="slider.dermatology">Дерматология</h2>
+                            <p data-i18n="slider.dermatology_desc">Комплексная диагностика и лечение заболеваний кожи с использованием современных методик и препаратов.</p>
+                            <button data-i18n="slider.details">ПОДРОБНЕЕ</button>
+                        </div>
+                        <div class="section-slider-top-slider-slide">
+                            <h2 data-i18n="slider.aesthetic_gynecology">Эстетическая гинекология</h2>
+                            <p data-i18n="slider.aesthetic_gynecology_desc">Современные методы коррекции и омоложения интимной зоны для улучшения качества жизни и уверенности в себе.</p>
+                            <button data-i18n="slider.details">ПОДРОБНЕЕ</button>
+                        </div>
+                    </div>      
+                    <div class="section-slider-top-slider-buttons">
+                        <button class="slider-prev"><img src="../images/Arrow-left.png" alt="Arrow-left"></button>
+                        <button class="slider-next"><img src="../images/Arrow-right.png" alt="Arrow-right"></button>
+                    </div>          
+                </div>
+                <div class="section-slider-top-img"><img src="../images/section1.png" alt="section1"></div>
+            </div>
+            <div class="section-slider-bottom">
+                <div class="section-slider-bottom-block" data-i18n="procedures.complex">Комплексные процедуры</div>
+                <div class="section-slider-bottom-block" data-i18n="procedures.education">Центр обучения</div>
+                <div class="section-slider-bottom-block" data-i18n="procedures.vip">VIP клиентам</div>
+            </div>
+        </section>
+
+        <section class="section-certificate">
+            <div class="section-certificate-left">
+                <div class="section-certificate-left-top">
+                    <p class="block-text" data-i18n="innovations.title">Инновации</p>
+                    <h2 data-i18n="innovations.heading">Мы практикуем новый курс процедур аппаратной косметологии</h2>
+                    <div class="section-certificate-left-top-button">
+                        <button><img src="../images/Arrow-right.png" alt="Arrow"></button>
+                        <p data-i18n="innovations.details">ПОДРОБНЕЕ</p>
+                    </div>
+                </div>
+                <div class="section-certificate-left-bottom">
+                    <img src="../images/innovations__img.png" alt="innovations__img">
+                </div>
+            </div>
+            <div class="section-certificate-right">
+                <p class="block-text" data-i18n="aesthetics.title">Эстетика красоты</p>
+                <div class="section-certificate-right-buttom">
+                    <div class="section-certificate-right-buttom-left">
+                        <div class="section-certificate-right-buttom-left-block">
+                            <h3>67</h3>
+                            <p data-i18n="aesthetics.centers">Современных центров в странах СНГ</p>
+                        </div>
+                        <div class="section-certificate-right-buttom-left-block">
+                            <h3>42</h3>
+                            <p data-i18n="aesthetics.doctors">Квалифицированных врачей</p>
+                        </div>
+                        <div class="section-certificate-right-buttom-left-block">
+                            <h3>20</h3>
+                            <p data-i18n="aesthetics.patents">Уникальных патентов в области косметологии</p>
+                        </div>
+                        <div class="section-certificate-right-buttom-left-block">
+                            <h3>52</h3>
+                            <p data-i18n="aesthetics.procedures">Современных процедур в арсенале</p>
+                        </div>
+                    </div>
+                    <div class="section-certificate-right-buttom-right">
+                        <img src="../images/panent.png" alt="panent">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="news-section">
+            <div class="news-container">
+                <div class="news-left">
+                    <h2 class="news-title" data-i18n="news.title">Новости</h2>
+                    
+                    <div class="news-item active" data-tab="tab1">
+                        <h3 class="news-item-title" data-i18n="news.why_cosmetologist">Почему рекомендуется посещать профессионального косметолога. Мнение специалистов центра</h3>
+                    </div>
+                    
+                    <div class="news-item" data-tab="tab2">
+                        <h3 class="news-item-title" data-i18n="news.standardization">Стандартизация деятельности клиник в соответствии с ISO 9001:2015.</h3>
+                    </div>
+                    
+                    <div class="news-item" data-tab="tab3">
+                        <h3 class="news-item-title" data-i18n="news.individual_approach">Индивидуальный подход к каждому пациенту и подбор оптимальных косметологических методик.</h3>
+                    </div>
+                </div>
+                
+                <div class="news-right">
+                    <div class="news-featured active" id="tab1">
+                        <h2 class="news-featured-title" data-i18n="news.why_cosmetologist">Почему рекомендуется посещать профессионального косметолога. Мнение специалистов центра</h2>
+                        
+                        <ul class="news-featured-list">
+                            <li class="news-featured-item" data-i18n="news.details.individual_approach_1">
+                                <span class="news-featured-bullet"></span>
+                                Процедуры аппаратной косметологии на оборудовании экспертного класса от ведущих мировых производителей могут проводиться в любом возрасте и решать широкий спектр проблем: возрастные изменения, покраснения, акне и купероз, потеря тонуса и упругости кожи, отечность, целлюлит и т. п.
+                            </li>
+                            
+                            <li class="news-featured-item" data-i18n="news.details.individual_approach_2">
+                                <span class="news-featured-bullet"></span>
+                                С помощью инъекционных методик мы можем разгладить морщины, провести объемное моделирование, увлажнить кожу, ввести активные вещества в поверхностные и средние слои кожи, запустить процессы омоложения.
+                            </li>
+                            
+                            <li class="news-featured-item" data-i18n="news.details.individual_approach_3">
+                                <span class="news-featured-bullet"></span>
+                                Лазерное и фотоомоложение помогут запустить процесс синтеза собственного коллагена, улучшить светооптические свойства кожи, а также получить максимальный эффект подтяжки лица без уколов и длительного восстановительного периода.
+                            </li>
+                            
+                            <li class="news-featured-item" data-i18n="news.details.individual_approach_4">
+                                <span class="news-featured-bullet"></span>
+                                Курс процедур лазерной эпиляции поможет навсегда избавиться от проблемы нежелательных волос.
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="news-featured" id="tab2">
+                        <h2 class="news-featured-title" data-i18n="news.standardization">Стандартизация деятельности клиник в соответствии с ISO 9001:2015</h2>
+                        
+                        <ul class="news-featured-list">
+                            <li class="news-featured-item" data-i18n="news.details.why_cosmetology_1">
+                                <span class="news-featured-bullet"></span>
+                                Международный стандарт ISO 9001:2015 обеспечивает единые требования к системе менеджмента качества в медицинских учреждениях.
+                            </li>
+                            
+                            <li class="news-featured-item" data-i18n="news.details.why_cosmetology_2">
+                                <span class="news-featured-bullet"></span>
+                                Все процессы клиники документированы и стандартизированы, что гарантирует стабильно высокое качество услуг для каждого пациента.
+                            </li>
+                            
+                            <li class="news-featured-item" data-i18n="news.details.why_cosmetology_3">
+                                <span class="news-featured-bullet"></span>
+                                Регулярные аудиты и внутренние проверки позволяют постоянно совершенствовать рабочие процессы и повышать эффективность.
+                            </li>
+                            
+                            <li class="news-featured-item" data-i18n="news.details.why_cosmetology_4">
+                                <span class="news-featured-bullet"></span>
+                                Сертификация по ISO 9001:2015 подтверждает соответствие клиники международным стандартам качества и безопасности.
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="news-featured" id="tab3">
+                        <h2 class="news-featured-title" data-i18n="news.individual_approach">Индивидуальный подход к каждому пациенту и подбор оптимальных косметологических методик</h2>
+                        
+                        <ul class="news-featured-list">
+                            <li class="news-featured-item" data-i18n="news.details.standardization_1">
+                                <span class="news-featured-bullet"></span>
+                                Перед назначением процедур проводится комплексная диагностика состояния кожи и выявление индивидуальных особенностей пациента.
+                            </li>
+                            
+                            <li class="news-featured-item" data-i18n="news.details.standardization_2">
+                                <span class="news-featured-bullet"></span>
+                                Учитываются возрастные изменения, тип кожи, наличие противопоказаний и пожелания пациента к результату.
+                            </li>
+                            
+                            <li class="news-featured-item" data-i18n="news.details.standardization_3">
+                                <span class="news-featured-bullet"></span>
+                                Разрабатывается персонализированная программа лечения или коррекции с использованием наиболее эффективных методик.
+                            </li>
+                            
+                            <li class="news-featured-item" data-i18n="news.details.standardization_4">
+                                <span class="news-featured-bullet"></span>
+                                На всех этапах лечения обеспечивается постоянный мониторинг результатов и при необходимости коррекция программы.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mod-section">
+            <h2 data-i18n="special_offers.title">Актуальные спецпредложения</h2>
+            <div class="mod-section-blocks">
+                <div class="mod-section-blocks-block">
+                    <div class="mod-section-blocks-block-top">
+                        <p class="block-text" data-i18n="special_offers_categories.cosmetology">Косметология</p>
+                        <img src="../images/mod1.png" alt="">
+                    </div>
+                    <div class="mod-section-blocks-block-bottom">
+                        <p data-i18n="special_offers.laser_epilation">Лазерная эпиляция</p>
+                        <button><img src="../images/Arrow-right.png" alt="right"></button>
+                    </div>
+                </div>
+                <div class="mod-section-blocks-block">
+                    <div class="mod-section-blocks-block-top">
+                        <p class="block-text" data-i18n="special_offers_categories.cosmetology">Косметология</p>
+                        <img src="../images/mod2.png" alt="">
+                    </div>
+                    <div class="mod-section-blocks-block-bottom">
+                        <p data-i18n="special_offers.biorevitalization">Биоревитализация</p>
+                        <button><img src="../images/Arrow-right.png" alt="right"></button>
+                    </div>
+                </div>
+                <div class="mod-section-blocks-block">
+                    <div class="mod-section-blocks-block-top">
+                        <p class="block-text" data-i18n="special_offers_categories.dentistry">Стоматология</p>
+                        <img src="../images/mod3.png" alt="">
+                    </div>
+                    <div class="mod-section-blocks-block-bottom">
+                        <p data-i18n="special_offers.teeth_whitening">Отбеливание зубов</p>
+                        <button><img src="../images/Arrow-right.png" alt="right"></button>
+                    </div>
+                </div>
+                <div class="mod-section-blocks-block">
+                    <div class="mod-section-blocks-block-top">
+                        <p class="block-text" data-i18n="special_offers_categories.plastic_surgery">Пластическая хирургия</p>
+                        <img src="../images/mod4.png" alt="">
+                    </div>
+                    <div class="mod-section-blocks-block-bottom">
+                        <p data-i18n="special_offers.rhinoplasty">Ринопластика</p>
+                        <button><img src="../images/Arrow-right.png" alt="right"></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="footer">
+            <div class="footer__top">
+                <div class="footer__column">
+                    <h3 data-i18n="footer.cosmetology">Косметология</h3>
+                    <ul class="footer__links">
+                        <li><a href="#" data-i18n="footer.facial_care">Уход за лицом</a></li>
+                        <li><a href="#" data-i18n="footer.body_correction">Коррекция тела</a></li>
+                        <li><a href="#" data-i18n="footer.rejuvenation">Омоложение</a></li>
+                        <li><a href="#" data-i18n="footer.hardware_cosmetology">Аппаратная косметология</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer__column">
+                    <h3 data-i18n="footer.plastic_surgery">Пластическая хирургия</h3>
+                    <ul class="footer__links">
+                        <li><a href="#" data-i18n="footer.facial_plastic">Пластика лица</a></li>
+                        <li><a href="#" data-i18n="footer.figure_correction">Коррекция фигуры</a></li>
+                        <li><a href="#" data-i18n="footer.mammoplasty">Маммопластика</a></li>
+                        <li><a href="#" data-i18n="footer.reconstructive_surgery">Реконструктивная хирургия</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer__column">
+                    <h3 data-i18n="footer.dentistry">Стоматология</h3>
+                    <ul class="footer__links">
+                        <li><a href="#" data-i18n="footer.dental_implantation">Имплантация зубов</a></li>
+                        <li><a href="#" data-i18n="footer.aesthetic_dentistry">Эстетическая стоматология</a></li>
+                        <li><a href="#" data-i18n="footer.bite_correction">Исправление прикуса</a></li>
+                        <li><a href="#" data-i18n="footer.professional_hygiene">Профессиональная гигиена</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer__column">
+                    <h3 data-i18n="footer.contacts">Контакты</h3>
+                    <div class="footer__contact">
+                        <p data-i18n="footer.contact_phone">+7 (123) 456 78 90</p>
+                        <p data-i18n="footer.contact_address">Москва, ул. Примерная, 123</p>
+                        <p data-i18n="footer.contact_email">info@clinic.ru</p>
+                        <div class="footer__social">
+                            <a href="#"><img src="../images/vk.png" alt="VK"></a>
+                            <a href="#"><img src="../images/youtube.png" alt="YouTube"></a>
+                            <a href="#"><img src="../images/facebook.png" alt="Facebook"></a>
+                            <a href="#"><img src="../images/instagram.png" alt="Instagram"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer__bottom">
+                <div class="footer__copyright" data-i18n="footer.copyright">© 2025 Медицинский центр. Все права защищены.</div>
+                <div class="footer__legal">
+                    <a href="#" data-i18n="footer.privacy_policy">Политика конфиденциальности</a>
+                    <a href="#" data-i18n="footer.user_agreement">Пользовательское соглашение</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="../js/i18n/index.js"></script>
+    <script src="../js/accessibility/index.js"></script>
+    <script src="../js/burger-menu/index.js"></script>
+    <script src="../js/slider-home/index.js"></script>
+    <script src="../js/table-home/index.js"></script>
+    <script src="../js/navigation/index.js"></script>
+    <script src="../js/auth/auth-manager.js"></script>
+</body>
+</html>

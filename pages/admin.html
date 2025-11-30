@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="admin.page_title">Панель администратора</title>
+    <link rel="stylesheet" href="../styles/admin.css">
+    <link rel="stylesheet" href="../styles/accessibility.css">
+    <link rel="stylesheet" href="../styles/header.css">
+</head>
+<body>
+    <header>
+        <div class="header-top">
+            <div class="header-top-block">
+                <img src="../images/logo.png" alt="logo">
+            </div>
+            <div class="header-top-block">
+                <p data-i18n="header.phone">+7 (123) 456 78 90</p>
+            </div>
+            <div class="header-top-block">
+                <p data-i18n="header.salons">Наши салоны</p>
+                <img src="../images/Group1.png" alt="group">
+            </div>
+            <div class="header-top-block">
+                <button>
+                    <img src="../images/simple-line-icon.png" alt="simple-eye"> 
+                    <span data-i18n="header.accessibility">ВЕРСИЯ ДЛЯ СЛАБОВИДЯЩИХ</span>
+                </button>
+            </div>
+            <div class="header-top-block language-switcher-container">
+                <div class="language-switcher">
+                    <button class="lang-btn active" data-lang="ru">RU</button>
+                    <button class="lang-btn" data-lang="en">EN</button>
+                </div>
+            </div>
+            <div class="header-top-block">
+                <img src="../images/vk.png" alt="vk">
+            </div>
+            <div class="header-top-block">
+                <img src="../images/youtube.png" alt="youtube">
+            </div>
+            <div class="header-top-block">
+                <img src="../images/facebook.png" alt="facebook">
+            </div>
+            <div class="header-top-block">
+                <img src="../images/instagram.png" alt="instagram">
+            </div>
+        </div>
+
+        <div class="header-top--mobile">
+            <div class="header-top-block--mobile">
+                <img src="../images/logo.png" alt="logo" style="height: 24px;">
+            </div>
+            <div class="header-top-block--mobile">
+                <p style="font-size: 0.8rem; margin: 0;" data-i18n="header.phone">+7 (123) 456 78 90</p>
+            </div>
+            <div class="header-top-block language-switcher-container">
+                <div class="language-switcher">
+                    <button class="lang-btn active" data-lang="ru">RU</button>
+                    <button class="lang-btn" data-lang="en">EN</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="header-bottom">
+            <nav class="nav">
+                <div class="nav__container">
+                    <div class="nav__menu">
+                        <a href="./home.html" class="nav__link" data-i18n="nav.home">Главная</a>
+                        <a href="./services.html" class="nav__link" data-i18n="nav.services">Услуги</a>
+                        <a href="./about.html" class="nav__link" data-i18n="nav.about">О нас</a>
+                        <a href="./news.html" class="nav__link" data-i18n="nav.news">Новости</a>
+                        <a href="./contacts.html" class="nav__link" data-i18n="nav.contacts">Контакты</a>
+                        <button class="nav__button" data-i18n="header.appointment">Запись на прием</button>
+                    </div>
+
+                    <button class="nav__burger" aria-label="Открыть меню">
+                        <span class="nav__burger-line"></span>
+                        <span class="nav__burger-line"></span>
+                        <span class="nav__burger-line"></span>
+                    </button>
+                </div>
+            </nav>
+        </div>
+        
+        <div id="accessibilityModal" class="accessibility-modal">
+            <div class="accessibility-modal__content">
+                <div class="accessibility-modal__header">
+                    <h2 data-i18n="accessibility.title">Версия для слабовидящих</h2>
+                    <button class="accessibility-modal__close">&times;</button>
+                </div>
+                
+                <div class="accessibility-modal__body">
+                    <div class="accessibility-option">
+                        <h3 data-i18n="accessibility.font_size">Размер шрифта</h3>
+                        <div class="font-size-buttons">
+                            <button class="font-size-btn" data-size="small" data-i18n="accessibility.small">Маленький</button>
+                            <button class="font-size-btn active" data-size="medium" data-i18n="accessibility.medium">Средний</button>
+                            <button class="font-size-btn" data-size="large" data-i18n="accessibility.large">Большой</button>
+                        </div>
+                    </div>
+
+                    <div class="accessibility-option">
+                        <h3 data-i18n="accessibility.color_scheme">Цветовая схема</h3>
+                        <div class="color-scheme-buttons">
+                            <button class="color-scheme-btn" data-scheme="black-white">
+                                <span class="color-preview" style="background: #000; border-color: #fff"></span>
+                                <span data-i18n="accessibility.black_white">Черный/Белый</span>
+                            </button>
+                            <button class="color-scheme-btn" data-scheme="black-green">
+                                <span class="color-preview" style="background: #000; border-color: #0f0"></span>
+                                <span data-i18n="accessibility.black_green">Черный/Зеленый</span>
+                            </button>
+                            <button class="color-scheme-btn active" data-scheme="default">
+                                <span class="color-preview" style="background: #fff; border-color: #000"></span>
+                                <span data-i18n="accessibility.default">Стандартная</span>
+                            </button>
+                            <button class="color-scheme-btn" data-scheme="beige-brown">
+                                <span class="color-preview" style="background: #f5f5dc; border-color: #8b4513"></span>
+                                <span data-i18n="accessibility.beige_brown">Бежевый/Коричневый</span>
+                            </button>
+                            <button class="color-scheme-btn" data-scheme="blue-darkblue">
+                                <span class="color-preview" style="background: #87ceeb; border-color: #00008b"></span>
+                                <span data-i18n="accessibility.blue_darkblue">Голубой/Темно-синий</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="accessibility-option">
+                        <h3 data-i18n="accessibility.theme">Тема</h3>
+                        <div class="theme-toggle">
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="themeToggle">
+                                <span class="toggle-slider"></span>
+                                <span class="toggle-label" data-i18n="accessibility.dark_theme">Темная тема</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="accessibility-option">
+                        <h3 data-i18n="accessibility.images">Изображения</h3>
+                        <div class="image-toggle">
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="imagesToggle" checked>
+                                <span class="toggle-slider"></span>
+                                <span class="toggle-label" data-i18n="accessibility.show_images">Показывать изображения</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accessibility-modal__footer">
+                    <button class="reset-settings-btn" data-i18n="accessibility.reset">Сбросить настройки</button>
+                    <button class="apply-settings-btn" data-i18n="accessibility.apply">Применить</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="accessibilityBar" class="accessibility-bar">
+            <button class="accessibility-bar__toggle">
+                <img src="../images/simple-line-icon.png" alt="Доступность">
+            </button>
+            <div class="accessibility-bar__tools">
+                <button class="tool-btn" data-action="increase-font">A+</button>
+                <button class="tool-btn" data-action="decrease-font">A-</button>
+                <button class="tool-btn" data-action="toggle-contrast" data-i18n="accessibility.contrast">Контраст</button>
+                <button class="tool-btn" data-action="toggle-images" data-i18n="accessibility.images_short">Изобр.</button>
+            </div>
+        </div>
+        <div class="nav__overlay"></div>
+    </header>
+    <main>
+    <div class="admin-container">
+        <header class="admin-header">
+            <h1 data-i18n="admin.title">Панель администратора</h1>
+            <div class="admin-controls">
+                <button id="refreshBtn" class="btn btn-secondary" data-i18n="admin.refresh">Обновить</button>
+                <button id="backBtn" class="btn btn-outline" data-i18n="admin.back">Назад</button>
+            </div>
+        </header>
+
+        <div class="admin-tabs">
+            <button class="tab-btn active" data-tab="appointments" data-i18n="admin.tabs.appointments">Заявки</button>
+            <button class="tab-btn" data-tab="services" data-i18n="admin.tabs.services">Услуги</button>
+        </div>
+
+        <div class="admin-content">
+            <div id="appointments-tab" class="tab-content active">
+                <div class="stats-container">
+                    <div class="stat-card">
+                        <h3 data-i18n="admin.stats.total_appointments">Всего заявок</h3>
+                        <span id="totalAppointments" class="stat-number">0</span>
+                    </div>
+                    <div class="stat-card">
+                        <h3 data-i18n="admin.stats.pending">Ожидают</h3>
+                        <span id="pendingAppointments" class="stat-number">0</span>
+                    </div>
+                    <div class="stat-card">
+                        <h3 data-i18n="admin.stats.confirmed">Подтверждены</h3>
+                        <span id="confirmedAppointments" class="stat-number">0</span>
+                    </div>
+                    <div class="stat-card">
+                        <h3 data-i18n="admin.stats.rejected">Отклонены</h3>
+                        <span id="rejectedAppointments" class="stat-number">0</span>
+                    </div>
+                </div>
+
+                <div class="filters-container">
+                    <div class="filter-group">
+                        <label for="statusFilter" data-i18n="admin.filters.status">Статус:</label>
+                        <select id="statusFilter">
+                            <option value="all" data-i18n="admin.filters.status_all">Все статусы</option>
+                            <option value="pending" data-i18n="admin.filters.status_pending">Ожидание</option>
+                            <option value="confirmed" data-i18n="admin.filters.status_confirmed">Подтверждено</option>
+                            <option value="rejected" data-i18n="admin.filters.status_rejected">Отклонено</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="dateFilter" data-i18n="admin.filters.date">Дата:</label>
+                        <input type="date" id="dateFilter">
+                    </div>
+                    <div class="filter-group">
+                        <label for="searchFilter" data-i18n="admin.filters.search">Поиск:</label>
+                        <input type="text" id="searchFilter" 
+                               data-i18n-placeholder="admin.filters.search_placeholder"
+                               placeholder="Поиск по клиенту или услуге...">
+                    </div>
+                    <button id="clearFilters" class="btn btn-outline" data-i18n="admin.filters.clear">Сбросить</button>
+                </div>
+
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th data-i18n="admin.appointments.id">ID</th>
+                                <th data-i18n="admin.appointments.client">Клиент</th>
+                                <th data-i18n="admin.appointments.service">Услуга</th>
+                                <th data-i18n="admin.appointments.doctor">Специалист</th>
+                                <th data-i18n="admin.appointments.datetime">Дата и время</th>
+                                <th data-i18n="admin.appointments.status">Статус</th>
+                                <th data-i18n="admin.appointments.price">Цена</th>
+                                <th data-i18n="admin.appointments.actions">Действия</th>
+                            </tr>
+                        </thead>
+                        <tbody id="appointmentsTableBody">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="services-tab" class="tab-content">
+                <div class="tab-header">
+                    <h2 data-i18n="admin.services.title">Управление услугами</h2>
+                    <button id="addServiceBtn" class="btn btn-primary" data-i18n="admin.services.add">Добавить услугу</button>
+                </div>
+
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th data-i18n="admin.services.id">ID</th>
+                                <th data-i18n="admin.services.name">Название</th>
+                                <th data-i18n="admin.services.category">Категория</th>
+                                <th data-i18n="admin.services.price">Цена</th>
+                                <th data-i18n="admin.services.duration">Длительность</th>
+                                <th data-i18n="admin.services.actions">Действия</th>
+                            </tr>
+                        </thead>
+                        <tbody id="servicesTableBody">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="appointmentModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle" data-i18n="admin.modal.appointment_title">Просмотр заявки</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="appointmentForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="modalClient" data-i18n="admin.modal.client">Клиент:</label>
+                            <input type="text" id="modalClient" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="modalService" data-i18n="admin.modal.service">Услуга:</label>
+                            <input type="text" id="modalService" readonly>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="modalDoctor" data-i18n="admin.modal.doctor">Специалист:</label>
+                            <input type="text" id="modalDoctor" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="modalPrice" data-i18n="admin.modal.price">Цена:</label>
+                            <input type="text" id="modalPrice" readonly>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="modalDate" data-i18n="admin.modal.date">Дата:</label>
+                            <input type="date" id="modalDate">
+                        </div>
+                        <div class="form-group">
+                            <label for="modalTime" data-i18n="admin.modal.time">Время:</label>
+                            <select id="modalTime">
+                                <option value="09:00" data-i18n="admin.time.09:00">09:00</option>
+                                <option value="10:00" data-i18n="admin.time.10:00">10:00</option>
+                                <option value="11:00" data-i18n="admin.time.11:00">11:00</option>
+                                <option value="12:00" data-i18n="admin.time.12:00">12:00</option>
+                                <option value="14:00" data-i18n="admin.time.14:00">14:00</option>
+                                <option value="15:00" data-i18n="admin.time.15:00">15:00</option>
+                                <option value="16:00" data-i18n="admin.time.16:00">16:00</option>
+                                <option value="17:00" data-i18n="admin.time.17:00">17:00</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="modalStatus" data-i18n="admin.modal.status">Статус:</label>
+                        <select id="modalStatus">
+                            <option value="pending" data-i18n="admin.status.pending">Ожидание</option>
+                            <option value="confirmed" data-i18n="admin.status.confirmed">Подтверждено</option>
+                            <option value="rejected" data-i18n="admin.status.rejected">Отклонено</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="modalNotes" data-i18n="admin.modal.client_notes">Примечания клиента:</label>
+                        <textarea id="modalNotes" rows="3" readonly></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="adminNotes" data-i18n="admin.modal.admin_notes">Заметки администратора:</label>
+                        <textarea id="adminNotes" rows="3" 
+                                  data-i18n-placeholder="admin.modal.admin_notes_placeholder"
+                                  placeholder="Введите заметки для клиента..."></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button id="saveAppointmentBtn" class="btn btn-primary" data-i18n="admin.buttons.save">Сохранить</button>
+                <button id="confirmAppointmentBtn" class="btn btn-success" data-i18n="admin.buttons.confirm">Подтвердить</button>
+                <button id="rejectAppointmentBtn" class="btn btn-danger" data-i18n="admin.buttons.reject">Отклонить</button>
+                <button id="deleteAppointmentBtn" class="btn btn-danger" data-i18n="admin.buttons.delete">Удалить</button>
+                <button class="btn btn-secondary" data-dismiss="modal" data-i18n="admin.buttons.cancel">Отмена</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="serviceModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="serviceModalTitle" data-i18n="admin.modal.service_add_title">Добавить услугу</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="serviceForm">
+                    <div class="form-group">
+                        <label for="serviceName" data-i18n="admin.modal.service_name">Название услуги:</label>
+                        <input type="text" id="serviceName" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="serviceCategory" data-i18n="admin.modal.service_category">Категория:</label>
+                        <select id="serviceCategory" required>
+                            <option value="" data-i18n="admin.modal.service_category_placeholder">Выберите категорию</option>
+                            <option value="cosmetology" data-i18n="admin.categories.cosmetology">Косметология</option>
+                            <option value="surgery" data-i18n="admin.categories.surgery">Пластическая хирургия</option>
+                            <option value="dentistry" data-i18n="admin.categories.dentistry">Стоматология</option>
+                            <option value="laser" data-i18n="admin.categories.laser">Лазерная терапия</option>
+                        </select>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="servicePrice" data-i18n="admin.modal.service_price">Цена (₽):</label>
+                            <input type="number" id="servicePrice" required min="0">
+                        </div>
+                        <div class="form-group">
+                            <label for="servicePriceUnit" data-i18n="admin.modal.service_price_unit">Единица цены:</label>
+                            <select id="servicePriceUnit" required>
+                                <option value=""></option>
+                                <option value="от" data-i18n="admin.modal.service_price_unit_from">от</option>
+                                <option value="за процедуру" data-i18n="admin.modal.service_price_unit_procedure">за процедуру</option>
+                                <option value="за сеанс" data-i18n="admin.modal.service_price_unit_session">за сеанс</option>
+                                <option value="за курс" data-i18n="admin.modal.service_price_unit_course">за курс</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="serviceDuration" data-i18n="admin.modal.service_duration">Длительность:</label>
+                        <input type="text" id="serviceDuration" 
+                               data-i18n-placeholder="admin.modal.service_duration_placeholder"
+                               placeholder="например: 1 час" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="serviceDescription" data-i18n="admin.modal.service_description">Описание:</label>
+                        <textarea id="serviceDescription" rows="3" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="serviceProcedures" data-i18n="admin.modal.service_procedures">Процедуры (через запятую):</label>
+                        <textarea id="serviceProcedures" rows="2" 
+                                  data-i18n-placeholder="admin.modal.service_procedures_placeholder"
+                                  placeholder="Консультация, Осмотр, Анализ..."></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button id="saveServiceBtn" class="btn btn-primary" data-i18n="admin.buttons.save">Сохранить</button>
+                <button class="btn btn-secondary" data-dismiss="modal" data-i18n="admin.buttons.cancel">Отмена</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="preloader" class="preloader">
+        <div class="preloader__content">
+            <div class="preloader__spinner"></div>
+            <div class="preloader__text" data-i18n="admin.preloader">Загрузка панели администратора...</div>
+        </div>
+    </div>
+    </main>
+    <script src="../js/i18n/index.js"></script>
+    <script src="../js/auth/auth-manager.js"></script>
+    <script type="module" src="../js/admin/index.js"></script>
+    <script src="../js/accessibility/index.js"></script>
+    <script src="../js/navigation/index.js"></script>
+</body>
+</html>
