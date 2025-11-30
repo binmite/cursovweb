@@ -55,6 +55,20 @@
       "password": "4H!4#6uCcHz^",
       "registrationDate": "2025-11-30T10:11:42.837Z",
       "isActive": true
+    },
+    {
+      "id": 1764507346926,
+      "role": "user",
+      "phone": "+375295345345",
+      "email": "erwwegfwg@gmail.com",
+      "birthDate": "2000-12-12",
+      "lastName": "rwer",
+      "firstName": "ewrwerwe",
+      "middleName": "",
+      "username": "БыстрыйЕдинорог273",
+      "password": "QiZM%Pc6qj@R",
+      "registrationDate": "2025-11-30T12:55:46.926Z",
+      "isActive": true
     }
   ],
   "appointments": [
