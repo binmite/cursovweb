@@ -20,6 +20,7 @@ header{
     border-right: 1px solid #ccc;
     border-left: 1px solid #ccc;
     height: 80px;
+    cursor: pointer;
 }
 
 .header-top--mobile{
@@ -316,7 +317,7 @@ header{
         background: rgba(79, 191, 165, 0.95);
         flex-direction: column;
         gap: 0;
-        padding: 120px 2rem 2rem;
+        padding: 130px 2rem 2rem;
         z-index: 1000;
         overflow-y: auto;
         box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
@@ -440,7 +441,7 @@ header{
     }
 
     .nav__menu {
-        padding: 100px 1rem 1rem;
+        padding: 130px 1rem 1rem;
     }
     
     .user-info-nav {
